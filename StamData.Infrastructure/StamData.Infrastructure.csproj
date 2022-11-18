@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Kompetencer\KompetenceDomainServices\" />
+    <Folder Include="Kompetencer\KompetenceRepositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
+    <ProjectReference Include="..\StamData.Application\StamData.Application.csproj" />
+    <ProjectReference Include="..\StamData.Domain\StamData.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-Semester_Projekt-13A5BC92-3EE4-4EA1-BE3A-A0A42941AB94</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SqlServerContext.Migrations\SqlServerContext.Migrations.csproj" />
+    <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
+    <ProjectReference Include="..\StamData.Application\StamData.Application.csproj" />
+    <ProjectReference Include="..\StamData.Infrastructure\StamData.Infrastructure.csproj" />
+    <ProjectReference Include="..\UserContext.Migrations\UserContext.Migrations.csproj" />
+    <ProjectReference Include="..\UserContext\UserContext.csproj" />
+  </ItemGroup>
+
+</Project>
