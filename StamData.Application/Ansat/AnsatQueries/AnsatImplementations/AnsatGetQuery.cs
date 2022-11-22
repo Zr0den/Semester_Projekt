@@ -11,9 +11,9 @@ namespace StamData.Application.Ansat.AnsatQueries.AnsatImplementations
             _repository = repository;
         }
 
-        AnsatQueryResultDto IAnsatGetQuery.Get(int ansatKey, string ansatId)
+        AnsatQueryResultDto IAnsatGetQuery.Get(int ansatId, string userId)
         {
-            return _repository.Get(ansatKey, ansatId);
+            return _repository.Get(ansatId, userId);
         }
     }
 }

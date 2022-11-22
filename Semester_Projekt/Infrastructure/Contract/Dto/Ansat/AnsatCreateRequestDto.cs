@@ -1,10 +1,9 @@
 ﻿using StamData.Domain.Kompetencer.KompetenceModel;
-
-namespace StamData.Application.Ansat.AnsatQueries
+namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
 {
-    public class AnsatQueryResultDto
+    public class AnsatCreateRequestDto
     {
-        public int AnsatID { get; set; }
+        public string UserID { get; set; }
         public string AnsatName { get; set; }
         public string AnsatTelefon { get; set; }
         public string AnsatType { get; set; }

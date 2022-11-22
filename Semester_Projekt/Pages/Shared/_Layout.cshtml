@@ -25,12 +25,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        @if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded || AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
+                        @if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterAnsat">Registrer Ansat</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Registrer Kunde</a>
                             </li>
                         }
+                        @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Registrer Kunde</a>
+                            </li>
+                        }
+                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

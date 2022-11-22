@@ -1,5 +1,5 @@
 ﻿@page
-@model RegisterModel
+@model RegisterKundeModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -27,25 +27,7 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-        @if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)
-        {
-            <div class="form-floating">
-                <select asp-for="Input.RoleChoice" class="form-control" autocomplete="role" aria-required="true" >
-                    <option value="Tekniker">Tekniker</option>
-                    <option value="Konverter">Konverter</option>
-                    <option value="Konsulent">Konsulent</option>
-                    <option value="Sælger">Sælger</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Kunde">Kunde</option>
-
-
-                    <label asp-for="Input.RoleChoice"></label>
-                    <span asp-validation-for="Input.RoleChoice" class="text-danger"></span>
-                </select>
-
-            </div>
-        }
-            @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
+            @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded || AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)
             {
                 <div class="form-floating">
                     <select asp-for="Input.RoleChoice" class="form-control" autocomplete="role" aria-required="true" >
@@ -55,6 +37,7 @@
                     </select>
                 </div>
             }
+        
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>

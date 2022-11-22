@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Semester_Projekt.Data;
-using SqlServerContext;
-using StamData.Application.Ansat.AnsatCommands;
-using StamData.Application.Ansat.AnsatCommands.AnsatImplementations;
-using StamData.Application.Ansat.AnsatRepositories;
-using StamData.Infrastructure.Ansat.AnsatRepositories;
+using Semester_Projekt.Infrastructure.Contract;
+using Semester_Projekt.Infrastructure.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,14 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-// Clean Architecture
-builder.Services.AddScoped<ICreateAnsatCommand, CreateAnsatCommand>();
-builder.Services.AddScoped<IAnsatRepository, AnsatRepository>();
-
-builder.Services.AddDbContext<ServerContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SemesterProjektDbConnection"), x => x.MigrationsAssembly("SqlServerContext.Migrations")));
+//builder.Services.AddDbContext<ServerContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SemesterProjektDbConnection"), x => x.MigrationsAssembly("SqlServerContext.Migrations")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     {
@@ -45,12 +35,16 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policybuilder => policybuilder.RequireClaim("Admin"));
-    options.AddPolicy("Sælger", policybuilder => policybuilder.RequireClaim("Sælger"));
+    options.AddPolicy("SÃ¦lger", policybuilder => policybuilder.RequireClaim("SÃ¦lger"));
     options.AddPolicy("Tekniker", policybuilder => policybuilder.RequireClaim("Tekniker"));
     options.AddPolicy("Konverter", policybuilder => policybuilder.RequireClaim("Konverter"));
     options.AddPolicy("Konsulent", policybuilder => policybuilder.RequireClaim("Konsulent"));
     options.AddPolicy("Kunde", policybuilder => policybuilder.RequireClaim("Kunde"));
 });
+
+builder.Services.AddHttpClient<IService, Service>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["BaseUrl"])
+);
 
 // Database
 // Add-Migration InitialMigration -Context ApplicationDbContext

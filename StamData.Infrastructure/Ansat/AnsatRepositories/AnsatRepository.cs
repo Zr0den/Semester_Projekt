@@ -22,35 +22,40 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
         }
 
-        IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAll(string ansatId)
+        IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAll(string userId)
         {
-            foreach (var entity in _db.AnsatEntities.AsNoTracking().Where(a => a.AnsatId == ansatId).ToList())
+            foreach (var entity in _db.AnsatEntities.AsNoTracking().Where(a => a.UserId == userId).ToList())
             {
                 yield return new AnsatQueryResultDto
                 {
-                    AnsatKey = entity.AnsatKey,
+                    AnsatID = entity.AnsatID,
                     AnsatName = entity.AnsatName, 
                     AnsatTelefon = entity.AnsatTelefon,
-                    AnsatEmail = entity.AnsatEmail, 
                     AnsatType = entity.AnsatType, 
-                    KompetenceList = entity.KompetenceList
+                    Kompetencer = entity.Kompetencer
                 };
             }
         }
 
-        AnsatQueryResultDto IAnsatRepository.Get(int key, string ansatId)
+        AnsatEntity IAnsatRepository.Load(int ansatId, string userId)
         {
-            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a => a.AnsatId == ansatId);
+            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a => a.AnsatID == ansatId && a.UserId == userId);
+            if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
+            return dbEntity;
+        }
+
+        AnsatQueryResultDto IAnsatRepository.Get(int ansatId, string userId)
+        {
+            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a=> a.AnsatID == ansatId && a.UserId == userId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
 
             return new AnsatQueryResultDto
             {
-                AnsatKey = dbEntity.AnsatKey,
+                AnsatID = dbEntity.AnsatID,
                 AnsatName = dbEntity.AnsatName,
                 AnsatTelefon = dbEntity.AnsatTelefon,
-                AnsatEmail = dbEntity.AnsatEmail,
                 AnsatType = dbEntity.AnsatType,
-                KompetenceList = dbEntity.KompetenceList
+                Kompetencer = dbEntity.Kompetencer
             };
         }
     }

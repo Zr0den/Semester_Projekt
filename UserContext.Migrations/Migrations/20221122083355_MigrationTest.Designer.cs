@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+
 #nullable disable
 
 namespace UserContext.Migrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221117133653_MigrationTest")]
+    [Migration("20221122083355_MigrationTest")]
     partial class MigrationTest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
