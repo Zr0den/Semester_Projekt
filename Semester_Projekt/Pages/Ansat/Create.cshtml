@@ -1,0 +1,31 @@
+﻿@page
+@model Semester_Projekt.Pages.Ansat.CreateModel
+@{
+}
+<h2>Opret ansats profil</h2>
+<article class="row">
+    <form method="post">
+        <section class="form-group">
+            <label asp-for="AnsatModel.AnsatName"></label>
+            <input asp-for="AnsatModel.AnsatName" class="form-control" />
+            <span asp-validation-for="AnsatModel.AnsatName" class="text-danger"></span>
+        </section>
+        <section class="form-group">
+            <label asp-for="AnsatModel.AnsatTelefon"></label>
+            <input asp-for="AnsatModel.AnsatTelefon" class="form-control" />
+            <span asp-validation-for="AnsatModel.AnsatTelefon" class="text-danger"></span>
+        </section>
+        <section class="form-group">
+            <label asp-for="AnsatModel.AnsatType"></label>
+            <input asp-for="AnsatModel.AnsatType" class="form-control" />
+            <span asp-validation-for="AnsatModel.AnsatType" class="text-danger"></span>
+        </section>
+@*        <section class="form-group">
+            <label asp-for="AnsatModel.Kompetencer"></label>
+            <input asp-for="AnsatModel.Kompetencer" class="form-control" />
+            <span asp-validation-for="AnsatModel.Kompetencer" class="text-danger"></span>
+        </section>*@
+        <button type="submit" class="btn btn-default">Opret Profil</button>
+
+    </form>
+</article>

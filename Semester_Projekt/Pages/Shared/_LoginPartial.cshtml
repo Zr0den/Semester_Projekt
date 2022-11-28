@@ -16,11 +16,20 @@
 }
 else
 {
-    @if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded || AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
+    @*@if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)*@
     {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterAnsat">Register Ansat</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
+        </li>
+    }
+    @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
+        </li>
     }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>

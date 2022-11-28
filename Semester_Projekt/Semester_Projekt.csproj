@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-Semester_Projekt-13A5BC92-3EE4-4EA1-BE3A-A0A42941AB94</UserSecretsId>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,12 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SqlServerContext.Migrations\SqlServerContext.Migrations.csproj" />
-    <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
-    <ProjectReference Include="..\StamData.Application\StamData.Application.csproj" />
-    <ProjectReference Include="..\StamData.Infrastructure\StamData.Infrastructure.csproj" />
+    <ProjectReference Include="..\StamData.Domain\StamData.Domain.csproj" />
     <ProjectReference Include="..\UserContext.Migrations\UserContext.Migrations.csproj" />
     <ProjectReference Include="..\UserContext\UserContext.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Contract\Dto\Kompetence\" />
   </ItemGroup>
 
 </Project>

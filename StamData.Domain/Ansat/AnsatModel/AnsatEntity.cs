@@ -4,30 +4,39 @@ namespace StamData.Domain.Ansat.AnsatModel
 {
     public class AnsatEntity
     {
-        public int AnsatKey { get; }
-        public string AnsatId { get; private set; }
+        public int AnsatID { get; }
+        public string UserId { get; private set; }
         public string AnsatName { get; private set; }
         public string AnsatTelefon { get; private set; }
-        public string AnsatEmail { get; private set; }
         public string AnsatType { get; private set; }
-        public ICollection<KompetenceEntity> KompetenceList { get; private set; }
+        public virtual ICollection<KompetenceEntity> Kompetencer { get; private set; }
 
         internal AnsatEntity()
         {
 
         }
 
-        public AnsatEntity(string ansatId, string ansatName, string ansatTelefon, string ansatEmail, string ansatType, ICollection<KompetenceEntity> kompetenceList)
+        public AnsatEntity(
+            string userId, 
+            string ansatName, 
+            string ansatTelefon, 
+            string ansatType, 
+            ICollection<KompetenceEntity> kompetencer)
         {
-            AnsatId = ansatId;
+            this.Kompetencer = new HashSet<KompetenceEntity>();
+            UserId = userId;
             AnsatName = ansatName;
             AnsatTelefon = ansatTelefon;
-            AnsatEmail = ansatEmail;
             AnsatType = ansatType;
-            KompetenceList = kompetenceList;
         }
 
-
+        public void Edit(string ansatName, string ansatTelefon, string ansatType, ICollection<KompetenceEntity> kompetencer)
+        {
+            AnsatName = ansatName;
+            AnsatTelefon = ansatTelefon;
+            AnsatType = ansatType;
+            Kompetencer = kompetencer;
+        }
 
     }
 

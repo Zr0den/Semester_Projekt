@@ -2,5 +2,6 @@
 {
     public interface IEditAnsatCommand
     {
+        void Edit(AnsatEditRequestDto ansatEditRequestDto);
     }
 }

@@ -8,15 +8,28 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+    <ProjectReference Include="..\Semester_Projekt\Semester_Projekt.csproj" />
     <ProjectReference Include="..\SqlServerContext.Migrations\SqlServerContext.Migrations.csproj" />
     <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
     <ProjectReference Include="..\StamData.Application\StamData.Application.csproj" />
+    <ProjectReference Include="..\StamData.Domain\StamData.Domain.csproj" />
     <ProjectReference Include="..\StamData.Infrastructure\StamData.Infrastructure.csproj" />
     <ProjectReference Include="..\UserContext.Migrations\UserContext.Migrations.csproj" />
     <ProjectReference Include="..\UserContext\UserContext.csproj" />

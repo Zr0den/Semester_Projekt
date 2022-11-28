@@ -1,5 +1,6 @@
 ﻿using StamData.Application.Ansat.AnsatRepositories;
 using StamData.Domain.Ansat.AnsatModel;
+using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 {
@@ -15,7 +16,7 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 
         void ICreateAnsatCommand.Create(AnsatCreateRequestDto ansatCreateRequestDto)
         {
-            var ansat = new AnsatEntity(ansatCreateRequestDto.AnsatId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatEmail, ansatCreateRequestDto.AnsatType, ansatCreateRequestDto.KompetenceList);
+            var ansat = new AnsatEntity(ansatCreateRequestDto.UserId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatType, ansatCreateRequestDto.Kompetencer);
 
             _ansatRepository.Add(ansat);
         }

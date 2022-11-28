@@ -11,8 +11,8 @@ using SqlServerContext;
 namespace SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20221118110031_DomainMigrationTest")]
-    partial class DomainMigrationTest
+    [Migration("20221122083529_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,36 +23,13 @@ namespace SqlServerContext.Migrations.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
-                {
-                    b.Property<int>("AnsatteEntitiesAnsatKey")
-                        .HasColumnType("int");
-
-                    b.Property<int>("KompetenceListKompetenceKey")
-                        .HasColumnType("int");
-
-                    b.HasKey("AnsatteEntitiesAnsatKey", "KompetenceListKompetenceKey");
-
-                    b.HasIndex("KompetenceListKompetenceKey");
-
-                    b.ToTable("AnsatEntityKompetenceEntity");
-                });
-
             modelBuilder.Entity("StamData.Domain.Ansat.AnsatModel.AnsatEntity", b =>
                 {
-                    b.Property<int>("AnsatKey")
+                    b.Property<int>("AnsatID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnsatKey"), 1L, 1);
-
-                    b.Property<string>("AnsatEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AnsatId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnsatID"), 1L, 1);
 
                     b.Property<string>("AnsatName")
                         .IsRequired()
@@ -66,20 +43,27 @@ namespace SqlServerContext.Migrations.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AnsatKey");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AnsatID");
 
                     b.ToTable("Ansat", "Ansat");
                 });
 
             modelBuilder.Entity("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", b =>
                 {
-                    b.Property<int>("KompetenceKey")
+                    b.Property<int>("KompetenceID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KompetenceKey"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KompetenceID"), 1L, 1);
 
-                    b.Property<string>("KompetenceId")
+                    b.Property<int>("AnsatID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KompetenceName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -87,24 +71,27 @@ namespace SqlServerContext.Migrations.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("KompetenceKey");
+                    b.HasKey("KompetenceID");
+
+                    b.HasIndex("AnsatID");
 
                     b.ToTable("Kompetance", "Kompetence");
                 });
 
-            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+            modelBuilder.Entity("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", b =>
                 {
-                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
-                        .WithMany()
-                        .HasForeignKey("AnsatteEntitiesAnsatKey")
+                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", "Ansat")
+                        .WithMany("Kompetencer")
+                        .HasForeignKey("AnsatID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
-                        .WithMany()
-                        .HasForeignKey("KompetenceListKompetenceKey")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Ansat");
+                });
+
+            modelBuilder.Entity("StamData.Domain.Ansat.AnsatModel.AnsatEntity", b =>
+                {
+                    b.Navigation("Kompetencer");
                 });
 #pragma warning restore 612, 618
         }

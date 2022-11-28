@@ -15,7 +15,7 @@ namespace SqlServerContext.TypeConfiguration
         public void Configure(EntityTypeBuilder<KompetenceEntity> builder)
         {
             builder.ToTable("Kompetance", "Kompetence");
-            builder.HasKey(x => x.KompetenceKey);
+            builder.HasKey(x => x.KompetenceID);
 
         }
 
