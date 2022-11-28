@@ -9,21 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{25
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StamData", "StamData", "{05FF40D0-E009-4F78-A832-503B002961F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerContext", "SqlServerContext\SqlServerContext.csproj", "{29BAE62F-2721-4A9E-877C-F0EC4F09C07A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServerContext", "SqlServerContext\SqlServerContext.csproj", "{29BAE62F-2721-4A9E-877C-F0EC4F09C07A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semester_Projekt.Api", "Semester_Projekt.Api\Semester_Projekt.Api.csproj", "{A08F9D26-375D-40EE-A028-7396E5091001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semester_Projekt.Api", "Semester_Projekt.Api\Semester_Projekt.Api.csproj", "{A08F9D26-375D-40EE-A028-7396E5091001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerContext.Migrations", "SqlServerContext.Migrations\SqlServerContext.Migrations.csproj", "{B6FBF399-FBA3-4CC1-9CDE-62130B701775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServerContext.Migrations", "SqlServerContext.Migrations\SqlServerContext.Migrations.csproj", "{B6FBF399-FBA3-4CC1-9CDE-62130B701775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserContext", "UserContext\UserContext.csproj", "{7D332088-9B6B-48E2-A140-0E13D5AED863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserContext", "UserContext\UserContext.csproj", "{7D332088-9B6B-48E2-A140-0E13D5AED863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserContext.Migrations", "UserContext.Migrations\UserContext.Migrations.csproj", "{077C1F01-D697-456D-A333-171BA36B255D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserContext.Migrations", "UserContext.Migrations\UserContext.Migrations.csproj", "{077C1F01-D697-456D-A333-171BA36B255D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StamData.Application", "StamData.Application\StamData.Application.csproj", "{CD3E1EA9-0316-4D8E-96F9-63F9E2B4C820}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StamData.Application", "StamData.Application\StamData.Application.csproj", "{CD3E1EA9-0316-4D8E-96F9-63F9E2B4C820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StamData.Domain", "StamData.Domain\StamData.Domain.csproj", "{7B0961FA-69F9-444F-8A2B-94FC47A76928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StamData.Domain", "StamData.Domain\StamData.Domain.csproj", "{7B0961FA-69F9-444F-8A2B-94FC47A76928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StamData.Infrastructure", "StamData.Infrastructure\StamData.Infrastructure.csproj", "{090A9044-198E-41CA-8210-41BD65FE92EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StamData.Infrastructure", "StamData.Infrastructure\StamData.Infrastructure.csproj", "{090A9044-198E-41CA-8210-41BD65FE92EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

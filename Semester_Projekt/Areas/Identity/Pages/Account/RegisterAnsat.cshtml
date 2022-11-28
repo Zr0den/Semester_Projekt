@@ -27,7 +27,7 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-        @if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)
+        @*@if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)*@
         {
             <div class="form-floating">
                 <select asp-for="Input.RoleChoice" class="form-control" autocomplete="role" aria-required="true" >

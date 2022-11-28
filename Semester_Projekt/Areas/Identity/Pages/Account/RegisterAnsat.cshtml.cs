@@ -19,9 +19,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Semester_Projekt.Areas.Identity.Pages.Account.AnsatViewModels;
 using Semester_Projekt.Infrastructure.Contract;
-using AnsatCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatCreateRequestDto;
+using Semester_Projekt.Pages.Ansat;
+
 
 namespace Semester_Projekt.Areas.Identity.Pages.Account
 {
@@ -115,6 +115,7 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
         }
 
 
+
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -128,7 +129,6 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);

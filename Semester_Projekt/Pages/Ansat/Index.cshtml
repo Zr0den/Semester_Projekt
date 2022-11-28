@@ -1,0 +1,36 @@
+﻿@page
+@model Semester_Projekt.Pages.Ansat.IndexModel
+@{
+}
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>AnsatID</th>
+            <th>Navn</th>
+            <th>Telefon</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if(Model.IndexViewModel.Any())
+        {
+            foreach (var ansat in Model.IndexViewModel)
+            {
+                <tr>
+                    <td>@ansat.AnsatID</td>
+                    <td>@ansat.AnsatName</td>
+                    <td>@ansat.AnsatTelefon</td>
+                    <td>@ansat.AnsatType</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@ansat.AnsatID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-id="@ansat.AnsatID">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <a asp-page="Create">Create New</a>
+</form>

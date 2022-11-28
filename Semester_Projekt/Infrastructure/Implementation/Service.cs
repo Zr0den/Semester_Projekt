@@ -12,16 +12,21 @@ namespace Semester_Projekt.Infrastructure.Implementation
             _httpClient = httpClient;
         }
 
+        async Task IService.Edit(AnsatEditRequestDto ansatEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/ansat", ansatEditRequestDto);
+        }
+
         async Task IService.Create(AnsatCreateRequestDto ansatCreateRequestDto)
         {
             await _httpClient.PostAsJsonAsync("api/ansat", ansatCreateRequestDto);
         }
-        async Task<AnsatQueryResultDto> IService.Get(int ansatId, string userId)
+        async Task<AnsatQueryResultDto?> IService.Get(int ansatId, string userId)
         {
             return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userId}");
         }
 
-        async Task<IEnumerable<AnsatQueryResultDto>> IService.GetAll(string userId)
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAll(string userId)
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userId}");
         }

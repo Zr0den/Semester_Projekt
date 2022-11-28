@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserContext.Migrations.Migrations
 {
-    public partial class MigrationTest : Migration
+    public partial class virkerdet : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

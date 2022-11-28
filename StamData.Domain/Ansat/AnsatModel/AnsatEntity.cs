@@ -16,16 +16,27 @@ namespace StamData.Domain.Ansat.AnsatModel
 
         }
 
-        public AnsatEntity(string userId, string ansatName, string ansatTelefon, string ansatType, ICollection<KompetenceEntity> kompetencer)
+        public AnsatEntity(
+            string userId, 
+            string ansatName, 
+            string ansatTelefon, 
+            string ansatType, 
+            ICollection<KompetenceEntity> kompetencer)
         {
+            this.Kompetencer = new HashSet<KompetenceEntity>();
             UserId = userId;
+            AnsatName = ansatName;
+            AnsatTelefon = ansatTelefon;
+            AnsatType = ansatType;
+        }
+
+        public void Edit(string ansatName, string ansatTelefon, string ansatType, ICollection<KompetenceEntity> kompetencer)
+        {
             AnsatName = ansatName;
             AnsatTelefon = ansatTelefon;
             AnsatType = ansatType;
             Kompetencer = kompetencer;
         }
-
-
 
     }
 

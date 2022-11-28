@@ -4,11 +4,34 @@ namespace StamData.Domain.Kompetencer.KompetenceModel
 {
     public class KompetenceEntity
     {
-        public int KompetenceID { get; set; }
-        public int AnsatID { get; set; }
-        public string KompetenceName { get; set; }
-        public string KompetenceType { get; set; }  
-        public virtual AnsatEntity Ansat { get; set; }
+        public int KompetenceID { get; private set; }
+        public string KompetenceName { get; private set; }
+        public virtual ICollection<AnsatEntity> Ansatte { get; private set; }
+
+        public KompetenceEntity(
+            int kompetenceID,
+            string kompetenceName,
+            ICollection<AnsatEntity> ansatte)
+        {
+            this.Ansatte = new HashSet<AnsatEntity>();
+            KompetenceName = kompetenceName;
+        }
+
+        internal KompetenceEntity()
+        {
+
+        }
+
+
+        public void Edit(string kompetenceName, ICollection<AnsatEntity> ansatte)
+        {
+            KompetenceName = kompetenceName;
+            Ansatte = ansatte;
+        }
 
     }
+
+
+
+
 }

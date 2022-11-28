@@ -9,5 +9,6 @@ namespace StamData.Application.Ansat.AnsatRepositories
         IEnumerable<AnsatQueryResultDto> GetAll(string userId);
         AnsatQueryResultDto Get(int ansatId, string userId);
         AnsatEntity Load(int ansatId, string userId);
+        void Update(AnsatEntity model);
     }
 }

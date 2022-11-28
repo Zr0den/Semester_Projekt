@@ -32,9 +32,16 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                     AnsatName = entity.AnsatName, 
                     AnsatTelefon = entity.AnsatTelefon,
                     AnsatType = entity.AnsatType, 
-                    Kompetencer = entity.Kompetencer
+                    UserId = entity.UserId,
+                    Kompetencer = {  }
                 };
             }
+        }
+
+        void IAnsatRepository.Update(AnsatEntity model)
+        {
+            _db.Update(model);
+            _db.SaveChanges();
         }
 
         AnsatEntity IAnsatRepository.Load(int ansatId, string userId)
@@ -44,10 +51,13 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
             return dbEntity;
         }
 
+
         AnsatQueryResultDto IAnsatRepository.Get(int ansatId, string userId)
         {
             var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a=> a.AnsatID == ansatId && a.UserId == userId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
+
+
 
             return new AnsatQueryResultDto
             {
@@ -55,7 +65,8 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                 AnsatName = dbEntity.AnsatName,
                 AnsatTelefon = dbEntity.AnsatTelefon,
                 AnsatType = dbEntity.AnsatType,
-                Kompetencer = dbEntity.Kompetencer
+                UserId = dbEntity.UserId,
+                Kompetencer = {  }
             };
         }
     }

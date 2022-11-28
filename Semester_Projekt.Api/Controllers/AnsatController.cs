@@ -11,11 +11,13 @@ namespace Semester_Projekt.Api.Controllers
     {
         private readonly ICreateAnsatCommand _createAnsatCommand;
         private readonly IAnsatGetAllQuery _ansatGetAllQuery;
+        private readonly IEditAnsatCommand _editAnsatCommand;
 
-        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery)
+        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery, IEditAnsatCommand editAnsatCommand)
         {
             _createAnsatCommand = createAnsatCommand;
             _ansatGetAllQuery = ansatGetAllQuery;
+            _editAnsatCommand = editAnsatCommand;
         }
 
         [HttpPost]
@@ -26,10 +28,21 @@ namespace Semester_Projekt.Api.Controllers
         {
             _createAnsatCommand.Create(request);
         }
-        [HttpGet("{ansatId}")]
+        [HttpGet("{userId}/{ansatId}")]
+        public IEnumerable<AnsatQueryResultDto> GetAll(string userId, int ansatId)
+        {
+            return _ansatGetAllQuery.GetAll(userId);
+        }
+        [HttpGet("{userId}")]
         public IEnumerable<AnsatQueryResultDto> Get(string userId)
         {
             return _ansatGetAllQuery.GetAll(userId);
+        }
+
+        [HttpPut]
+        public void Put([FromBody] AnsatEditRequestDto request)
+        {
+            _editAnsatCommand.Edit(request);
         }
     }
 }

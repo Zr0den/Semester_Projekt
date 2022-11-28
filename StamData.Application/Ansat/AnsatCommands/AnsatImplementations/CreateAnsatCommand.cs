@@ -1,5 +1,6 @@
 ﻿using StamData.Application.Ansat.AnsatRepositories;
 using StamData.Domain.Ansat.AnsatModel;
+using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 {

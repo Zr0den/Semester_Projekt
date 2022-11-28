@@ -21,6 +21,9 @@ builder.Services.AddScoped<ICreateAnsatCommand, CreateAnsatCommand>();
 builder.Services.AddScoped<IAnsatRepository, AnsatRepository>();
 builder.Services.AddScoped<IAnsatGetAllQuery, AnsatGetAllQuery>();
 builder.Services.AddScoped<IAnsatGetQuery, AnsatGetQuery>();
+builder.Services.AddScoped<IEditAnsatCommand, EditAnsatCommand>();
+
+
 
 
 
