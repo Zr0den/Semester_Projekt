@@ -20,7 +20,7 @@ namespace Semester_Projekt.Pages.Ansat
         {
             if (ansatId == null) return NotFound();
 
-            var dto = await _service.Get(ansatId.Value, User.Identity?.Name ?? string.Empty);
+            var dto = await _service.GetAnsat(ansatId.Value, User.Identity?.Name ?? string.Empty);
 
             AnsatModel = new AnsatEditViewModel
             {
@@ -37,7 +37,7 @@ namespace Semester_Projekt.Pages.Ansat
         {
             if (!ModelState.IsValid) return Page();
 
-            await _service.Edit(new AnsatEditRequestDto
+            await _service.EditAnsat(new AnsatEditRequestDto
             {
                 AnsatType = AnsatModel.AnsatType,
                 AnsatID = AnsatModel.AnsatID,
@@ -46,7 +46,7 @@ namespace Semester_Projekt.Pages.Ansat
                 UserId = User.Identity?.Name ?? string.Empty,
             });
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./IndexAnsat");
 
         }
 

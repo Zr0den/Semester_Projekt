@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlServerContext;
 
@@ -10,9 +11,10 @@ using SqlServerContext;
 namespace SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    partial class ServerContextModelSnapshot : ModelSnapshot
+    [Migration("20221128112812_KompetenceMaybe")]
+    partial class KompetenceMaybe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,15 +25,15 @@ namespace SqlServerContext.Migrations.Migrations
 
             modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
                 {
-                    b.Property<int>("AnsatEntitiesAnsatID")
+                    b.Property<int>("AnsatteAnsatID")
                         .HasColumnType("int");
 
-                    b.Property<int>("KompetenceEntitiesKompetenceID")
+                    b.Property<int>("KompetencerKompetenceID")
                         .HasColumnType("int");
 
-                    b.HasKey("AnsatEntitiesAnsatID", "KompetenceEntitiesKompetenceID");
+                    b.HasKey("AnsatteAnsatID", "KompetencerKompetenceID");
 
-                    b.HasIndex("KompetenceEntitiesKompetenceID");
+                    b.HasIndex("KompetencerKompetenceID");
 
                     b.ToTable("AnsatEntityKompetenceEntity");
                 });
@@ -86,13 +88,13 @@ namespace SqlServerContext.Migrations.Migrations
                 {
                     b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
                         .WithMany()
-                        .HasForeignKey("AnsatEntitiesAnsatID")
+                        .HasForeignKey("AnsatteAnsatID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
                         .WithMany()
-                        .HasForeignKey("KompetenceEntitiesKompetenceID")
+                        .HasForeignKey("KompetencerKompetenceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

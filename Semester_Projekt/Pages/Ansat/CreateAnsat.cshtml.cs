@@ -30,12 +30,12 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatName = AnsatModel.AnsatName,
                 AnsatType = AnsatModel.AnsatType,
                 AnsatTelefon = AnsatModel.AnsatTelefon,
-                UserID = User.Identity?.Name ?? string.Empty,
+                UserId = User.Identity?.Name ?? string.Empty,
             };
 
-            await _service.Create(dto);
+            await _service.CreateAnsat(dto);
 
-            return new RedirectToPageResult("/Ansat/Index");
+            return new RedirectToPageResult("/Ansat/IndexAnsat");
         }
 
     }

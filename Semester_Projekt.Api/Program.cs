@@ -5,7 +5,13 @@ using StamData.Application.Ansat.AnsatCommands.AnsatImplementations;
 using StamData.Application.Ansat.AnsatQueries;
 using StamData.Application.Ansat.AnsatQueries.AnsatImplementations;
 using StamData.Application.Ansat.AnsatRepositories;
+using StamData.Application.Kompetencer.KompetenceCommands;
+using StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplementations;
+using StamData.Application.Kompetencer.KompetenceQueries;
+using StamData.Application.Kompetencer.KompetenceQueries.KompetenceImplementations;
+using StamData.Application.Kompetencer.KompetenceRepositories;
 using StamData.Infrastructure.Ansat.AnsatRepositories;
+using StamData.Infrastructure.Kompetencer.KompetenceRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +23,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Clean Architecture
+// Ansat
 builder.Services.AddScoped<ICreateAnsatCommand, CreateAnsatCommand>();
 builder.Services.AddScoped<IAnsatRepository, AnsatRepository>();
 builder.Services.AddScoped<IAnsatGetAllQuery, AnsatGetAllQuery>();
 builder.Services.AddScoped<IAnsatGetQuery, AnsatGetQuery>();
 builder.Services.AddScoped<IEditAnsatCommand, EditAnsatCommand>();
-
+// Kompetence
+builder.Services.AddScoped<ICreateKompetenceCommand, CreateKompetenceCommand>();
+builder.Services.AddScoped<IKompetenceRepository, KompetenceRepository>();
+builder.Services.AddScoped<IKompetenceGetAllQuery, KompetenceGetAllQuery>();
+builder.Services.AddScoped<IEditKompetenceCommand, EditKompetenceCommand>();
 
 
 

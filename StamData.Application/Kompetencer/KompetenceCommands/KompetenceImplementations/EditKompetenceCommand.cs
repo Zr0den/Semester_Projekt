@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using StamData.Application.Kompetencer.KompetenceRepositories;
-using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplementations
 {
@@ -18,13 +12,13 @@ namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplemen
             _kompetenceRepository = kompetenceRepository;
         }
 
-        void IEditKompetenceCommand.Edit(KompetenceEditRequestDto requestDto)
+        void IEditKompetenceCommand.EditKompetence(KompetenceEditRequestDto requestDto)
         {
-            var model = _kompetenceRepository.Load(requestDto.KompetenceID);
+            var model = _kompetenceRepository.LoadKompetence(requestDto.KompetenceID);
 
-            model.Edit(requestDto.KompetenceName, requestDto.Ansatte);
+            model.EditKompetence(requestDto.KompetenceName, requestDto.AnsatEntities);
 
-            _kompetenceRepository.Update(model);
+            _kompetenceRepository.UpdateKompetence(model);
         }
     }
 }

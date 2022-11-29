@@ -1,5 +1,6 @@
 ﻿using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
+using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
 
 namespace Semester_Projekt.Infrastructure.Implementation
 {
@@ -11,24 +12,41 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             _httpClient = httpClient;
         }
-
-        async Task IService.Edit(AnsatEditRequestDto ansatEditRequestDto)
+        //Ansat
+        async Task IService.EditAnsat(AnsatEditRequestDto ansatEditRequestDto)
         {
             await _httpClient.PutAsJsonAsync("api/ansat", ansatEditRequestDto);
         }
 
-        async Task IService.Create(AnsatCreateRequestDto ansatCreateRequestDto)
+        async Task IService.CreateAnsat(AnsatCreateRequestDto ansatCreateRequestDto)
         {
             await _httpClient.PostAsJsonAsync("api/ansat", ansatCreateRequestDto);
         }
-        async Task<AnsatQueryResultDto?> IService.Get(int ansatId, string userId)
+        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId, string userId)
         {
             return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userId}");
         }
 
-        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAll(string userId)
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat(string userId)
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userId}");
+        }
+
+
+        //Kompetence
+        async Task IService.EditKompetence(KompetenceEditRequestDto kompetenceEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/kompetence", kompetenceEditRequestDto);
+        }
+
+        async Task IService.CreateKompetence(KompetenceCreateRequestDto kompetenceCreateRequestDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/kompetence", kompetenceCreateRequestDto);
+        }
+
+        async Task<IEnumerable<KompetenceQueryResultDto>?> IService.GetAllKompetence()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<KompetenceQueryResultDto>>($"api/kompetence");
         }
 
     }

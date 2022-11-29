@@ -2,6 +2,6 @@
 {
     public interface ICreateAnsatCommand
     {
-        void Create(AnsatCreateRequestDto ansatCreateRequestDto);
+        void CreateAnsat(AnsatCreateRequestDto ansatCreateRequestDto);
     }
 }

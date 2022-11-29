@@ -26,23 +26,27 @@ namespace Semester_Projekt.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public void Post([FromBody] AnsatCreateRequestDto request)
         {
-            _createAnsatCommand.Create(request);
+            _createAnsatCommand.CreateAnsat(request);
         }
-        [HttpGet("{userId}/{ansatId}")]
-        public IEnumerable<AnsatQueryResultDto> GetAll(string userId, int ansatId)
+        [HttpGet]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll()
         {
-            return _ansatGetAllQuery.GetAll(userId);
+            var result = _ansatGetAllQuery.GetAllAnsat().ToList();
+            if (!result.Any())
+                return NotFound();
+
+            return result.ToList();
         }
         [HttpGet("{userId}")]
-        public IEnumerable<AnsatQueryResultDto> Get(string userId)
+        public IEnumerable<AnsatQueryResultDto> GetAnsat()
         {
-            return _ansatGetAllQuery.GetAll(userId);
+            return _ansatGetAllQuery.GetAllAnsat();
         }
 
         [HttpPut]
         public void Put([FromBody] AnsatEditRequestDto request)
         {
-            _editAnsatCommand.Edit(request);
+            _editAnsatCommand.EditAnsat(request);
         }
     }
 }

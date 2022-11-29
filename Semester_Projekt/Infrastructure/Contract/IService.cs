@@ -1,14 +1,30 @@
 ﻿using AnsatCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatCreateRequestDto;
 using AnsatQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatQueryResultDto;
 using AnsatEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatEditRequestDto;
+using KompetenceEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceEditRequestDto;
+using KompetenceCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceCreateRequestDto;
+using KompetenceQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceQueryResultDto;
+
+
 
 namespace Semester_Projekt.Infrastructure.Contract
 {
     public interface IService
     {
-        Task Create(AnsatCreateRequestDto dto);
-        Task<AnsatQueryResultDto> Get(int ansatId, string identityName);
-        Task<IEnumerable<AnsatQueryResultDto>> GetAll(string identityName);
-        Task Edit(AnsatEditRequestDto ansatEditRequestDto);
+        //Ansat
+        Task CreateAnsat(AnsatCreateRequestDto dto);
+        Task<AnsatQueryResultDto> GetAnsat(int ansatId, string identityName);
+        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat(string identityName);
+        Task EditAnsat(AnsatEditRequestDto ansatEditRequestDto);
+
+
+        //Kompetence
+        Task EditKompetence(KompetenceEditRequestDto kompetenceEditRequestDto);
+        Task CreateKompetence(KompetenceCreateRequestDto dto);
+        Task<IEnumerable<KompetenceQueryResultDto>> GetAllKompetence();
+
+
+
+
     }
 }

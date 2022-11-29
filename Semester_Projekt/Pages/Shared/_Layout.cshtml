@@ -26,25 +26,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Ansat/Index">Ansat</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Ansat/IndexAnsat">Min Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Kompetence/IndexKompetence">Kompetence Liste</a>
                         </li>
 
-                        @*@if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)*@
-                        
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterAnsat">Registrer Ansat</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Registrer Kunde</a>
-                            </li>
-                        
-                        @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Registrer Kunde</a>
-                            </li>
-                        }
-                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

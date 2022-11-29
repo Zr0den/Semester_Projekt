@@ -27,8 +27,4 @@
     <ProjectReference Include="..\UserContext\UserContext.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Infrastructure\Contract\Dto\Kompetence\" />
-  </ItemGroup>
-
 </Project>

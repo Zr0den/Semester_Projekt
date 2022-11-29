@@ -2,6 +2,6 @@
 {
     public interface IKompetenceGetAllQuery
     {
-        IEnumerable<KompetenceQueryResultDto> GetAll(int kompetenceId);
+        IEnumerable<KompetenceQueryResultDto> GetAllKompetence();
     }
 }

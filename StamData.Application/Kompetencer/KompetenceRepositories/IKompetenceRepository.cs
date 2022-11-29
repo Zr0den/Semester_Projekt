@@ -10,10 +10,10 @@ namespace StamData.Application.Kompetencer.KompetenceRepositories
 {
     public interface IKompetenceRepository
     {
-        KompetenceEntity Load(int kompetenceId);
-        void Update(KompetenceEntity model);
-        void Add(KompetenceEntity kompetence);
-        IEnumerable<KompetenceQueryResultDto> GetAll(int kompetenceId);
+        KompetenceEntity LoadKompetence(int kompetenceId);
+        void UpdateKompetence(KompetenceEntity model);
+        void AddKompetence(KompetenceEntity kompetenceEntities);
+        IEnumerable<KompetenceQueryResultDto> GetAllKompetence();
         KompetenceQueryResultDto Get(int kompetenceId);
     }
 }

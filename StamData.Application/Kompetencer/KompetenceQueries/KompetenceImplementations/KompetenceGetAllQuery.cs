@@ -1,5 +1,4 @@
-﻿using StamData.Application.Ansat.AnsatRepositories;
-using StamData.Application.Kompetencer.KompetenceRepositories;
+﻿using StamData.Application.Kompetencer.KompetenceRepositories;
 
 namespace StamData.Application.Kompetencer.KompetenceQueries.KompetenceImplementations
 {
@@ -13,9 +12,9 @@ namespace StamData.Application.Kompetencer.KompetenceQueries.KompetenceImplement
             _kompetenceRepository = kompetenceRepository;
         }
 
-        IEnumerable<KompetenceQueryResultDto> IKompetenceGetAllQuery.GetAll(int kompetenceId)
+        IEnumerable<KompetenceQueryResultDto> IKompetenceGetAllQuery.GetAllKompetence()
         {
-            return _kompetenceRepository.GetAll(kompetenceId);
+            return _kompetenceRepository.GetAllKompetence();
         }
     }
 }

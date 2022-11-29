@@ -14,11 +14,11 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
             _ansatRepository = ansatRepository;
         }
 
-        void ICreateAnsatCommand.Create(AnsatCreateRequestDto ansatCreateRequestDto)
+        void ICreateAnsatCommand.CreateAnsat(AnsatCreateRequestDto ansatCreateRequestDto)
         {
-            var ansat = new AnsatEntity(ansatCreateRequestDto.UserId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatType, ansatCreateRequestDto.Kompetencer);
+            var ansat = new AnsatEntity(ansatCreateRequestDto.UserId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatType, ansatCreateRequestDto.KompetenceEntities);
 
-            _ansatRepository.Add(ansat);
+            _ansatRepository.AddAnsat(ansat);
         }
     }
 }

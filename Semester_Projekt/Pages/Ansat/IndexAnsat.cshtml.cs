@@ -13,15 +13,15 @@ namespace Semester_Projekt.Pages.Ansat
             _service = service;
         }
 
-        [BindProperty] public List<AnsatIndexViewModel> IndexViewModel { get; set; } = new();
+        [BindProperty] public List<AnsatIndexViewModel> AnsatIndexViewModel { get; set; } = new();
 
         public async Task OnGet()
         {
-            var businessModel = await _service.GetAll(User.Identity?.Name ?? string.Empty);
+            var businessModel = await _service.GetAllAnsat(User.Identity?.Name ?? string.Empty);
                 
-            IndexViewModel = new List<AnsatIndexViewModel>();
+            AnsatIndexViewModel = new List<AnsatIndexViewModel>();
 
-            businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new AnsatIndexViewModel
+            businessModel?.ToList().ForEach(dto => AnsatIndexViewModel.Add(new AnsatIndexViewModel
             {
                 AnsatName = dto.AnsatName,
                 AnsatTelefon = dto.AnsatTelefon,
