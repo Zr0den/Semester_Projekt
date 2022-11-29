@@ -28,7 +28,7 @@ namespace Semester_Projekt.Api.Controllers
         {
             _createKompetenceCommand.CreateKompetence(request);
         }
-        [HttpGet("{kompetenceId}")]
+        [HttpGet]
         public ActionResult<IEnumerable<KompetenceQueryResultDto>> GetAll()
         {
             var result = _kompetenceGetAllQuery.GetAllKompetence().ToList();
