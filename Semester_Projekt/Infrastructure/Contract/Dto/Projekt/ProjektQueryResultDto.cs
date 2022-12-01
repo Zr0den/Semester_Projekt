@@ -8,7 +8,6 @@ namespace Projekt.Application.ProjektQueries
 {
     public class ProjektQueryResultDto
     {
-
         public int ProjektID { get; set; }
         public string ProjektName { get; set; }
         public int SælgerID { get; set; }
@@ -16,6 +15,5 @@ namespace Projekt.Application.ProjektQueries
         public DateTime OprettelsesDato { get; set; }
         public DateTime SidstÆndret { get; set; }
         public DateTime EstimeretSlutDato { get; set; }
-
     }
 }

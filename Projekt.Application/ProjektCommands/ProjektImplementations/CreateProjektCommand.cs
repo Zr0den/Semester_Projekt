@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,8 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
             _projektRepository = projektRepository;
         }
 
-        void ICreateProjektCommand.Create(ProjektCreateRequestDto ProjektCreateRequestDto)
+
+        void ICreateProjektCommand.CreateProjekt(ProjektCreateRequestDto ProjektCreateRequestDto)
         {
             var projekt = new ProjektEntity(projektCreateRequestDto.UserId);
 

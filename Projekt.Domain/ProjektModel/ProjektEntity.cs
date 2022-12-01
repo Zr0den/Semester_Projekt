@@ -11,6 +11,8 @@ namespace Projekt.Domain.ProjektModel
         public int ProjektID { get; }
         public string ProjektName { get; private set; }
         public int SælgerID { get; set; }
+        public int KundeID { get; set; }
+
         public DateTime EstSlutDato { get; set; }
         public virtual ICollection<OpgaveEntity> Opgaver { get; private set; }
 
@@ -20,17 +22,18 @@ namespace Projekt.Domain.ProjektModel
         }
 
         public ProjektEntity(
-            string projektName, 
-            ICollection<OpgaveEntity> opgaver)
+            string projektName, int sælgerId, int kundeId)
         {
-            this.Opgaver = new HashSet<OpgaveEntity>();
             ProjektName = projektName;
+            SælgerID = sælgerId;
+            KundeID = kundeId;
         }
-
-        public void Edit(string projektName, ICollection<OpgaveEntity> Opgaver)
+        
+        public void Edit(string projektName, DateTime estSlutDato)
         {
             ProjektName = projektName;
-            Opgaver = opgaver;
+            EstSlutDato = estSlutDato;
+
         }
     }
 }
