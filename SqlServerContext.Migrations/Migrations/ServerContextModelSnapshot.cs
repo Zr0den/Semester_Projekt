@@ -58,33 +58,13 @@ namespace SqlServerContext.Migrations.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KompetenceID"), 1L, 1);
 
-                    b.Property<int>("AnsatID")
-                        .HasColumnType("int");
-
                     b.Property<string>("KompetenceName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KompetenceType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("KompetenceID");
 
-                    b.HasIndex("AnsatID");
-
                     b.ToTable("Kompetance", "Kompetence");
-                });
-
-            modelBuilder.Entity("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", b =>
-                {
-                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", "Ansat")
-                        .WithMany()
-                        .HasForeignKey("AnsatID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ansat");
                 });
 #pragma warning restore 612, 618
         }

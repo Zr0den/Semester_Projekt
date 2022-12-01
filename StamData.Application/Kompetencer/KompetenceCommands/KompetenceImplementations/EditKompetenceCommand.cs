@@ -18,13 +18,13 @@ namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplemen
             _kompetenceRepository = kompetenceRepository;
         }
 
-        void IEditKompetenceCommand.Edit(KompetenceEditRequestDto requestDto)
+        void IEditKompetenceCommand.EditKompetence(KompetenceEditRequestDto requestDto)
         {
-            var model = _kompetenceRepository.Load(requestDto.KompetenceID);
+            var model = _kompetenceRepository.LoadKompetence(requestDto.KompetenceID);
 
-            model.Edit(requestDto.KompetenceName, requestDto.Ansatte);
+            model.EditKompetence(requestDto.KompetenceName);
 
-            _kompetenceRepository.Update(model);
+            _kompetenceRepository.UpdateKompetence(model);
         }
     }
 }

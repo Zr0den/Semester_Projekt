@@ -10,27 +10,33 @@
             <th>Navn</th>
             <th>Telefon</th>
             <th>Type</th>
+            <th>Kompetencer</th>
+
             <th></th>
         </tr>
         </thead>
         <tbody>
-        @if(Model.IndexViewModel.Any())
+        @if(Model.AnsatIndexViewModel.Any())
         {
-            foreach (var ansat in Model.IndexViewModel)
+            @foreach (var ansat in Model.AnsatIndexViewModel)
             {
                 <tr>
                     <td>@ansat.AnsatID</td>
                     <td>@ansat.AnsatName</td>
                     <td>@ansat.AnsatTelefon</td>
                     <td>@ansat.AnsatType</td>
+                    @*@foreach (var kompetence in @Model.KompetenceIndexViewModel)
+                    {
+                        <td>@kompetence.KompetenceName</td>
+                    }*@
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@ansat.AnsatID">Edit</a>
-                        <button type="button" asp-page-handler="delete" asp-route-id="@ansat.AnsatID">Delete</button>
+                        <a asp-page="./EditAnsat" asp-route-ansatId="@ansat.AnsatID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-ansatId="@ansat.AnsatID">Delete</button>
                     </td>
                 </tr>
             }
         }
         </tbody>
     </table>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="CreateAnsat">Create New</a>
 </form>

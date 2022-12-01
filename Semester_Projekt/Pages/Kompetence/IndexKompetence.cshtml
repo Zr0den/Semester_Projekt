@@ -1,0 +1,32 @@
+﻿@page
+@model Semester_Projekt.Pages.Kompetence.IndexModel
+@{
+}
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>KompetenceID</th>
+            <th>KompetenceNavn</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if(Model.KompetenceIndexViewModel.Any())
+        {
+            foreach (var kompetence in Model.KompetenceIndexViewModel)
+            {
+                <tr>
+                    <td>@kompetence.KompetenceID</td>
+                    <td>@kompetence.KompetenceName</td>
+                    <td>
+                        <a asp-page="./EditKompetence" asp-route-kompetenceId="@kompetence.KompetenceID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-kompetenceId="@kompetence.KompetenceID">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <a asp-page="CreateKompetence">Create New</a>
+</form>

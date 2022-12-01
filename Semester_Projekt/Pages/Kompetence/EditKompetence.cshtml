@@ -1,0 +1,17 @@
+﻿@page
+@model Semester_Projekt.Pages.Kompetence.EditModel
+@{
+}
+<h2>Opdater Kompetence</h2>
+<article class="row">
+    <form method="post">
+        <input type="hidden" asp-for="KompetenceModel.KompetenceID" class="form-control" />
+
+        <section class="form-group">
+            <label asp-for="KompetenceModel.KompetenceName"></label>
+            <input asp-for="KompetenceModel.KompetenceName" class="form-control"/>
+            <span asp-validation-for="KompetenceModel.KompetenceName" class="text-danger"></span>
+        </section>
+        <button type="submit" class="btn btn-default">Opdater Kompetence</button>
+    </form>
+</article>

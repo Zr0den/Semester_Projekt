@@ -12,37 +12,43 @@ namespace Semester_Projekt.Api.Controllers
         private readonly ICreateAnsatCommand _createAnsatCommand;
         private readonly IAnsatGetAllQuery _ansatGetAllQuery;
         private readonly IEditAnsatCommand _editAnsatCommand;
+        private readonly IAnsatGetQuery _ansatGetQuery;
 
-        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery, IEditAnsatCommand editAnsatCommand)
+        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery, IEditAnsatCommand editAnsatCommand, IAnsatGetQuery ansatGetQuery)
         {
             _createAnsatCommand = createAnsatCommand;
             _ansatGetAllQuery = ansatGetAllQuery;
             _editAnsatCommand = editAnsatCommand;
+            _ansatGetQuery = ansatGetQuery;
         }
 
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [HttpPost]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public void Post([FromBody] AnsatCreateRequestDto request)
         {
-            _createAnsatCommand.Create(request);
+            _createAnsatCommand.CreateAnsat(request);
         }
-        [HttpGet("{userId}/{ansatId}")]
-        public IEnumerable<AnsatQueryResultDto> GetAll(string userId, int ansatId)
+        [HttpGet]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll()
         {
-            return _ansatGetAllQuery.GetAll(userId);
+            var result = _ansatGetAllQuery.GetAllAnsat().ToList();
+            if (!result.Any())
+                return NotFound();
+
+            return result.ToList();
         }
-        [HttpGet("{userId}")]
-        public IEnumerable<AnsatQueryResultDto> Get(string userId)
+        [HttpGet("{ansatId}")]
+        public AnsatQueryResultDto GetAnsat(int ansatId)
         {
-            return _ansatGetAllQuery.GetAll(userId);
+            return _ansatGetQuery.GetAnsat(ansatId);
         }
 
         [HttpPut]
         public void Put([FromBody] AnsatEditRequestDto request)
         {
-            _editAnsatCommand.Edit(request);
+            _editAnsatCommand.EditAnsat(request);
         }
     }
 }

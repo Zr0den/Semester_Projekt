@@ -12,13 +12,13 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
             _repository = repository;
         }
 
-        void IEditAnsatCommand.Edit(AnsatEditRequestDto requestDto)
+        void IEditAnsatCommand.EditAnsat(AnsatEditRequestDto requestDto)
         {
-            var model = _repository.Load(requestDto.AnsatID, requestDto.UserId);
+            var model = _repository.LoadAnsat(requestDto.AnsatID);
 
-            model.Edit(requestDto.AnsatName, requestDto.AnsatTelefon, requestDto.AnsatType, requestDto.Kompetencer);
+            model.EditAnsat(requestDto.AnsatName, requestDto.AnsatTelefon, requestDto.AnsatType);
 
-            _repository.Update(model);
+            _repository.UpdateAnsat(model);
         }
     }
 }

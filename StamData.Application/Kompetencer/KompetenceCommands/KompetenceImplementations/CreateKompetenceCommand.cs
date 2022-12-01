@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StamData.Application.Kompetencer.KompetenceRepositories;
-using StamData.Domain.Ansat.AnsatModel;
+﻿using StamData.Application.Kompetencer.KompetenceRepositories;
 using StamData.Domain.Kompetencer.KompetenceModel;
 
 
@@ -19,11 +13,11 @@ namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplemen
             _kompetenceRepository = kompetenceRepository;
         }
 
-        void ICreateKompetenceCommand.Create(KompetenceCreateRequestDto kompetenceCreateRequestDto)
+        void ICreateKompetenceCommand.CreateKompetence(KompetenceCreateRequestDto kompetenceCreateRequestDto)
         {
-            var kompetence = new KompetenceEntity(kompetenceCreateRequestDto.GetHashCode(), kompetenceCreateRequestDto.KompetenceName, kompetenceCreateRequestDto.Ansatte);
+            var kompetenceEntities = new KompetenceEntity(kompetenceCreateRequestDto.KompetenceName);
 
-            _kompetenceRepository.Add(kompetence);
+            _kompetenceRepository.AddKompetence(kompetenceEntities);
         }
 
     }

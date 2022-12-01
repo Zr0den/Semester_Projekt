@@ -9,6 +9,12 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
         public string AnsatTelefon { get; set; }
         public string AnsatType { get; set; }
         public string UserId { get; set; }
-        public virtual ICollection<KompetenceEntity> Kompetencer { get; set; }
+        //public List<KompetenceDto> KompetenceEntities { get; set; }
     }
+
+    //public class KompetenceDto
+    //{
+    //    public string KompetenceName { get; set; }
+    //}
+
 }
