@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Projekt.Domain.ProjektModel;
 using SqlServerContext.TypeConfiguration;
 using StamData.Domain.Ansat.AnsatModel;
 using StamData.Domain.Kompetencer.KompetenceModel;
@@ -13,6 +14,7 @@ namespace SqlServerContext
         }
         public DbSet<KompetenceEntity> Kompetencer { get; set; }
         public DbSet<AnsatEntity> AnsatEntities { get; set; }
+        public DbSet<ProjektEntity> ProjektEntities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

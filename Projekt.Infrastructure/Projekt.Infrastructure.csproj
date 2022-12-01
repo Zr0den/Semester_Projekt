@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Projekt.Application\Projekt.Application.csproj" />
+    <ProjectReference Include="..\Projekt.Domain\Projekt.Domain.csproj" />
+    <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
+  </ItemGroup>
+
 </Project>

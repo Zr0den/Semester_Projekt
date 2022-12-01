@@ -8,6 +8,6 @@ namespace Projekt.Application.ProjektCommands
 {
     public interface IEditProjektCommand
     {
-        void Edit(ProjektEditRequestDto projektEditRequestDto);
+        void EditProjekt(ProjektEditRequestDto projektEditRequestDto);
     }
 }

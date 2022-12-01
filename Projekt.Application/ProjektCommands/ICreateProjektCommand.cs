@@ -8,6 +8,6 @@ namespace Projekt.Application.ProjektCommands
 {
     public interface ICreateProjektCommand
     {
-        void Create(ProjektCreateRequestDto projektCreateRequestDto);
+        void CreateProjekt(ProjektCreateRequestDto projektCreateRequestDto);
     }
 }

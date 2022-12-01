@@ -16,7 +16,7 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
             _projektRepository = projektRepository;
         }
 
-        void ICreateProjektCommand.Create(ProjektCreateRequestDto ProjektCreateRequestDto)
+        void ICreateProjektCommand.CreateProjekt(ProjektCreateRequestDto ProjektCreateRequestDto)
         {
             var projekt = new ProjektEntity(projektCreateRequestDto.UserId);
 

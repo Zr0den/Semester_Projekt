@@ -15,7 +15,7 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
             _repository = repository;
         }
 
-        void IEditProjektCommand.Edit(ProjektEditRequestDto requestDto)
+        void IEditProjektCommand.EditProjekt(ProjektEditRequestDto requestDto)
         {
             var model = _repository.Load(requestDto.UserId);
 

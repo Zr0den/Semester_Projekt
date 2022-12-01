@@ -8,5 +8,6 @@ namespace Projekt.Application.ProjektQueries
 {
     public interface IProjektGetAllQuery
     {
+        IEnumerable<ProjektQueryResultDto> GetAllProjekt();
     }
 }
