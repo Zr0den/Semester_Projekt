@@ -6,11 +6,11 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <a  class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
     <li class="nav-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            <button  type="submit" class="nav-link btn btn-link text-light">Logout</button>
         </form>
     </li>
 }
@@ -19,20 +19,20 @@ else
     @*@if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)*@
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterAnsat">Register Ansat</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/RegisterAnsat">Register Ansat</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
         </li>
     }
     @if (AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded)
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/RegisterKunde">Register Kunde</a>
         </li>
     }
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
 }
 </ul>
