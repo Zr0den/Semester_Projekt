@@ -12,6 +12,7 @@ namespace Projekt.Domain.ProjektModel
         public string ProjektName { get; private set; }
         public int SælgerID { get; set; }
         public int KundeID { get; set; }
+
         public DateTime EstSlutDato { get; set; }
         public virtual ICollection<OpgaveEntity> Opgaver { get; private set; }
 
@@ -27,11 +28,12 @@ namespace Projekt.Domain.ProjektModel
             SælgerID = sælgerId;
             KundeID = kundeId;
         }
-
+        
         public void Edit(string projektName, DateTime estSlutDato)
         {
             ProjektName = projektName;
             EstSlutDato = estSlutDato;
+
         }
     }
 }

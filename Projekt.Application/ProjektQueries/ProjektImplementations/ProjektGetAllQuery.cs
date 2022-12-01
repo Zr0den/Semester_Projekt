@@ -19,5 +19,6 @@ namespace Projekt.Application.ProjektQueries.ProjektImplementations
         {
             return _repository.GetAllProjekt();
         }
+
     }
 }

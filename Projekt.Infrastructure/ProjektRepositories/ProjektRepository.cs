@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Projekt.Application.ProjektQueries;
 using Projekt.Application.ProjektRepositories;
 using Projekt.Domain.ProjektModel;

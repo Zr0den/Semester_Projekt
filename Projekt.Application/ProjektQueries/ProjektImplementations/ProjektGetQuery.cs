@@ -8,6 +8,7 @@ namespace Projekt.Application.ProjektQueries.ProjektImplementations
 {
     public class ProjektGetQuery
     {
+
         private readonly IProjektRepository _repository;
 
         public ProjektGetQuery(IProjektRepository repository)
@@ -19,5 +20,6 @@ namespace Projekt.Application.ProjektQueries.ProjektImplementations
         {
             return _repository.GetProjekt(projektId);
         }
+
     }
 }

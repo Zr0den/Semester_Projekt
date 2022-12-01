@@ -1,0 +1,21 @@
+﻿@page
+@model Semester_Projekt.Pages.Kalender.KalenderModel
+@{
+}
+
+<script src='fullcalendar/dist/index.global.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+<body>
+<h1>Hr ser du din kalender</h1>
+<div id='calendar'></div>
+</body>
