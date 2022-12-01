@@ -38,38 +38,57 @@ namespace SqlServerContext.Migrations.Migrations
                 {
                     KompetenceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AnsatID = table.Column<int>(type: "int", nullable: false),
-                    KompetenceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KompetenceType = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    KompetenceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Kompetance", x => x.KompetenceID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AnsatEntityKompetenceEntity",
+                columns: table => new
+                {
+                    AnsatteAnsatID = table.Column<int>(type: "int", nullable: false),
+                    KompetencerKompetenceID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnsatEntityKompetenceEntity", x => new { x.AnsatteAnsatID, x.KompetencerKompetenceID });
                     table.ForeignKey(
-                        name: "FK_Kompetance_Ansat_AnsatID",
-                        column: x => x.AnsatID,
+                        name: "FK_AnsatEntityKompetenceEntity_Ansat_AnsatteAnsatID",
+                        column: x => x.AnsatteAnsatID,
                         principalSchema: "Ansat",
                         principalTable: "Ansat",
                         principalColumn: "AnsatID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AnsatEntityKompetenceEntity_Kompetance_KompetencerKompetenceID",
+                        column: x => x.KompetencerKompetenceID,
+                        principalSchema: "Kompetence",
+                        principalTable: "Kompetance",
+                        principalColumn: "KompetenceID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Kompetance_AnsatID",
-                schema: "Kompetence",
-                table: "Kompetance",
-                column: "AnsatID");
+                name: "IX_AnsatEntityKompetenceEntity_KompetencerKompetenceID",
+                table: "AnsatEntityKompetenceEntity",
+                column: "KompetencerKompetenceID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Kompetance",
-                schema: "Kompetence");
+                name: "AnsatEntityKompetenceEntity");
 
             migrationBuilder.DropTable(
                 name: "Ansat",
                 schema: "Ansat");
+
+            migrationBuilder.DropTable(
+                name: "Kompetance",
+                schema: "Kompetence");
         }
     }
 }
