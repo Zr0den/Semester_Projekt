@@ -20,8 +20,8 @@
                     <td>@kompetence.KompetenceID</td>
                     <td>@kompetence.KompetenceName</td>
                     <td>
-                        <a asp-page="./EditKompetence" asp-route-id="@kompetence.KompetenceID">Edit</a>
-                        <button type="button" asp-page-handler="delete" asp-route-id="@kompetence.KompetenceID">Delete</button>
+                        <a asp-page="./EditKompetence" asp-route-kompetenceId="@kompetence.KompetenceID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-kompetenceId="@kompetence.KompetenceID">Delete</button>
                     </td>
                 </tr>
             }

@@ -15,7 +15,7 @@ namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplemen
 
         void ICreateKompetenceCommand.CreateKompetence(KompetenceCreateRequestDto kompetenceCreateRequestDto)
         {
-            var kompetenceEntities = new KompetenceEntity(kompetenceCreateRequestDto.GetHashCode(), kompetenceCreateRequestDto.KompetenceName, kompetenceCreateRequestDto.AnsatEntities);
+            var kompetenceEntities = new KompetenceEntity(kompetenceCreateRequestDto.KompetenceName);
 
             _kompetenceRepository.AddKompetence(kompetenceEntities);
         }

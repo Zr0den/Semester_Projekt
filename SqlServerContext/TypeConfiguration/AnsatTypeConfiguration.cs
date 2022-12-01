@@ -11,7 +11,7 @@ namespace SqlServerContext.TypeConfiguration
         {
             builder.ToTable("Ansat", "Ansat");
             builder.HasKey(x => x.AnsatID);
-            
+
         }
     }
 }

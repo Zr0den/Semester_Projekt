@@ -24,14 +24,15 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
         IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAllAnsat()
         {
-            foreach (var entity in _db.AnsatEntities.Include(b =>  b.KompetenceEntities).AsNoTracking().ToList())
+            foreach (var entity in _db.AnsatEntities.AsNoTracking().ToList())
             {
-                var kdDtos = new List<KompetenceDto>();
-                entity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-                {
-                    KompetenceID = k.KompetenceID,
-                    KompetenceName = k.KompetenceName,
-                }));
+                //skal laves include i AnsatEntities før VVVV virker
+                //var kdDtos = new List<KompetenceDto>();
+                //entity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
+                //{
+                //    KompetenceID = k.KompetenceID,
+                //    KompetenceName = k.KompetenceName,
+                //}));
                 yield return new AnsatQueryResultDto
                 {
                     AnsatID = entity.AnsatID,
@@ -39,7 +40,7 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                     AnsatTelefon = entity.AnsatTelefon,
                     AnsatType = entity.AnsatType, 
                     UserId = entity.UserId,
-                    KompetenceEntities = kdDtos
+                    //KompetenceEntities = kdDtos
                 };
             }
         }
@@ -52,24 +53,25 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
             _db.SaveChanges();
         }
 
-        AnsatEntity IAnsatRepository.LoadAnsat(int ansatId, string userId)
+        AnsatEntity IAnsatRepository.LoadAnsat(int ansatId)
         {
-            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a => a.AnsatID == ansatId && a.UserId == userId);
+            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a => a.AnsatID == ansatId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
             return dbEntity;
         }
 
 
-        AnsatQueryResultDto IAnsatRepository.GetAnsat(int ansatId, string userId)
+        AnsatQueryResultDto IAnsatRepository.GetAnsat(int ansatId)
         {
-            var dbEntity = _db.AnsatEntities.Include(b=> b.KompetenceEntities).AsNoTracking().FirstOrDefault(a=> a.AnsatID == ansatId && a.UserId == userId);
+            //.Include(b => b.KompetenceEntities)
+            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a=> a.AnsatID == ansatId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
-            var kdDtos = new List<KompetenceDto>();
-            dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-            {
-                KompetenceID = k.KompetenceID,
-                KompetenceName = k.KompetenceName,
-            }));
+            //var kdDtos = new List<KompetenceDto>();
+            //dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
+            //{
+            //    KompetenceID = k.KompetenceID,
+            //    KompetenceName = k.KompetenceName,
+            //}));
 
 
             return new AnsatQueryResultDto
@@ -79,7 +81,7 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                 AnsatTelefon = dbEntity.AnsatTelefon,
                 AnsatType = dbEntity.AnsatType,
                 UserId = dbEntity.UserId,
-                KompetenceEntities = kdDtos,
+                //KompetenceEntities = kdDtos,
             };
         }
     }

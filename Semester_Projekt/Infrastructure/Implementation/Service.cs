@@ -22,14 +22,14 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             await _httpClient.PostAsJsonAsync("api/ansat", ansatCreateRequestDto);
         }
-        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId, string userId)
+        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId)
         {
-            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userId}");
+            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}");
         }
 
-        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat(string userId)
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userId}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat");
         }
 
 
@@ -42,6 +42,11 @@ namespace Semester_Projekt.Infrastructure.Implementation
         async Task IService.CreateKompetence(KompetenceCreateRequestDto kompetenceCreateRequestDto)
         {
             await _httpClient.PostAsJsonAsync("api/kompetence", kompetenceCreateRequestDto);
+        }
+
+        async Task<KompetenceQueryResultDto?> IService.GetKompetence(int kompetenceId)
+        {
+            return await _httpClient.GetFromJsonAsync<KompetenceQueryResultDto>($"api/kompetence/{kompetenceId}");
         }
 
         async Task<IEnumerable<KompetenceQueryResultDto>?> IService.GetAllKompetence()

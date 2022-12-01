@@ -14,6 +14,6 @@ namespace StamData.Application.Kompetencer.KompetenceRepositories
         void UpdateKompetence(KompetenceEntity model);
         void AddKompetence(KompetenceEntity kompetenceEntities);
         IEnumerable<KompetenceQueryResultDto> GetAllKompetence();
-        KompetenceQueryResultDto Get(int kompetenceId);
+        KompetenceQueryResultDto GetKompetence(int kompetenceId);
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IAnsatGetQuery
     {
-        AnsatQueryResultDto GetAnsat(int ansatId, string userId);
+        AnsatQueryResultDto GetAnsat(int ansatId);
     }
 }

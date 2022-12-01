@@ -16,7 +16,7 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 
         void ICreateAnsatCommand.CreateAnsat(AnsatCreateRequestDto ansatCreateRequestDto)
         {
-            var ansat = new AnsatEntity(ansatCreateRequestDto.UserId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatType, ansatCreateRequestDto.KompetenceEntities);
+            var ansat = new AnsatEntity(ansatCreateRequestDto.UserId, ansatCreateRequestDto.AnsatName, ansatCreateRequestDto.AnsatTelefon, ansatCreateRequestDto.AnsatType);
 
             _ansatRepository.AddAnsat(ansat);
         }

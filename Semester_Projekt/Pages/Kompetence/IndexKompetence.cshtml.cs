@@ -1,9 +1,6 @@
-using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Semester_Projekt.Infrastructure.Contract;
-using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
-using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace Semester_Projekt.Pages.Kompetence
 {

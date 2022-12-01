@@ -1,5 +1,11 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using StamData.Application.Kompetencer.KompetenceRepositories;
+using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplementations
 {
@@ -16,7 +22,7 @@ namespace StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplemen
         {
             var model = _kompetenceRepository.LoadKompetence(requestDto.KompetenceID);
 
-            model.EditKompetence(requestDto.KompetenceName, requestDto.AnsatEntities);
+            model.EditKompetence(requestDto.KompetenceName);
 
             _kompetenceRepository.UpdateKompetence(model);
         }

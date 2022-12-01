@@ -14,9 +14,9 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 
         void IEditAnsatCommand.EditAnsat(AnsatEditRequestDto requestDto)
         {
-            var model = _repository.LoadAnsat(requestDto.AnsatID, requestDto.UserId);
+            var model = _repository.LoadAnsat(requestDto.AnsatID);
 
-            model.EditAnsat(requestDto.AnsatName, requestDto.AnsatTelefon, requestDto.AnsatType, requestDto.KompetenceEntities);
+            model.EditAnsat(requestDto.AnsatName, requestDto.AnsatTelefon, requestDto.AnsatType);
 
             _repository.UpdateAnsat(model);
         }

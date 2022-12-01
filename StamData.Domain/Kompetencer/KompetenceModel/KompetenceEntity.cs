@@ -8,12 +8,8 @@ namespace StamData.Domain.Kompetencer.KompetenceModel
         public string KompetenceName { get; private set; }
         public virtual ICollection<AnsatEntity> AnsatEntities { get; private set; }
 
-        public KompetenceEntity(
-            int kompetenceID,
-            string kompetenceName,
-            ICollection<AnsatEntity> ansatEntities)
+        public KompetenceEntity(string kompetenceName)
         {
-            AnsatEntities = ansatEntities;
             KompetenceName = kompetenceName;
         }
 
@@ -23,10 +19,9 @@ namespace StamData.Domain.Kompetencer.KompetenceModel
         }
 
 
-        public void EditKompetence(string kompetenceName, ICollection<AnsatEntity> ansatEntities)
+        public void EditKompetence(string kompetenceName)
         {
             KompetenceName = kompetenceName;
-            AnsatEntities = ansatEntities;
         }
 
     }

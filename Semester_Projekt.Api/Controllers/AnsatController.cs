@@ -12,18 +12,20 @@ namespace Semester_Projekt.Api.Controllers
         private readonly ICreateAnsatCommand _createAnsatCommand;
         private readonly IAnsatGetAllQuery _ansatGetAllQuery;
         private readonly IEditAnsatCommand _editAnsatCommand;
+        private readonly IAnsatGetQuery _ansatGetQuery;
 
-        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery, IEditAnsatCommand editAnsatCommand)
+        public AnsatController(ICreateAnsatCommand createAnsatCommand, IAnsatGetAllQuery ansatGetAllQuery, IEditAnsatCommand editAnsatCommand, IAnsatGetQuery ansatGetQuery)
         {
             _createAnsatCommand = createAnsatCommand;
             _ansatGetAllQuery = ansatGetAllQuery;
             _editAnsatCommand = editAnsatCommand;
+            _ansatGetQuery = ansatGetQuery;
         }
 
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [HttpPost]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public void Post([FromBody] AnsatCreateRequestDto request)
         {
             _createAnsatCommand.CreateAnsat(request);
@@ -37,10 +39,10 @@ namespace Semester_Projekt.Api.Controllers
 
             return result.ToList();
         }
-        [HttpGet("{userId}")]
-        public IEnumerable<AnsatQueryResultDto> GetAnsat()
+        [HttpGet("{ansatId}")]
+        public AnsatQueryResultDto GetAnsat(int ansatId)
         {
-            return _ansatGetAllQuery.GetAllAnsat();
+            return _ansatGetQuery.GetAnsat(ansatId);
         }
 
         [HttpPut]

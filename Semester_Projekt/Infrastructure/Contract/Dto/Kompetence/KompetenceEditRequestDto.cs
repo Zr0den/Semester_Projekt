@@ -6,7 +6,7 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Kompetence
     {
         public int KompetenceID { get; set; }
         public string KompetenceName { get; set; }
-        public List<AnsatEntity> AnsatEntities { get; set; }
+        //public List<AnsatEntity> AnsatEntities { get; set; }
 
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlServerContext;
 
@@ -10,9 +11,10 @@ using SqlServerContext;
 namespace SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    partial class ServerContextModelSnapshot : ModelSnapshot
+    [Migration("20221129135715_Test2")]
+    partial class Test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,6 +22,21 @@ namespace SqlServerContext.Migrations.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.Property<int>("AnsatEntitiesAnsatID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KompetenceEntitiesKompetenceID")
+                        .HasColumnType("int");
+
+                    b.HasKey("AnsatEntitiesAnsatID", "KompetenceEntitiesKompetenceID");
+
+                    b.HasIndex("KompetenceEntitiesKompetenceID");
+
+                    b.ToTable("AnsatEntityKompetenceEntity");
+                });
 
             modelBuilder.Entity("StamData.Domain.Ansat.AnsatModel.AnsatEntity", b =>
                 {
@@ -65,6 +82,21 @@ namespace SqlServerContext.Migrations.Migrations
                     b.HasKey("KompetenceID");
 
                     b.ToTable("Kompetance", "Kompetence");
+                });
+
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
+                        .WithMany()
+                        .HasForeignKey("AnsatEntitiesAnsatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
+                        .WithMany()
+                        .HasForeignKey("KompetenceEntitiesKompetenceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

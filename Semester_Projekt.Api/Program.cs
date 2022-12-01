@@ -34,6 +34,7 @@ builder.Services.AddScoped<ICreateKompetenceCommand, CreateKompetenceCommand>();
 builder.Services.AddScoped<IKompetenceRepository, KompetenceRepository>();
 builder.Services.AddScoped<IKompetenceGetAllQuery, KompetenceGetAllQuery>();
 builder.Services.AddScoped<IEditKompetenceCommand, EditKompetenceCommand>();
+builder.Services.AddScoped<IKompetenceGetQuery, KompetenceGetQuery>();
 
 
 

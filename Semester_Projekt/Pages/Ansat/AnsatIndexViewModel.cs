@@ -9,7 +9,7 @@ namespace Semester_Projekt.Pages.Ansat
         public string AnsatTelefon { get; set; }
         public int AnsatID { get; set; }
         public string UserId { get; set; }
-        public List<KompetenceEntity>? KompetenceEntities { get; set; }
 
+        //public List<KompetenceNr>? KompetenceNr { get; set; }
     }
 }

@@ -20,22 +20,19 @@ namespace StamData.Domain.Ansat.AnsatModel
             string userId, 
             string ansatName, 
             string ansatTelefon, 
-            string ansatType, 
-            ICollection<KompetenceEntity> kompetenceEntities)
+            string ansatType)
         {
-            KompetenceEntities = kompetenceEntities;
             UserId = userId;
             AnsatName = ansatName;
             AnsatTelefon = ansatTelefon;
             AnsatType = ansatType;
         }
 
-        public void EditAnsat(string ansatName, string ansatTelefon, string ansatType, ICollection<KompetenceEntity> kompetenceEntities)
+        public void EditAnsat(string ansatName, string ansatTelefon, string ansatType)
         {
             AnsatName = ansatName;
             AnsatTelefon = ansatTelefon;
             AnsatType = ansatType;
-            KompetenceEntities = kompetenceEntities;
         }
 
     }

@@ -16,6 +16,9 @@ namespace SqlServerContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<KompetenceEntity>().Ignore(e => e.AnsatEntities).ToTable("Kompetence");
+            builder.Entity<AnsatEntity>().Ignore(e => e.KompetenceEntities).ToTable("Ansat");
+
             builder.ApplyConfiguration(new AnsatTypeConfiguration());
             builder.ApplyConfiguration(new KompetenceTypeConfiguration());
         }

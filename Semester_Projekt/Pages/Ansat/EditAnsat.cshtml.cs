@@ -20,7 +20,7 @@ namespace Semester_Projekt.Pages.Ansat
         {
             if (ansatId == null) return NotFound();
 
-            var dto = await _service.GetAnsat(ansatId.Value, User.Identity?.Name ?? string.Empty);
+            var dto = await _service.GetAnsat(ansatId.Value);
 
             AnsatModel = new AnsatEditViewModel
             {

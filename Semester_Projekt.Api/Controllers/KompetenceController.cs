@@ -12,12 +12,14 @@ namespace Semester_Projekt.Api.Controllers
         private readonly ICreateKompetenceCommand _createKompetenceCommand;
         private readonly IEditKompetenceCommand _editKompetenceCommand;
         private readonly IKompetenceGetAllQuery _kompetenceGetAllQuery;
+        private readonly IKompetenceGetQuery _kompetenceGetQuery;
 
-        public KompetenceController(ICreateKompetenceCommand createKompetenceCommand, IEditKompetenceCommand editKompetenceCommand, IKompetenceGetAllQuery kompetenceGetAllQuery)
+        public KompetenceController(ICreateKompetenceCommand createKompetenceCommand, IEditKompetenceCommand editKompetenceCommand, IKompetenceGetAllQuery kompetenceGetAllQuery, IKompetenceGetQuery kompetenceGetQuery)
         {
             _createKompetenceCommand = createKompetenceCommand;
             _editKompetenceCommand = editKompetenceCommand;
             _kompetenceGetAllQuery = kompetenceGetAllQuery;
+            _kompetenceGetQuery = kompetenceGetQuery;
         }
 
         [HttpPost]
@@ -35,6 +37,12 @@ namespace Semester_Projekt.Api.Controllers
             if(!result.Any())
                 return NotFound();
             return result.ToList();
+        }
+
+        [HttpGet("{kompetenceId}")]
+        public ActionResult<KompetenceQueryResultDto> Get(int kompetenceId)
+        {
+            return _kompetenceGetQuery.GetKompetence(kompetenceId);
         }
 
         [HttpPut]
