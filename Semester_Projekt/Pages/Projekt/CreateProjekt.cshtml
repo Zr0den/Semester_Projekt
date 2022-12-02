@@ -1,0 +1,20 @@
+﻿@page
+@model Semester_Projekt.Pages.Projekt.CreateProjektModel
+@{
+}
+<h2>Opret Projekt</h2>
+<article class="row">
+    <form method="post">
+        <section class="form-group">
+            <label asp-for="ProjektModel.ProjektName"></label>
+            <input asp-for="ProjektModel.ProjektName" class="form-control" />
+            <span asp-validation-for="ProjektModel.ProjektName" class="text-danger"></span>
+        </section>
+        <section class="form-group">
+            <label asp-for="ProjektModel.KundeID"></label>
+            <input asp-for="ProjektModel.KundeID" class="form-control" />
+            <span asp-validation-for="ProjektModel.KundeID" class="text-danger"></span>
+        </section>
+        <button type="submit" class="btn btn-default">Opret Projekt</button>
+    </form>
+</article>

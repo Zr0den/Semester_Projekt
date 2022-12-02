@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -25,6 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    <ProjectReference Include="..\Projekt.Application\Projekt.Application.csproj" />
     <ProjectReference Include="..\Semester_Projekt\Semester_Projekt.csproj" />
     <ProjectReference Include="..\SqlServerContext.Migrations\SqlServerContext.Migrations.csproj" />
     <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />

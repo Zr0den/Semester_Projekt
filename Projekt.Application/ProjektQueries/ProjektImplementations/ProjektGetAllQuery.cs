@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekt.Application.ProjektRepositories;
 
 namespace Projekt.Application.ProjektQueries.ProjektImplementations
 {
-    public class ProjektGetAllQuery
+    public class ProjektGetAllQuery : IProjektGetAllQuery
     {
         private readonly IProjektRepository _repository;
 

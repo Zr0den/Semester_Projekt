@@ -1,0 +1,42 @@
+﻿@page
+@model Semester_Projekt.Pages.Projekt.IndexProjektModel
+@{
+}
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Projekt Titel</th>
+            <th>Sælger ID</th>
+            <th>Kunde ID</th>
+            <th>Oprettelses Dato</th>
+            <th>Estimeret Slut Dato</th>
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if(Model.ProjektIndexViewModel.Any())
+        {
+            foreach (var projekt in Model.ProjektIndexViewModel)
+            {
+                <tr>
+                    <td>@projekt.ProjektID</td>
+                    <td>@projekt.ProjektName</td>
+                    <td>@projekt.SælgerID</td>
+                    <td>@projekt.KundeID</td>
+                    <td>@projekt.OprettelsesDato</td>
+                    <td>@projekt.EstimeretSlutDato</td>
+
+                    <td>
+                        <a asp-page="./EditProjekt" asp-route-projektId="@projekt.ProjektID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-projektId="@projekt.ProjektID">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <a asp-page="Create">Create New</a>
+</form>
