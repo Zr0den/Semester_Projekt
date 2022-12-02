@@ -1,6 +1,6 @@
-﻿namespace StamData.Application.Kunde.KundeQueries
+﻿namespace Semester_Projekt.Infrastructure.Contract.Dto.Kunde
 {
-    public class KundeQueryResultDto
+    public class KundeEditRequestDto
     {
         public int KundeID { get; set; }
         public string KundeUserId { get; set; }

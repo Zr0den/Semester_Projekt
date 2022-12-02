@@ -26,6 +26,8 @@
 
 	<ItemGroup>
     <ProjectReference Include="..\Projekt.Application\Projekt.Application.csproj" />
+    <ProjectReference Include="..\Projekt.Domain\Projekt.Domain.csproj" />
+    <ProjectReference Include="..\Projekt.Infrastructure\Projekt.Infrastructure.csproj" />
     <ProjectReference Include="..\Semester_Projekt\Semester_Projekt.csproj" />
     <ProjectReference Include="..\SqlServerContext.Migrations\SqlServerContext.Migrations.csproj" />
     <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />

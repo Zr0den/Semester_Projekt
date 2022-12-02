@@ -1,6 +1,7 @@
 ﻿namespace StamData.Application.Kunde.KundeQueries
 {
-    internal interface IKundeGetAllQuery
+    public interface IKundeGetAllQuery
     {
+        IEnumerable<KundeQueryResultDto> GetAllKunde();
     }
 }

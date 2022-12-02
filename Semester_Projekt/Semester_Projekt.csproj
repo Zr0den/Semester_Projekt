@@ -27,4 +27,8 @@
     <ProjectReference Include="..\UserContext\UserContext.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Kunde\" />
+  </ItemGroup>
+
 </Project>

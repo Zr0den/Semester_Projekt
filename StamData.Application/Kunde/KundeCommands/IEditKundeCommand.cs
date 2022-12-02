@@ -2,5 +2,6 @@
 {
     public interface IEditKundeCommand
     {
+        void EditKunde(KundeEditRequestDto requestDto);
     }
 }

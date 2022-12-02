@@ -1,4 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Projekt.Application.ProjektCommands;
+using Projekt.Application.ProjektCommands.ProjektImplementations;
+using Projekt.Application.ProjektQueries;
+using Projekt.Application.ProjektQueries.ProjektImplementations;
+using Projekt.Application.ProjektRepositories;
+using Projekt.Infrastructure.ProjektRepositories;
 using SqlServerContext;
 using StamData.Application.Ansat.AnsatCommands;
 using StamData.Application.Ansat.AnsatCommands.AnsatImplementations;
@@ -10,8 +16,14 @@ using StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplementati
 using StamData.Application.Kompetencer.KompetenceQueries;
 using StamData.Application.Kompetencer.KompetenceQueries.KompetenceImplementations;
 using StamData.Application.Kompetencer.KompetenceRepositories;
+using StamData.Application.Kunde.KundeCommands;
+using StamData.Application.Kunde.KundeCommands.Implementation;
+using StamData.Application.Kunde.KundeQueries;
+using StamData.Application.Kunde.KundeQueries.Implementation;
+using StamData.Application.Kunde.KundeRepositories;
 using StamData.Infrastructure.Ansat.AnsatRepositories;
 using StamData.Infrastructure.Kompetencer.KompetenceRepositories;
+using StamData.Infrastructure.Kunde.KundeRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +47,18 @@ builder.Services.AddScoped<IKompetenceRepository, KompetenceRepository>();
 builder.Services.AddScoped<IKompetenceGetAllQuery, KompetenceGetAllQuery>();
 builder.Services.AddScoped<IEditKompetenceCommand, EditKompetenceCommand>();
 builder.Services.AddScoped<IKompetenceGetQuery, KompetenceGetQuery>();
+// Projekt
+builder.Services.AddScoped<ICreateProjektCommand, CreateProjektCommand>();
+builder.Services.AddScoped<IProjektRepository, ProjektRepository>();
+builder.Services.AddScoped<IProjektGetAllQuery, ProjektGetAllQuery>();
+builder.Services.AddScoped<IEditProjektCommand, EditProjektCommand>();
+builder.Services.AddScoped<IProjektGetQuery, ProjektGetQuery>();
+// Kunde
+builder.Services.AddScoped<ICreateKundeCommand, CreateKundeCommand>();
+builder.Services.AddScoped<IKundeRepository, KundeRepository>();
+builder.Services.AddScoped<IKundeGetAllQuery, KundeGetAllQuery>();
+builder.Services.AddScoped<IEditKundeCommand, EditKundeCommand>();
+builder.Services.AddScoped<IKundeGetQuery, KundeGetQuery>();
 
 
 

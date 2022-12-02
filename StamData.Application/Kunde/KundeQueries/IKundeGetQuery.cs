@@ -1,6 +1,7 @@
 ﻿namespace StamData.Application.Kunde.KundeQueries
 {
-    internal interface IKundeGetQuery
+    public interface IKundeGetQuery
     {
+        KundeQueryResultDto GetKunde(int kundeId);
     }
 }
