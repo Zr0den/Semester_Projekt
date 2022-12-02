@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekt.Application.ProjektRepositories;
+using Projekt.Domain.ProjektModel;
 
 namespace Projekt.Application.ProjektCommands.ProjektImplementations
 {
@@ -17,11 +19,11 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
         }
 
 
-        void ICreateProjektCommand.CreateProjekt(ProjektCreateRequestDto ProjektCreateRequestDto)
+        void ICreateProjektCommand.CreateProjekt(ProjektCreateRequestDto projektCreateRequestDto)
         {
-            var projekt = new ProjektEntity(projektCreateRequestDto.UserId);
+            var projekt = new ProjektEntity(projektCreateRequestDto.ProjektName, projektCreateRequestDto.SælgerID, projektCreateRequestDto.KundeID);
 
-            _projektRepository.Add(projekt);
+            _projektRepository.AddProjekt(projekt);
         }
     }
 }

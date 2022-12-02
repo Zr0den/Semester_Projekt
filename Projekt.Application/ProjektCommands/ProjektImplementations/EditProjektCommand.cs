@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekt.Application.ProjektRepositories;
 
 namespace Projekt.Application.ProjektCommands.ProjektImplementations
 {
@@ -18,11 +19,11 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
 
         void IEditProjektCommand.EditProjekt(ProjektEditRequestDto requestDto)
         {
-            var model = _repository.Load(requestDto.UserId);
+            var model = _repository.LoadProjekt(requestDto.ProjektID);
 
-            model.Edit();
+            model.Edit(requestDto.ProjektName, requestDto.EstimeretSlutDato);
 
-            _repository.Update(model);
+            _repository.UpdateProjekt(model);
         }
     }
 }

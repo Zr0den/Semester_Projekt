@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt.Application.ProjektCommands
+namespace Semester_Projekt.Infrastructure.Contract.Dto.Projekt
 {
     public class ProjektCreateRequestDto
     {
-        public int ProjektID { get; }
-        public string ProjektName { get; private set; }
+        public string ProjektName { get; set; }
         public int SælgerID { get; set; }
         public int KundeID { get; set; }
     }

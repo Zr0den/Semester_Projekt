@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semester_Projekt.Api", "Sem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServerContext.Migrations", "SqlServerContext.Migrations\SqlServerContext.Migrations.csproj", "{B6FBF399-FBA3-4CC1-9CDE-62130B701775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserContext", "UserContext\UserContext.csproj", "{7D332088-9B6B-48E2-A140-0E13D5AED863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserContext", "UserContext\UserContext.csproj", "{7D332088-9B6B-48E2-A140-0E13D5AED863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserContext.Migrations", "UserContext.Migrations\UserContext.Migrations.csproj", "{077C1F01-D697-456D-A333-171BA36B255D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserContext.Migrations", "UserContext.Migrations\UserContext.Migrations.csproj", "{077C1F01-D697-456D-A333-171BA36B255D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StamData.Application", "StamData.Application\StamData.Application.csproj", "{CD3E1EA9-0316-4D8E-96F9-63F9E2B4C820}"
 EndProject
@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StamData.Infrastructure", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projekt", "Projekt", "{FB5FDD48-29E9-4C7E-99E7-E548DDAEF484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt.Application", "Projekt.Application\Projekt.Application.csproj", "{C3547AA8-1C8A-4859-9C5A-75325735F346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projekt.Application", "Projekt.Application\Projekt.Application.csproj", "{C3547AA8-1C8A-4859-9C5A-75325735F346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt.Domain", "Projekt.Domain\Projekt.Domain.csproj", "{87A6AEC2-5BD2-482A-8A36-CBD5B849EAC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projekt.Domain", "Projekt.Domain\Projekt.Domain.csproj", "{87A6AEC2-5BD2-482A-8A36-CBD5B849EAC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt.Infrastructure", "Projekt.Infrastructure\Projekt.Infrastructure.csproj", "{B2F3B834-ACCC-45C1-8087-B1102AD08E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projekt.Infrastructure", "Projekt.Infrastructure\Projekt.Infrastructure.csproj", "{B2F3B834-ACCC-45C1-8087-B1102AD08E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -23,6 +23,8 @@ namespace SqlServerContext
 
             builder.ApplyConfiguration(new AnsatTypeConfiguration());
             builder.ApplyConfiguration(new KompetenceTypeConfiguration());
+            builder.ApplyConfiguration(new ProjektTypeConfiguration());
+
         }
     }
 }

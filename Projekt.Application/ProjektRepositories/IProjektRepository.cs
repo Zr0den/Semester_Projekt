@@ -16,7 +16,6 @@ namespace Projekt.Application.ProjektRepositories
         IEnumerable<ProjektQueryResultDto> GetAllProjekt();
         ProjektQueryResultDto GetProjekt(int projektId);
         ProjektEntity LoadProjekt(int projektId);
-        void Updateprojekt(ProjektEntity model);
-
+        void UpdateProjekt(ProjektEntity model);
     }
 }
