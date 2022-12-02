@@ -1,6 +1,7 @@
 ﻿using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
+using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 using Semester_Projekt.Infrastructure.Contract.Dto.Projekt;
 
 
@@ -76,6 +77,26 @@ namespace Semester_Projekt.Infrastructure.Implementation
         async Task<IEnumerable<ProjektQueryResultDto>?> IService.GetAllProjekt()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<ProjektQueryResultDto>>($"api/projekt");
+        }
+
+        // Kunde
+        async Task IService.EditKunde(KundeEditRequestDto kundeEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/kunde", kundeEditRequestDto);
+        }
+
+        async Task IService.CreateKunde(KundeCreateRequestDto kundeCreateRequestDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/kunde", kundeCreateRequestDto);
+        }
+        async Task<KundeQueryResultDto?> IService.GetKunde(int kundeId)
+        {
+            return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/kunde/{kundeId}");
+        }
+
+        async Task<IEnumerable<KundeQueryResultDto>?> IService.GetAllKunde()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<KundeQueryResultDto>>($"api/kunde");
         }
 
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlServerContext;
 
@@ -11,9 +12,10 @@ using SqlServerContext;
 namespace SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    partial class ServerContextModelSnapshot : ModelSnapshot
+    [Migration("20221202130250_ProjektTest")]
+    partial class ProjektTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,37 +97,6 @@ namespace SqlServerContext.Migrations.Migrations
                     b.HasKey("KompetenceID");
 
                     b.ToTable("Kompetance", "Kompetence");
-                });
-
-            modelBuilder.Entity("StamData.Domain.Kunde.KundeModel.KundeEntity", b =>
-                {
-                    b.Property<int>("KundeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KundeID"), 1L, 1);
-
-                    b.Property<string>("KundeAdresse")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("KundeCVR")
-                        .HasColumnType("int");
-
-                    b.Property<string>("KundeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("KundePostNr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("KundeUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("KundeID");
-
-                    b.ToTable("Kunde", "Kunde");
                 });
 #pragma warning restore 612, 618
         }

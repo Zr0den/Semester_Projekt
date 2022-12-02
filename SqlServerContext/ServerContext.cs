@@ -3,6 +3,7 @@ using Projekt.Domain.ProjektModel;
 using SqlServerContext.TypeConfiguration;
 using StamData.Domain.Ansat.AnsatModel;
 using StamData.Domain.Kompetencer.KompetenceModel;
+using StamData.Domain.Kunde.KundeModel;
 
 namespace SqlServerContext
 {
@@ -15,6 +16,8 @@ namespace SqlServerContext
         public DbSet<KompetenceEntity> Kompetencer { get; set; }
         public DbSet<AnsatEntity> AnsatEntities { get; set; }
         public DbSet<ProjektEntity> ProjektEntities { get; set; }
+        public DbSet<KundeEntity> KundeEntities { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,6 +27,8 @@ namespace SqlServerContext
             builder.ApplyConfiguration(new AnsatTypeConfiguration());
             builder.ApplyConfiguration(new KompetenceTypeConfiguration());
             builder.ApplyConfiguration(new ProjektTypeConfiguration());
+            builder.ApplyConfiguration(new KundeTypeConfiguration());
+
 
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace StamData.Application.Kunde.KundeQueries
+﻿namespace Semester_Projekt.Infrastructure.Contract.Dto.Kunde
 {
     public class KundeQueryResultDto
     {

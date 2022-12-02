@@ -6,6 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20221128112812_KompetenceMaybe.cs" />
+    <Compile Remove="Migrations\20221128112812_KompetenceMaybe.Designer.cs" />
+    <Compile Remove="Migrations\20221128122659_InitialMigration.cs" />
+    <Compile Remove="Migrations\20221128122659_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20221129101908_Test1.cs" />
+    <Compile Remove="Migrations\20221129101908_Test1.Designer.cs" />
+    <Compile Remove="Migrations\20221129135715_Test2.cs" />
+    <Compile Remove="Migrations\20221129135715_Test2.Designer.cs" />
+    <Compile Remove="Migrations\20221130134223_Test3.cs" />
+    <Compile Remove="Migrations\20221130134223_Test3.Designer.cs" />
+    <Compile Remove="Migrations\20221202130250_ProjektTest.cs" />
+    <Compile Remove="Migrations\20221202130250_ProjektTest.Designer.cs" />
+    <Compile Remove="Migrations\ServerContextModelSnapshot.cs" />
+  </ItemGroup>
+
 		<ItemGroup>
 			<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
 			<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
