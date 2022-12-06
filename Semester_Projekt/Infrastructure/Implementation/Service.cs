@@ -15,6 +15,12 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             _httpClient = httpClient;
         }
+        // AnsatKompetence
+        async Task IService.AddAnsatKompetence(AnsatCreateRequestDto ansatCreateRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/ansat", ansatCreateRequestDto);
+
+        }
         //Ansat
         async Task IService.EditAnsat(AnsatEditRequestDto ansatEditRequestDto)
         {

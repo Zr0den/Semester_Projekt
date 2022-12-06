@@ -9,11 +9,11 @@ namespace StamData.Application.Ansat.AnsatQueries
         public string AnsatTelefon { get; set; }
         public string AnsatType { get; set; }
         public string UserId { get; set; }
-        //public List<KompetenceDto> KompetenceEntities { get; set; }
+        public List<KompetenceGetDto> KompetenceEntities { get; set; }
     }
-    //public class KompetenceDto
-    //{
-    //    public int KompetenceID { get; set; }
-    //    public string KompetenceName { get; set; }
-    //}
+    public class KompetenceGetDto
+    {
+        public int KompetenceID { get; set; }
+        public string KompetenceName { get; set; }
+    }
 }

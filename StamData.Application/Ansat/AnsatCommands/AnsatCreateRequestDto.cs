@@ -9,6 +9,9 @@ namespace StamData.Application.Ansat.AnsatCommands
         public string AnsatName { get; set; }
         public string AnsatTelefon { get; set; }
         public string AnsatType { get; set; }
+        public List<KompetenceEntity> KompetenceEntities { get; set; }
+
     }
+
 
 }

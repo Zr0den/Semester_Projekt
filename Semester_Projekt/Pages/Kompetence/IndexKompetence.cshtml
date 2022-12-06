@@ -1,23 +1,26 @@
 ﻿@page
+@using Semester_Projekt.Pages.Ansat
+@using StamData.Domain.Ansat.AnsatModel
 @model Semester_Projekt.Pages.Kompetence.IndexModel
 @{
 }
 <form method="post">
+    <input type="hidden" asp-for="AnsatIndexViewModel.AnsatID" class="form-control" />
     <table class="table"´>
         <thead>
         <tr>
-            <th>KompetenceID</th>
+            <th>Tilføj</th>
             <th>KompetenceNavn</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        @if(Model.KompetenceIndexViewModel.Any())
+        @if (Model.KompetenceIndexViewModel.Any())
         {
             foreach (var kompetence in Model.KompetenceIndexViewModel)
             {
                 <tr>
-                    <td>@kompetence.KompetenceID</td>
+                    <td><input type="checkbox" name="Kompetence" value="@kompetence.KompetenceID"/></td>
                     <td>@kompetence.KompetenceName</td>
                     <td>
                         <a asp-page="./EditKompetence" asp-route-kompetenceId="@kompetence.KompetenceID">Edit</a>
@@ -28,5 +31,6 @@
         }
         </tbody>
     </table>
-    <a asp-page="CreateKompetence">Create New</a>
+    <input type="button" asp-area="" asp-page="./CreateKompetence"/>
+    <button type="submit" class="btn btn-default">Update Ansat</button>
 </form>

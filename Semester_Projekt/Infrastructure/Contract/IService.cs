@@ -1,12 +1,12 @@
 ﻿using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 using AnsatCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatCreateRequestDto;
-using AnsatQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatQueryResultDto;
 using AnsatEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatEditRequestDto;
-using KompetenceEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceEditRequestDto;
+using AnsatQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatQueryResultDto;
 using KompetenceCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceCreateRequestDto;
+using KompetenceEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceEditRequestDto;
 using KompetenceQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Kompetence.KompetenceQueryResultDto;
-using ProjektEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Projekt.ProjektEditRequestDto;
 using ProjektCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Projekt.ProjektCreateRequestDto;
+using ProjektEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Projekt.ProjektEditRequestDto;
 using ProjektQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Projekt.ProjektQueryResultDto;
 
 
@@ -40,5 +40,8 @@ namespace Semester_Projekt.Infrastructure.Contract
         Task<KundeQueryResultDto> GetKunde(int kundeId);
         Task<IEnumerable<KundeQueryResultDto>> GetAllKunde();
         Task EditKunde(KundeEditRequestDto kundeEditRequestDto);
+
+        // Tilføj Kompetence
+        Task AddAnsatKompetence(AnsatCreateRequestDto dto);
     }
 }

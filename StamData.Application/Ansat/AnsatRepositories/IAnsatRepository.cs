@@ -10,5 +10,6 @@ namespace StamData.Application.Ansat.AnsatRepositories
         AnsatQueryResultDto GetAnsat(int ansatId);
         AnsatEntity LoadAnsat(int ansatId);
         void UpdateAnsat(AnsatEntity model);
+        void AddAnsatKompetence(AnsatEntity ansatKompetence);
     }
 }

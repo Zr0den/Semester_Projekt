@@ -13,8 +13,8 @@ namespace SqlServerContext.TypeConfiguration
     {
         public void Configure(EntityTypeBuilder<KundeEntity> builder)
         {
-            builder.HasKey(x => x.KundeID);
             builder.ToTable("Kunde", "Kunde");
+            builder.HasKey(x => x.KundeID);
         }
     }
 }

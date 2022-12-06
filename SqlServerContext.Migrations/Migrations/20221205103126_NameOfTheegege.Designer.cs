@@ -12,8 +12,8 @@ using SqlServerContext;
 namespace SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20221202145146_KundeProjektTest")]
-    partial class KundeProjektTest
+    [Migration("20221205103126_NameOfTheegege")]
+    partial class NameOfTheegege
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,21 @@ namespace SqlServerContext.Migrations.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.Property<int>("AnsatEntitiesAnsatID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KompetenceEntitiesKompetenceID")
+                        .HasColumnType("int");
+
+                    b.HasKey("AnsatEntitiesAnsatID", "KompetenceEntitiesKompetenceID");
+
+                    b.HasIndex("KompetenceEntitiesKompetenceID");
+
+                    b.ToTable("AnsatEntityKompetenceEntity");
+                });
 
             modelBuilder.Entity("Projekt.Domain.ProjektModel.ProjektEntity", b =>
                 {
@@ -128,6 +143,21 @@ namespace SqlServerContext.Migrations.Migrations
                     b.HasKey("KundeID");
 
                     b.ToTable("Kunde", "Kunde");
+                });
+
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
+                        .WithMany()
+                        .HasForeignKey("AnsatEntitiesAnsatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
+                        .WithMany()
+                        .HasForeignKey("KompetenceEntitiesKompetenceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
