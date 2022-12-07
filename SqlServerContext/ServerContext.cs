@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Opgave.Domain.OpgaveModel;
 using Projekt.Domain.ProjektModel;
 using SqlServerContext.TypeConfiguration;
 using StamData.Domain.Ansat.AnsatModel;
@@ -14,6 +15,7 @@ namespace SqlServerContext
         {
 
         }
+        public DbSet<OpgaveEntity> OpgaveEntities { get; set; }
         public DbSet<KompetenceEntity> KompetenceEntities { get; set; }
         public DbSet<AnsatEntity> AnsatEntities { get; set; }
         public DbSet<ProjektEntity> ProjektEntities { get; set; }
@@ -27,8 +29,9 @@ namespace SqlServerContext
             builder.ApplyConfiguration(new KompetenceTypeConfiguration());
             builder.ApplyConfiguration(new ProjektTypeConfiguration());
             builder.ApplyConfiguration(new KundeTypeConfiguration());
+            builder.ApplyConfiguration(new OpgaveTypeConfiguration());
 
-            
+
         }
 
     }

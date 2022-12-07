@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -18,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Semester_Projekt.Infrastructure.Contract;
+using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 
 namespace Semester_Projekt.Areas.Identity.Pages.Account
 {
@@ -29,13 +32,15 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterKundeModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IService _service;
 
         public RegisterKundeModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterKundeModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, 
+            IService service)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +48,7 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _service = service;
         }
 
         /// <summary>
@@ -102,6 +108,30 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             [Display(Name = "Input Role")]
 
             public string RoleChoice { get; set; }
+            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Name")]
+
+            public string Name { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Adresse")]
+
+            public string Adresse { get; set; }
+            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Postnummer")]
+
+            public int Postnummer { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "CVR-nummer")]
+
+            public int CVRNummer { get; set; }
         }
 
 
@@ -119,6 +149,15 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                await _service.CreateKunde(new KundeCreateRequestDto
+                {
+                    KundeName = Input.Name,
+                    KundeAdresse = Input.Adresse,
+                    KundePostNr = Input.Postnummer,
+                    KundeCVR = Input.CVRNummer,
+                    KundeUserId = Input.Email
+                });
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -135,6 +174,8 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    await _userManager.AddClaimAsync(user, new Claim(Input.RoleChoice, Input.Email));
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");

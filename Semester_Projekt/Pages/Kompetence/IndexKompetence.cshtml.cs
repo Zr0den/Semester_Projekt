@@ -20,13 +20,9 @@ namespace Semester_Projekt.Pages.Kompetence
         [BindProperty] public List<KompetenceIndexViewModel> KompetenceIndexViewModel { get; set; } = new();
         public AnsatIndexViewModel AnsatIndexViewModel { get; set; }
 
-
         [BindProperty] public List<int> Kompetence { get; set; }
-         
-
-
-
-
+        
+        public AnsatQueryResultDto AnsatIdDto { get; set; }
 
         public async Task OnGet()
         {
@@ -43,11 +39,13 @@ namespace Semester_Projekt.Pages.Kompetence
 
         public async Task OnPost()
         {
-            var a = new AnsatCreateRequestDto();
+            var røvhul = AnsatIdDto.AnsatID;
+            //var a = new AnsatCreateRequestDto();
             foreach (var k in Kompetence)
             {
                 //a.KompetenceEntities.KompetenceID = k;
                 //await _service.AddAnsatKompetence(a);
+                
             }
         }
     }

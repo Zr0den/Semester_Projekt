@@ -21,7 +21,7 @@ namespace Projekt.Application.ProjektCommands.ProjektImplementations
         {
             var model = _repository.LoadProjekt(requestDto.ProjektID);
 
-            model.Edit(requestDto.ProjektName, requestDto.EstimeretSlutDato);
+            model.Edit(requestDto.ProjektName);
 
             _repository.UpdateProjekt(model);
         }

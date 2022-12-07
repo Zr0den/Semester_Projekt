@@ -25,7 +25,7 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
         }
 
-        void IAnsatRepository.AddAnsatKompetence(AnsatEntity ansatKompetence)
+        void IAnsatRepository.AddAnsatKompetence(int ansatId)
         {
             //var a = new AnsatCreateRequestDto();
             //var k = _db.KompetenceEntities.First();

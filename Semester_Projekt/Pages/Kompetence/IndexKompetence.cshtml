@@ -9,7 +9,6 @@
     <table class="table"´>
         <thead>
         <tr>
-            <th>Tilføj</th>
             <th>KompetenceNavn</th>
             <th></th>
         </tr>
@@ -20,7 +19,6 @@
             foreach (var kompetence in Model.KompetenceIndexViewModel)
             {
                 <tr>
-                    <td><input type="checkbox" name="Kompetence" value="@kompetence.KompetenceID"/></td>
                     <td>@kompetence.KompetenceName</td>
                     <td>
                         <a asp-page="./EditKompetence" asp-route-kompetenceId="@kompetence.KompetenceID">Edit</a>

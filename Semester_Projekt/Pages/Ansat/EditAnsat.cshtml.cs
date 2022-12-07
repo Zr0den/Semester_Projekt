@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Semester_Projekt.Infrastructure.Contract;
+using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
+using Semester_Projekt.Pages.Kompetence;
 using AnsatEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatEditRequestDto;
 
 
@@ -16,6 +18,10 @@ namespace Semester_Projekt.Pages.Ansat
         }
         [BindProperty]
         public AnsatEditViewModel AnsatModel { get; set; }
+        [BindProperty] public List<KompetenceIndexViewModel> KompetenceIndexViewModel { get; set; } = new();
+        [BindProperty] public List<int> Kompetence { get; set; }
+
+
         public async Task<IActionResult> OnGet(int? ansatId)
         {
             if (ansatId == null) return NotFound();
@@ -29,6 +35,16 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatName = dto.AnsatName,
                 AnsatID = dto.AnsatID,
             };
+
+            var businessmodelKompetence = await _service.GetAllKompetence();
+
+            KompetenceIndexViewModel = new List<KompetenceIndexViewModel>();
+
+            businessmodelKompetence?.ToList().ForEach(dto => KompetenceIndexViewModel.Add(new KompetenceIndexViewModel
+            {
+                KompetenceID = dto.KompetenceID,
+                KompetenceName = dto.KompetenceName,
+            }));
 
             return Page();
         }
@@ -45,6 +61,19 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatTelefon = AnsatModel.AnsatTelefon,
                 UserId = User.Identity?.Name ?? string.Empty,
             });
+
+            try
+            {
+                var røvhul = AnsatModel.AnsatID;
+                foreach (var k in Kompetence)
+                {
+                    Console.WriteLine(k);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
             return RedirectToPage("./IndexAnsat");
 

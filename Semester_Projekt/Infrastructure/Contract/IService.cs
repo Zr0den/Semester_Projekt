@@ -1,4 +1,5 @@
 ﻿using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
+using Semester_Projekt.Infrastructure.Contract.Dto.Opgave;
 using AnsatCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatCreateRequestDto;
 using AnsatEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatEditRequestDto;
 using AnsatQueryResultDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatQueryResultDto;
@@ -41,7 +42,13 @@ namespace Semester_Projekt.Infrastructure.Contract
         Task<IEnumerable<KundeQueryResultDto>> GetAllKunde();
         Task EditKunde(KundeEditRequestDto kundeEditRequestDto);
 
+        // Opgave
+        Task EditOpgave(OpgaveEditRequestDto opgaveEditRequestDto);
+        Task CreateOpgave(OpgaveCreateRequestDto dto);
+        Task<IEnumerable<OpgaveQueryResultDto>> GetAllOpgave();
+        Task<OpgaveQueryResultDto> GetOpgave(int opgaveId);
+
         // Tilføj Kompetence
-        Task AddAnsatKompetence(AnsatCreateRequestDto dto);
+        Task AddAnsatKompetence(AnsatEditRequestDto dto);
     }
 }

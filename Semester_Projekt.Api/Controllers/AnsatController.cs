@@ -59,9 +59,9 @@ namespace Semester_Projekt.Api.Controllers
         }
 
         [HttpPost("{ansatId}")]
-        public void PostAnsatKompetence([FromBody] AnsatEntity ansatKompetence)
+        public void PostAnsatKompetence(int ansatId)
         {
-            _ansatRepository.AddAnsatKompetence(ansatKompetence);
+            _ansatRepository.AddAnsatKompetence(ansatId);
         }
     }
 }

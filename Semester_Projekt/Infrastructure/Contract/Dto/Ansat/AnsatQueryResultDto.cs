@@ -15,7 +15,6 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
     public class KompetenceGetDto
     {
         public int KompetenceID { get; set; }
-        public string KompetenceName { get; set; }
     }
 
 }

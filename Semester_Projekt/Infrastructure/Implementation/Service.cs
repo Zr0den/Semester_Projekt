@@ -2,6 +2,7 @@
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
+using Semester_Projekt.Infrastructure.Contract.Dto.Opgave;
 using Semester_Projekt.Infrastructure.Contract.Dto.Projekt;
 
 
@@ -16,9 +17,9 @@ namespace Semester_Projekt.Infrastructure.Implementation
             _httpClient = httpClient;
         }
         // AnsatKompetence
-        async Task IService.AddAnsatKompetence(AnsatCreateRequestDto ansatCreateRequestDto)
+        async Task IService.AddAnsatKompetence(AnsatEditRequestDto ansatEditRequestDto)
         {
-            await _httpClient.PutAsJsonAsync("api/ansat", ansatCreateRequestDto);
+            await _httpClient.PutAsJsonAsync("api/ansat", ansatEditRequestDto);
 
         }
         //Ansat
@@ -103,6 +104,27 @@ namespace Semester_Projekt.Infrastructure.Implementation
         async Task<IEnumerable<KundeQueryResultDto>?> IService.GetAllKunde()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<KundeQueryResultDto>>($"api/kunde");
+        }
+
+        // Opgave
+        async Task IService.EditOpgave(OpgaveEditRequestDto opgaveEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/opgave", opgaveEditRequestDto);
+        }
+
+        async Task IService.CreateOpgave(OpgaveCreateRequestDto opgaveCreateRequestDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/opgave", opgaveCreateRequestDto);
+        }
+
+        async Task<OpgaveQueryResultDto?> IService.GetOpgave(int opgaveId)
+        {
+            return await _httpClient.GetFromJsonAsync<OpgaveQueryResultDto>($"api/opgave/{opgaveId}");
+        }
+
+        async Task<IEnumerable<OpgaveQueryResultDto>?> IService.GetAllOpgave()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<OpgaveQueryResultDto>>($"api/opgave");
         }
 
     }
