@@ -9,7 +9,7 @@ namespace Projekt.Application.ProjektCommands
     public class ProjektEditRequestDto
     {
         public int ProjektID { get; set; }
-        public string ProjektName { get; private set; }
-        public DateTime EstimeretSlutDato { get; set; }
+        public string ProjektName { get; set; }
+        //public DateTime EstimeretSlutDato { get; set; }
     }
 }

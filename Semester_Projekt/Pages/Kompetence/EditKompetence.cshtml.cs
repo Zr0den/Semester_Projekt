@@ -15,11 +15,11 @@ namespace Semester_Projekt.Pages.Kompetence
         }
         [BindProperty]
         public KompetenceEditViewModel KompetenceModel { get; set; }
-        public async Task<IActionResult> OnGet(int kompetenceId)
+        public async Task<IActionResult> OnGet(int? kompetenceId)
         {
             if (kompetenceId == null) return NotFound();
 
-            var dto = await _service.GetKompetence(kompetenceId);
+            var dto = await _service.GetKompetence(kompetenceId.Value);
 
             KompetenceModel = new KompetenceEditViewModel
             {

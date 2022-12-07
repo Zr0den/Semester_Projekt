@@ -18,7 +18,5 @@ namespace SqlServerContext.TypeConfiguration
             builder.HasKey(x => x.KompetenceID);
 
         }
-
-
     }
 }

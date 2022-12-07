@@ -20,5 +20,8 @@ namespace StamData.Application.Ansat.AnsatCommands.AnsatImplementations
 
             _ansatRepository.AddAnsat(ansat);
         }
+
+
+
     }
 }

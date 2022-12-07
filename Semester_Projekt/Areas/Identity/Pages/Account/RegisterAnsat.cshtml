@@ -13,6 +13,16 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
+                <input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Name"></label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Telefon" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Telefon"></label>
+                <span asp-validation-for="Input.Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -28,7 +38,7 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
         @*@if (AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)*@
-        {
+        
             <div class="form-floating">
                 <select asp-for="Input.RoleChoice" class="form-control" autocomplete="role" aria-required="true" >
                     <option value="Tekniker">Tekniker</option>
@@ -44,7 +54,7 @@
                 </select>
 
             </div>
-        }
+        
 
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>

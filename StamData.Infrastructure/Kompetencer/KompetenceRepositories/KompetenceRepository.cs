@@ -24,7 +24,7 @@ namespace StamData.Infrastructure.Kompetencer.KompetenceRepositories
 
         KompetenceQueryResultDto IKompetenceRepository.GetKompetence(int kompetenceId)
         {
-            var dbEntity = _db.Kompetencer.AsNoTracking().FirstOrDefault(a => a.KompetenceID == kompetenceId);
+            var dbEntity = _db.KompetenceEntities.AsNoTracking().FirstOrDefault(a => a.KompetenceID == kompetenceId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
             //var anDtos = new List<AnsatDto>();
             //dbEntity.AnsatEntities.ToList().ForEach(an => anDtos.Add(new AnsatDto
@@ -50,7 +50,7 @@ namespace StamData.Infrastructure.Kompetencer.KompetenceRepositories
         IEnumerable<KompetenceQueryResultDto> IKompetenceRepository.GetAllKompetence()
         {
             //Include(a => a.AnsatEntities).
-            foreach (var entity in _db.Kompetencer.AsNoTracking().ToList())
+            foreach (var entity in _db.KompetenceEntities.AsNoTracking().ToList())
             {
                 //var anDtos = new List<AnsatDto>();
                 //entity.AnsatEntities.ToList().ForEach(an => anDtos.Add(new AnsatDto
@@ -79,7 +79,7 @@ namespace StamData.Infrastructure.Kompetencer.KompetenceRepositories
 
         KompetenceEntity IKompetenceRepository.LoadKompetence(int kompetenceId)
         {
-            var dbEntity = _db.Kompetencer.AsNoTracking().FirstOrDefault(a => a.KompetenceID == kompetenceId);
+            var dbEntity = _db.KompetenceEntities.AsNoTracking().FirstOrDefault(a => a.KompetenceID == kompetenceId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
             return dbEntity;
         }

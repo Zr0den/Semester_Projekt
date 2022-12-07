@@ -22,6 +22,21 @@ namespace SqlServerContext.Migrations.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.Property<int>("AnsatEntitiesAnsatID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KompetenceEntitiesKompetenceID")
+                        .HasColumnType("int");
+
+                    b.HasKey("AnsatEntitiesAnsatID", "KompetenceEntitiesKompetenceID");
+
+                    b.HasIndex("KompetenceEntitiesKompetenceID");
+
+                    b.ToTable("AnsatEntityKompetenceEntity");
+                });
+
             modelBuilder.Entity("Projekt.Domain.ProjektModel.ProjektEntity", b =>
                 {
                     b.Property<int>("ProjektID")
@@ -126,6 +141,21 @@ namespace SqlServerContext.Migrations.Migrations
                     b.HasKey("KundeID");
 
                     b.ToTable("Kunde", "Kunde");
+                });
+
+            modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
+                {
+                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
+                        .WithMany()
+                        .HasForeignKey("AnsatEntitiesAnsatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
+                        .WithMany()
+                        .HasForeignKey("KompetenceEntitiesKompetenceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

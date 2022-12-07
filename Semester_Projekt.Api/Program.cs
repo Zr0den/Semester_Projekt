@@ -1,4 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Opgave.Application.OpgaveCommands;
+using Opgave.Application.OpgaveCommands.OpgaveImplementations;
+using Opgave.Application.OpgaveQueries;
+using Opgave.Application.OpgaveQueries.OpgaveImplementations;
+using Opgave.Application.OpgaveRepositories;
+using Opgave.Infrastructure.OpgaveRepositories;
 using Projekt.Application.ProjektCommands;
 using Projekt.Application.ProjektCommands.ProjektImplementations;
 using Projekt.Application.ProjektQueries;
@@ -59,6 +65,12 @@ builder.Services.AddScoped<IKundeRepository, KundeRepository>();
 builder.Services.AddScoped<IKundeGetAllQuery, KundeGetAllQuery>();
 builder.Services.AddScoped<IEditKundeCommand, EditKundeCommand>();
 builder.Services.AddScoped<IKundeGetQuery, KundeGetQuery>();
+// Opgave
+builder.Services.AddScoped<ICreateOpgaveCommand, CreateOpgaveCommand>();
+builder.Services.AddScoped<IOpgaveRepository, OpgaveRepository>();
+builder.Services.AddScoped<IOpgaveGetAllQuery, OpgaveGetAllQuery>();
+builder.Services.AddScoped<IEditOpgaveCommand, EditOpgaveCommand>();
+builder.Services.AddScoped<IOpgaveGetQuery, OpgaveGetQuery>();
 
 
 

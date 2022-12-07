@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Semester_Projekt.Infrastructure.Contract;
+using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
 using Semester_Projekt.Pages.Ansat;
 
 
@@ -112,6 +113,19 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             [Display(Name = "Input Role")]
 
             public string RoleChoice { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Input Name")]
+
+            public string Name { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Input Telefon")]
+
+            public string Telefon { get; set; }
+
         }
 
 
@@ -130,6 +144,12 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+                await _service.CreateAnsat(new AnsatCreateRequestDto
+                {
+                    AnsatName = Input.Name, AnsatTelefon = Input.Telefon, AnsatType = Input.RoleChoice,
+                    UserId = Input.Email
+                });
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -159,7 +179,7 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }

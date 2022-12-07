@@ -10,6 +10,5 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Projekt
     {
         public int ProjektID { get; set; }
         public string ProjektName { get; set; }
-        public DateTime EstimeretSlutDato { get; set; }
     }
 }

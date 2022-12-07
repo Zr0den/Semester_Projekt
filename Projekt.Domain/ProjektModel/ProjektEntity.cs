@@ -30,10 +30,9 @@ namespace Projekt.Domain.ProjektModel
             OprettelsesDato = DateTime.Now;
         }
         
-        public void Edit(string projektName, DateTime estSlutDato)
+        public void Edit(string projektName)
         {
             ProjektName = projektName;
-            EstimeretSlutDato = estSlutDato;
         }
     }
 }

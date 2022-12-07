@@ -25,6 +25,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    <ProjectReference Include="..\Opgave.Application\Opgave.Application.csproj" />
+    <ProjectReference Include="..\Opgave.Infrastructure\Opgave.Infrastructure.csproj" />
     <ProjectReference Include="..\Projekt.Application\Projekt.Application.csproj" />
     <ProjectReference Include="..\Projekt.Domain\Projekt.Domain.csproj" />
     <ProjectReference Include="..\Projekt.Infrastructure\Projekt.Infrastructure.csproj" />

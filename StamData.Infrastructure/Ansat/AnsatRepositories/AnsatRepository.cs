@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SqlServerContext;
+using StamData.Application.Ansat.AnsatCommands;
 using StamData.Application.Ansat.AnsatQueries;
 using StamData.Application.Ansat.AnsatRepositories;
+using StamData.Application.Kompetencer.KompetenceCommands;
 using StamData.Domain.Ansat.AnsatModel;
+using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Infrastructure.Ansat.AnsatRepositories
 {
@@ -22,17 +25,36 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
         }
 
+        void IAnsatRepository.AddAnsatKompetence(int ansatId)
+        {
+            //var a = new AnsatCreateRequestDto();
+            //var k = _db.KompetenceEntities.First();
+            //a.KompetenceEntities.Add(k);
+
+            var ansat = _db.AnsatEntities.Include(b => b.KompetenceEntities).Single(a => a.AnsatID == 6);
+
+            var kompetence = _db.KompetenceEntities.Include(b => b.AnsatEntities).Single(a => a.KompetenceID == 1);
+
+            _db.Entry(ansat).Collection(x => x.KompetenceEntities).Load();
+            ansat.KompetenceEntities.Add(kompetence);
+
+
+            _db.SaveChanges();
+        }
+
+
+
         IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAllAnsat()
         {
-            foreach (var entity in _db.AnsatEntities.AsNoTracking().ToList())
+            foreach (var entity in _db.AnsatEntities.AsNoTracking().Include(a => a.KompetenceEntities).ToList())
             {
                 //skal laves include i AnsatEntities før VVVV virker
-                //var kdDtos = new List<KompetenceDto>();
-                //entity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-                //{
-                //    KompetenceID = k.KompetenceID,
-                //    KompetenceName = k.KompetenceName,
-                //}));
+                var kdDtos = new List<KompetenceGetDto>();
+                entity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceGetDto
+                {
+                    KompetenceID = k.KompetenceID,
+                    KompetenceName = k.KompetenceName,
+                }));
                 yield return new AnsatQueryResultDto
                 {
                     AnsatID = entity.AnsatID,
@@ -40,7 +62,7 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                     AnsatTelefon = entity.AnsatTelefon,
                     AnsatType = entity.AnsatType, 
                     UserId = entity.UserId,
-                    //KompetenceEntities = kdDtos
+                    KompetenceEntities = kdDtos
                 };
             }
         }
@@ -55,23 +77,25 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
         AnsatEntity IAnsatRepository.LoadAnsat(int ansatId)
         {
-            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a => a.AnsatID == ansatId);
+            var dbEntity = _db.AnsatEntities.FirstOrDefault(a => a.AnsatID == ansatId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
+
+            _db.Entry(dbEntity).Collection(a => a.KompetenceEntities).Load();
+
             return dbEntity;
         }
 
 
         AnsatQueryResultDto IAnsatRepository.GetAnsat(int ansatId)
         {
-            //.Include(b => b.KompetenceEntities)
-            var dbEntity = _db.AnsatEntities.AsNoTracking().FirstOrDefault(a=> a.AnsatID == ansatId);
+            var dbEntity = _db.AnsatEntities.AsNoTracking().Include(a => a.KompetenceEntities).FirstOrDefault(a=> a.AnsatID == ansatId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
-            //var kdDtos = new List<KompetenceDto>();
-            //dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-            //{
-            //    KompetenceID = k.KompetenceID,
-            //    KompetenceName = k.KompetenceName,
-            //}));
+            var kdDtos = new List<KompetenceGetDto>();
+            dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceGetDto
+            {
+                KompetenceID = k.KompetenceID,
+                KompetenceName = k.KompetenceName,
+            }));
 
 
             return new AnsatQueryResultDto
@@ -81,7 +105,7 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
                 AnsatTelefon = dbEntity.AnsatTelefon,
                 AnsatType = dbEntity.AnsatType,
                 UserId = dbEntity.UserId,
-                //KompetenceEntities = kdDtos,
+                KompetenceEntities = kdDtos,
             };
         }
     }
