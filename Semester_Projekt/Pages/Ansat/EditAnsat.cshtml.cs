@@ -26,7 +26,7 @@ namespace Semester_Projekt.Pages.Ansat
         {
             if (ansatId == null) return NotFound();
 
-            var dto = await _service.GetAnsat(ansatId.Value);
+            var dto = await _service.GetAnsat(ansatId.Value, User.Identity?.Name ?? string.Empty);
 
             AnsatModel = new AnsatEditViewModel
             {
@@ -60,20 +60,9 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatName = AnsatModel.AnsatName,
                 AnsatTelefon = AnsatModel.AnsatTelefon,
                 UserId = User.Identity?.Name ?? string.Empty,
+                KompetenceIds = Kompetence
             });
 
-            try
-            {
-                var røvhul = AnsatModel.AnsatID;
-                foreach (var k in Kompetence)
-                {
-                    Console.WriteLine(k);
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
 
             return RedirectToPage("./IndexAnsat");
 

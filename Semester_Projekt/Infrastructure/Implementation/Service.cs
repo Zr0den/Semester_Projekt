@@ -32,14 +32,14 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             await _httpClient.PostAsJsonAsync("api/ansat", ansatCreateRequestDto);
         }
-        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId)
+        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId, string userId)
         {
-            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}");
+            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userId}");
         }
 
-        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat()
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat(string userId)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userId}");
         }
 
 

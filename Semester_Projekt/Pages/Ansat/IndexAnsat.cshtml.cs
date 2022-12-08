@@ -21,7 +21,7 @@ namespace Semester_Projekt.Pages.Ansat
 
         public async Task OnGet()
         {
-            var businessModel = await _service.GetAllAnsat();
+            var businessModel = await _service.GetAllAnsat(User.Identity?.Name ?? string.Empty);
                 
             AnsatIndexViewModel = new List<AnsatIndexViewModel>();
 

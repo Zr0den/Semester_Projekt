@@ -18,8 +18,8 @@ namespace Semester_Projekt.Infrastructure.Contract
     {
         //Ansat
         Task CreateAnsat(AnsatCreateRequestDto dto);
-        Task<AnsatQueryResultDto> GetAnsat(int ansatId);
-        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat();
+        Task<AnsatQueryResultDto> GetAnsat(int ansatId, string userId);
+        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat(string identityName);
         Task EditAnsat(AnsatEditRequestDto ansatEditRequestDto);
 
 
