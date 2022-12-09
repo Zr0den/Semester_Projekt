@@ -24,9 +24,18 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        @if (AuthService.AuthorizeAsync(User, "Tekniker").Result.Succeeded|| AuthService.AuthorizeAsync(User, "Konsulent").Result.Succeeded|| AuthService.AuthorizeAsync(User, "Sælger").Result.Succeeded|| AuthService.AuthorizeAsync(User, "Konverter").Result.Succeeded|| AuthService.AuthorizeAsync(User, "Admin").Result.Succeeded)
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Ansat/IndexAnsat">Min Profil</a>
                         </li>
+                        }
+                        @if (AuthService.AuthorizeAsync(User, "Kunde").Result.Succeeded)
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Kunde/IndexKunde">Min Profil</a>
+                        </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Kompetence/IndexKompetence">Kompetence Liste</a>
                         </li>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StamData.Domain.Ansat.AnsatModel;
+using StamData.Domain.Kunde.KundeModel;
 
 namespace Projekt.Domain.ProjektModel
 {
@@ -10,11 +12,14 @@ namespace Projekt.Domain.ProjektModel
     {
         public int ProjektID { get; }
         public string ProjektName { get; private set; }
-        public int SælgerID { get; set; }
-        public int KundeID { get; set; }
         public DateTime OprettelsesDato { get; set; }
         public DateTime EstimeretSlutDato { get; set; }
-        //public virtual ICollection<OpgaveEntity> Opgaver { get; private set; }
+      
+        
+        public int SælgerID { get; set; }
+        public AnsatEntity AnsatEntity { get; set; }
+        public int KundeID { get; set; }
+        public KundeEntity KundeEntity { get; set; }
 
         internal ProjektEntity()
         {

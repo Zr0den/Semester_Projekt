@@ -22,17 +22,10 @@ namespace StamData.Infrastructure.Kunde.KundeRepositories
 
         }
 
-        IEnumerable<KundeQueryResultDto> IKundeRepository.GetAllKunde()
+        IEnumerable<KundeQueryResultDto> IKundeRepository.GetAllKunde(string kundeUserId)
         {
-            foreach (var entity in _db.KundeEntities.AsNoTracking().ToList())
+            foreach (var entity in _db.KundeEntities.AsNoTracking().Where(a => a.KundeUserId == kundeUserId).ToList())
             {
-                //skal laves include i KundeEntities før VVVV virker
-                //var kdDtos = new List<KompetenceDto>();
-                //entity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-                //{
-                //    KompetenceID = k.KompetenceID,
-                //    KompetenceName = k.KompetenceName,
-                //}));
                 yield return new KundeQueryResultDto
                 {
                     KundeID = entity.KundeID,
@@ -41,7 +34,6 @@ namespace StamData.Infrastructure.Kunde.KundeRepositories
                     KundePostNr = entity.KundePostNr,
                     KundeUserId = entity.KundeUserId,
                     KundeCVR = entity.KundeCVR,
-                    //KompetenceEntities = kdDtos
                 };
             }
         }
@@ -62,17 +54,11 @@ namespace StamData.Infrastructure.Kunde.KundeRepositories
         }
 
 
-        KundeQueryResultDto IKundeRepository.GetKunde(int kundeId)
+        KundeQueryResultDto IKundeRepository.GetKunde(int kundeId, string kundeUserId)
         {
-            //.Include(b => b.KompetenceEntities)
-            var dbEntity = _db.KundeEntities.AsNoTracking().FirstOrDefault(a => a.KundeID == kundeId);
+            var dbEntity = _db.KundeEntities.AsNoTracking().FirstOrDefault(a => a.KundeID == kundeId && a.KundeUserId == kundeUserId);
             if (dbEntity == null) throw new Exception("Kunde findes ikke i databasen");
-            //var kdDtos = new List<KompetenceDto>();
-            //dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceDto
-            //{
-            //    KompetenceID = k.KompetenceID,
-            //    KompetenceName = k.KompetenceName,
-            //}));
+            
 
 
             return new KundeQueryResultDto
@@ -83,7 +69,6 @@ namespace StamData.Infrastructure.Kunde.KundeRepositories
                 KundePostNr = dbEntity.KundePostNr,
                 KundeUserId = dbEntity.KundeUserId,
                 KundeCVR = dbEntity.KundeCVR
-                //KompetenceEntities = kdDtos,
             };
         }
     }

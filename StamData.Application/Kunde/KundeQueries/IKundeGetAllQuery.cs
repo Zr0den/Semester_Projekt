@@ -2,6 +2,6 @@
 {
     public interface IKundeGetAllQuery
     {
-        IEnumerable<KundeQueryResultDto> GetAllKunde();
+        IEnumerable<KundeQueryResultDto> GetAllKunde(string kundeUserId);
     }
 }
