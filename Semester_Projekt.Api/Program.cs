@@ -27,6 +27,8 @@ using StamData.Application.Kunde.KundeCommands.Implementation;
 using StamData.Application.Kunde.KundeQueries;
 using StamData.Application.Kunde.KundeQueries.Implementation;
 using StamData.Application.Kunde.KundeRepositories;
+using StamData.Domain.Ansat.AnsatDomainServices;
+using StamData.Infrastructure.Ansat.AnsatDomainServices;
 using StamData.Infrastructure.Ansat.AnsatRepositories;
 using StamData.Infrastructure.Kompetencer.KompetenceRepositories;
 using StamData.Infrastructure.Kunde.KundeRepositories;
@@ -47,6 +49,8 @@ builder.Services.AddScoped<IAnsatRepository, AnsatRepository>();
 builder.Services.AddScoped<IAnsatGetAllQuery, AnsatGetAllQuery>();
 builder.Services.AddScoped<IAnsatGetQuery, AnsatGetQuery>();
 builder.Services.AddScoped<IEditAnsatCommand, EditAnsatCommand>();
+builder.Services.AddScoped<IAnsatDomainService, AnsatDomainService>();
+
 // Kompetence
 builder.Services.AddScoped<ICreateKompetenceCommand, CreateKompetenceCommand>();
 builder.Services.AddScoped<IKompetenceRepository, KompetenceRepository>();

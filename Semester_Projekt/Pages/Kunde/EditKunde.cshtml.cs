@@ -22,10 +22,11 @@ namespace Semester_Projekt.Pages.Kunde
         {
             if (kundeId == null) return NotFound();
 
-            var dto = await _service.GetKunde(kundeId.Value);
+            var dto = await _service.GetKunde(kundeId.Value, User.Identity?.Name ?? string.Empty);
 
             KundeModel = new KundeEditViewModel
             {
+                KundeID = dto.KundeID,
                 KundeAdresse = dto.KundeAdresse,
                 KundeCVR = dto.KundeCVR,
                 KundePostNr = dto.KundePostNr,

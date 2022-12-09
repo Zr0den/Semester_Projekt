@@ -18,8 +18,8 @@ namespace Semester_Projekt.Infrastructure.Contract
     {
         //Ansat
         Task CreateAnsat(AnsatCreateRequestDto dto);
-        Task<AnsatQueryResultDto> GetAnsat(int ansatId);
-        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat();
+        Task<AnsatQueryResultDto> GetAnsat(int ansatId, string userId);
+        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat(string identityName);
         Task EditAnsat(AnsatEditRequestDto ansatEditRequestDto);
 
 
@@ -38,8 +38,8 @@ namespace Semester_Projekt.Infrastructure.Contract
 
         // Kunde
         Task CreateKunde(KundeCreateRequestDto dto);
-        Task<KundeQueryResultDto> GetKunde(int kundeId);
-        Task<IEnumerable<KundeQueryResultDto>> GetAllKunde();
+        Task<KundeQueryResultDto> GetKunde(int kundeId, string kundeUserId);
+        Task<IEnumerable<KundeQueryResultDto>> GetAllKunde(string identityName);
         Task EditKunde(KundeEditRequestDto kundeEditRequestDto);
 
         // Opgave

@@ -44,9 +44,9 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
 
 
 
-        IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAllAnsat()
+        IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAllAnsat(string userId)
         {
-            foreach (var entity in _db.AnsatEntities.AsNoTracking().Include(a => a.KompetenceEntities).ToList())
+            foreach (var entity in _db.AnsatEntities.AsNoTracking().Where(b => b.UserId == userId).Include(a => a.KompetenceEntities).ToList())
             {
                 //skal laves include i AnsatEntities før VVVV virker
                 var kdDtos = new List<KompetenceGetDto>();
@@ -86,9 +86,9 @@ namespace StamData.Infrastructure.Ansat.AnsatRepositories
         }
 
 
-        AnsatQueryResultDto IAnsatRepository.GetAnsat(int ansatId)
+        AnsatQueryResultDto IAnsatRepository.GetAnsat(int ansatId, string userId)
         {
-            var dbEntity = _db.AnsatEntities.AsNoTracking().Include(a => a.KompetenceEntities).FirstOrDefault(a=> a.AnsatID == ansatId);
+            var dbEntity = _db.AnsatEntities.AsNoTracking().Include(a => a.KompetenceEntities).FirstOrDefault(a=> a.AnsatID == ansatId && a.UserId == userId);
             if (dbEntity == null) throw new Exception("Ansat findes ikke i databasen");
             var kdDtos = new List<KompetenceGetDto>();
             dbEntity.KompetenceEntities.ToList().ForEach(k => kdDtos.Add(new KompetenceGetDto

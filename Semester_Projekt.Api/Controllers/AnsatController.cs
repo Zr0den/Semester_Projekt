@@ -37,19 +37,19 @@ namespace Semester_Projekt.Api.Controllers
         {
             _createAnsatCommand.CreateAnsat(request);
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll()
+        [HttpGet("{userId}")]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll(string userId)
         {
-            var result = _ansatGetAllQuery.GetAllAnsat().ToList();
+            var result = _ansatGetAllQuery.GetAllAnsat(userId).ToList();
             if (!result.Any())
                 return NotFound();
 
             return result.ToList();
         }
-        [HttpGet("{ansatId}")]
-        public AnsatQueryResultDto GetAnsat(int ansatId)
+        [HttpGet("{ansatId}/{userId}")]
+        public AnsatQueryResultDto GetAnsat(int ansatId, string userId)
         {
-            return _ansatGetQuery.GetAnsat(ansatId);
+            return _ansatGetQuery.GetAnsat(ansatId, userId);
         }
 
         [HttpPut]

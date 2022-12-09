@@ -1,4 +1,5 @@
-﻿using StamData.Domain.Kompetencer.KompetenceModel;
+﻿using StamData.Domain.Ansat.AnsatDomainServices;
+using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace StamData.Domain.Ansat.AnsatModel
 {
@@ -10,6 +11,8 @@ namespace StamData.Domain.Ansat.AnsatModel
         public string AnsatTelefon { get; private set; }
         public string AnsatType { get; private set; }
         public virtual ICollection<KompetenceEntity> KompetenceEntities { get; private set; }
+        //public virtual ICollection<ProjektEntity> ProjektEntities { get; private set; }
+
 
         internal AnsatEntity()
         {
@@ -28,12 +31,18 @@ namespace StamData.Domain.Ansat.AnsatModel
             AnsatType = ansatType;
         }
 
-        public void EditAnsat(string ansatName, string ansatTelefon, string ansatType, ICollection<KompetenceEntity> kompetenceEntities)
+        public void EditAnsat(string ansatName, string ansatTelefon, string ansatType,
+            List<int> requestDtoKompetenceIds, IAnsatDomainService ansatDomainService)
         {
             AnsatName = ansatName;
             AnsatTelefon = ansatTelefon;
             AnsatType = ansatType;
-            KompetenceEntities = kompetenceEntities;
+            var kompetencer = ansatDomainService.getKompetenceEntities(requestDtoKompetenceIds);
+            foreach (var k in kompetencer)
+            {
+                KompetenceEntities.Add(k);
+            }
+
         }
 
         public void AddAnsatKompetence(ICollection<KompetenceEntity> kompetenceEntities)

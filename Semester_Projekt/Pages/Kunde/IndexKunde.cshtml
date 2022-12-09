@@ -2,3 +2,36 @@
 @model Semester_Projekt.Pages.Kunde.IndexKundeModel
 @{
 }
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>KundeID</th>
+            <th>Navn</th>
+            <th>Adresse</th>
+            <th>Postnummer</th>
+            <th>CVR-Nummer</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if(Model.KundeIndexViewModel.Any())
+        {
+            @foreach (var kunde in Model.KundeIndexViewModel)
+            {
+                <tr>
+                    <td>@kunde.KundeID</td>
+                    <td>@kunde.KundeName</td>
+                    <td>@kunde.KundeAdresse</td>
+                    <td>@kunde.KundePostNr</td>
+                    <td>@kunde.KundeCVR</td>
+                    <td>
+                        <a asp-page="./EditKunde" asp-route-kundeId="@kunde.KundeID">Edit</a>
+                        <button type="button" asp-page-handler="delete" asp-route-kundeId="@kunde.KundeID">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</form>

@@ -29,19 +29,19 @@ namespace Semester_Projekt.Api.Controllers
         {
             _createKundeCommand.CreateKunde(request);
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<KundeQueryResultDto>> GetAll()
+        [HttpGet("{kundeUserId}")]
+        public ActionResult<IEnumerable<KundeQueryResultDto>> GetAll(string kundeUserId)
         {
-            var result = _kundeGetAllQuery.GetAllKunde().ToList();
+            var result = _kundeGetAllQuery.GetAllKunde(kundeUserId).ToList();
             if (!result.Any())
                 return NotFound();
 
             return result.ToList();
         }
-        [HttpGet("{kundeId}")]
-        public KundeQueryResultDto GetKunde(int kundeId)
+        [HttpGet("{kundeId}/{kundeUserId}")]
+        public KundeQueryResultDto GetKunde(int kundeId, string kundeUserId)
         {
-            return _kundeGetQuery.GetKunde(kundeId);
+            return _kundeGetQuery.GetKunde(kundeId, kundeUserId);
         }
 
         [HttpPut]
