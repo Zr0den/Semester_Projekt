@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
+using Application.StamData.Kompetencer.KompetenceCommands;
+using Application.StamData.Kompetencer.KompetenceQueries;
 using Microsoft.AspNetCore.Mvc;
-using StamData.Application.Kompetencer.KompetenceCommands;
-using StamData.Application.Kompetencer.KompetenceQueries;
 
 namespace Semester_Projekt.Api.Controllers
 {

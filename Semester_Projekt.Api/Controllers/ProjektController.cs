@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
+using Application.Projekt.ProjektCommands;
+using Application.Projekt.ProjektQueries;
 using Microsoft.AspNetCore.Mvc;
-using Projekt.Application.ProjektCommands;
-using Projekt.Application.ProjektQueries;
 
 namespace Semester_Projekt.Api.Controllers
 {

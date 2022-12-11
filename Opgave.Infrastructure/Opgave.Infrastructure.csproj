@@ -11,4 +11,9 @@
     <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="OpgaveDomainServices\" />
+    <Folder Include="OpgaveRepositories\" />
+  </ItemGroup>
+
 </Project>

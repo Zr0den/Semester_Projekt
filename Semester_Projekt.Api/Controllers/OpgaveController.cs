@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
+using Application.Opgave.OpgaveCommands;
+using Application.Opgave.OpgaveQueries;
 using Microsoft.AspNetCore.Mvc;
-using Opgave.Application.OpgaveCommands;
-using Opgave.Application.OpgaveQueries;
 
 
 namespace Semester_Projekt.Api.Controllers

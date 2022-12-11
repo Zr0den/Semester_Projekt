@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using StamData.Application.Kunde.KundeCommands;
-using StamData.Application.Kunde.KundeQueries;
+﻿using Application.StamData.Kunde.KundeCommands;
+using Application.StamData.Kunde.KundeQueries;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Semester_Projekt.Api.Controllers
 {

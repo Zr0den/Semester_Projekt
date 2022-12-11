@@ -1,6 +1,4 @@
-﻿using StamData.Domain.Ansat.AnsatModel;
-
-namespace Semester_Projekt.Pages.Kompetence
+﻿namespace Semester_Projekt.Pages.Kompetence
 {
     public class KompetenceEditViewModel
     {

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Opgave.Domain.OpgaveModel;
-using Projekt.Domain.ProjektModel;
+﻿using Domain.Opgave.OpgaveModel;
+using Domain.Projekt.ProjektModel;
+using Domain.StamData.Ansat.AnsatModel;
+using Domain.StamData.Kompetencer.KompetenceModel;
+using Domain.StamData.Kunde.KundeModel;
+using Microsoft.EntityFrameworkCore;
 using SqlServerContext.TypeConfiguration;
-using StamData.Domain.Ansat.AnsatModel;
-using StamData.Domain.Kompetencer.KompetenceModel;
-using StamData.Domain.Kunde.KundeModel;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace SqlServerContext

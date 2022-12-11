@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.StamData.Kompetencer.KompetenceModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StamData.Domain.Ansat.AnsatModel;
-using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace SqlServerContext.TypeConfiguration
 {

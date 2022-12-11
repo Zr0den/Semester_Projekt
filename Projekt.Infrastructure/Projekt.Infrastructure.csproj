@@ -13,4 +13,10 @@
     <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="ProjektDomainServices\" />
+    <Folder Include="ProjektRepositories\" />
+  </ItemGroup>
+
 </Project>

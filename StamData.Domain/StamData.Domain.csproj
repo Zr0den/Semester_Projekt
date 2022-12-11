@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Ansat\AnsatDomainServices\" />
+    <Folder Include="Ansat\AnsatModel\" />
     <Folder Include="Kompetencer\KompetenceDomainServices\" />
+    <Folder Include="Kompetencer\KompetenceModel\" />
+    <Folder Include="Kunde\KundeDomainServices\" />
+    <Folder Include="Kunde\KundeModel\" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,9 @@
 ﻿using System.Net.Mime;
+using Application.StamData.Ansat.AnsatCommands;
+using Application.StamData.Ansat.AnsatQueries;
+using Application.StamData.Ansat.AnsatRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StamData.Application.Ansat.AnsatCommands;
-using StamData.Application.Ansat.AnsatQueries;
-using StamData.Application.Ansat.AnsatRepositories;
-using StamData.Domain.Ansat.AnsatModel;
-using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace Semester_Projekt.Api.Controllers
 {

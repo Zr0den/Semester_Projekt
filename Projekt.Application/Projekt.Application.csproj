@@ -12,4 +12,11 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <Folder Include="ProjektCommands\ProjektImplementations\" />
+    <Folder Include="ProjektQueries\ProjektImplementations\" />
+    <Folder Include="ProjektRepositories\" />
+  </ItemGroup>
+
+
 </Project>
