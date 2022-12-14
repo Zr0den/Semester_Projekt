@@ -1,4 +1,5 @@
-﻿using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
+﻿using Semester_Projekt.Infrastructure.Contract.Dto.Booking;
+using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 using Semester_Projekt.Infrastructure.Contract.Dto.Opgave;
 using AnsatCreateRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatCreateRequestDto;
 using AnsatEditRequestDto = Semester_Projekt.Infrastructure.Contract.Dto.Ansat.AnsatEditRequestDto;
@@ -52,7 +53,10 @@ namespace Semester_Projekt.Infrastructure.Contract
         Task<IEnumerable<OpgaveQueryResultDto>> GetAllOpgave();
         Task<OpgaveQueryResultDto> GetOpgave(int opgaveId);
 
-        // Tilføj Kompetence
-        //Task AddAnsatKompetence(AnsatEditRequestDto dto);
+        // Booking
+        Task EditBooking(BookingEditRequestDto bookingEditRequestDto);
+        Task CreateBooking(BookingCreateRequestDto dto);
+        Task<IEnumerable<BookingQueryResultDto>> GetAllBooking();
+        Task<BookingQueryResultDto> GetBooking(int bookingId);
     }
 }

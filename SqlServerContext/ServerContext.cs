@@ -1,4 +1,5 @@
-﻿using Domain.Opgave.OpgaveModel;
+﻿using Domain.Booking.BookingModel;
+using Domain.Opgave.OpgaveModel;
 using Domain.Projekt.ProjektModel;
 using Domain.StamData.Ansat.AnsatModel;
 using Domain.StamData.Kompetencer.KompetenceModel;
@@ -20,6 +21,9 @@ namespace SqlServerContext
         public DbSet<AnsatEntity> AnsatEntities { get; set; }
         public DbSet<ProjektEntity> ProjektEntities { get; set; }
         public DbSet<KundeEntity> KundeEntities { get; set; }
+        public DbSet<BookingEntity> BookingEntities { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -30,6 +34,8 @@ namespace SqlServerContext
             builder.ApplyConfiguration(new ProjektTypeConfiguration());
             builder.ApplyConfiguration(new KundeTypeConfiguration());
             builder.ApplyConfiguration(new OpgaveTypeConfiguration());
+            builder.ApplyConfiguration(new BookingTypeConfiguration());
+
 
 
         }

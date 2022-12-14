@@ -31,7 +31,8 @@
 
                     <td>
                         <a asp-page="./EditProjekt" asp-route-projektId="@projekt.ProjektID">Edit</a>
-                        <button type="button" asp-page-handler="delete" asp-route-projektId="@projekt.ProjektID">Delete</button>
+                        <a> | </a>
+                        <a asp-page="/Booking/CreateBooking">Tilføj booking</a>
                     </td>
                 </tr>
             }

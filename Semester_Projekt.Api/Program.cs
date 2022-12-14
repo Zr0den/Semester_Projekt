@@ -1,3 +1,8 @@
+using Application.Booking.BookingCommands;
+using Application.Booking.BookingCommands.Implementations;
+using Application.Booking.BookingQueries;
+using Application.Booking.BookingQueries.Implementations;
+using Application.Booking.BookingRepositories;
 using Application.Opgave.OpgaveCommands;
 using Application.Opgave.OpgaveCommands.OpgaveImplementations;
 using Application.Opgave.OpgaveQueries;
@@ -25,6 +30,7 @@ using Application.StamData.Kunde.KundeQueries.Implementation;
 using Application.StamData.Kunde.KundeRepositories;
 using Domain.Projekt.ProjektDomainServices;
 using Domain.StamData.Ansat.AnsatDomainServices;
+using Infrastructure.Booking.BookingRepositories;
 using Infrastructure.Opgave.OpgaveRepositories;
 using Infrastructure.Projekt.ProjektDomainServices;
 using Infrastructure.Projekt.ProjektRepositories;
@@ -79,6 +85,12 @@ builder.Services.AddScoped<IOpgaveRepository, OpgaveRepository>();
 builder.Services.AddScoped<IOpgaveGetAllQuery, OpgaveGetAllQuery>();
 builder.Services.AddScoped<IEditOpgaveCommand, EditOpgaveCommand>();
 builder.Services.AddScoped<IOpgaveGetQuery, OpgaveGetQuery>();
+// Booking
+builder.Services.AddScoped<ICreateBookingCommand, CreateBookingCommand>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services.AddScoped<IBookingGetAllQuery, BookingGetAllQuery>();
+builder.Services.AddScoped<IEditBookingCommand, EditBookingCommand>();
+builder.Services.AddScoped<IBookingGetQuery, BookingGetQuery>();
 
 
 

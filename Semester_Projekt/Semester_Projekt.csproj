@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\SqlServerContext\SqlServerContext.csproj" />
     <ProjectReference Include="..\UserContext.Migrations\UserContext.Migrations.csproj" />
     <ProjectReference Include="..\UserContext\UserContext.csproj" />
   </ItemGroup>

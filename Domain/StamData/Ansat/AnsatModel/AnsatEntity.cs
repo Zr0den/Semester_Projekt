@@ -12,7 +12,7 @@ namespace Domain.StamData.Ansat.AnsatModel
         public string AnsatTelefon { get; private set; }
         public string AnsatType { get; private set; }
         public virtual ICollection<KompetenceEntity> KompetenceEntities { get; private set; }
-        public virtual ICollection<ProjektEntity> ProjektEntities { get; private set; }
+        //public virtual ICollection<ProjektEntity> ProjektEntities { get; private set; }
 
 
         internal AnsatEntity()

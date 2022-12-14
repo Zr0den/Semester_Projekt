@@ -1,5 +1,6 @@
 ﻿using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
+using Semester_Projekt.Infrastructure.Contract.Dto.Booking;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 using Semester_Projekt.Infrastructure.Contract.Dto.Opgave;
@@ -133,6 +134,27 @@ namespace Semester_Projekt.Infrastructure.Implementation
         async Task<IEnumerable<OpgaveQueryResultDto>?> IService.GetAllOpgave()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<OpgaveQueryResultDto>>($"api/opgave");
+        }
+
+        // Booking
+        async Task IService.EditBooking(BookingEditRequestDto bookingEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/Booking", bookingEditRequestDto);
+        }
+
+        async Task IService.CreateBooking(BookingCreateRequestDto bookingCreateRequestDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/Booking", bookingCreateRequestDto);
+        }
+
+        async Task<BookingQueryResultDto?> IService.GetBooking(int bookingId)
+        {
+            return await _httpClient.GetFromJsonAsync<BookingQueryResultDto>($"api/Booking/{bookingId}");
+        }
+
+        async Task<IEnumerable<BookingQueryResultDto>?> IService.GetAllBooking()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<BookingQueryResultDto>>($"api/Booking");
         }
 
     }

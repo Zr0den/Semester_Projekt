@@ -1,4 +1,5 @@
-﻿using Domain.Projekt.ProjektDomainServices;
+﻿using Domain.Booking.BookingModel;
+using Domain.Projekt.ProjektDomainServices;
 using Domain.StamData.Ansat.AnsatModel;
 using Domain.StamData.Kunde.KundeModel;
 
@@ -10,6 +11,8 @@ namespace Domain.Projekt.ProjektModel
         public string ProjektName { get; private set; }
         public DateTime OprettelsesDato { get; set; }
         public DateTime EstimeretSlutDato { get; set; }
+        //public virtual ICollection<BookingEntity> BookingEntities { get; set; }
+        
 
 
         public string UserID { get; set; }

@@ -11,5 +11,7 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Projekt
         public int ProjektID { get; set; }
         public string ProjektName { get; set; }
         public string UserID { get; set; }
+        //public List<int> BookingIds { get; set; }
+
     }
 }
