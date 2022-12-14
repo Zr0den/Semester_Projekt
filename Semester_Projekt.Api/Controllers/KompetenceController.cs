@@ -34,8 +34,8 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<KompetenceQueryResultDto>> GetAll()
         {
             var result = _kompetenceGetAllQuery.GetAllKompetence().ToList();
-            if(!result.Any())
-                return NotFound();
+            //if(!result.Any())
+            //    return NotFound();
             return result.ToList();
         }
 

@@ -2,6 +2,8 @@
 {
     public interface IAnsatGetAllQuery
     {
-        IEnumerable<AnsatQueryResultDto> GetAllAnsat(string userId);
+        IEnumerable<AnsatQueryResultDto> GetAllAnsat(string UserID);
+        IEnumerable<AnsatQueryResultDto> GetAllAnsatIndex();
+
     }
 }

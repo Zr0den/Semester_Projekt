@@ -34,8 +34,8 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<ProjektQueryResultDto>> GetAll()
         {
             var result = _projektGetAllQuery.GetAllProjekt().ToList();
-            if (!result.Any())
-                return NotFound();
+            //if (!result.Any())
+            //    return NotFound();
             return result.ToList();
         }
 

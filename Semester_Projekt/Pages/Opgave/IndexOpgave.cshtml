@@ -2,3 +2,32 @@
 @model Semester_Projekt.Pages.Opgave.IndexOpgaveModel
 @{
 }
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Opgave Navn</th>
+            <th>Opgave Type</th>
+            <th>Kompetence ID</th>
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if(Model.OpgaveModel.Any())
+        {
+            foreach (var opgave in Model.OpgaveModel)
+            {
+                <tr>
+                    <td>@opgave.OpgaveID</td>
+                    <td>@opgave.OpgaveName</td>
+                    <td>@opgave.OpgaveType</td>
+                    <td>@opgave.KompetenceID</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <a asp-page="CreateOpgave">Create New</a>
+</form>

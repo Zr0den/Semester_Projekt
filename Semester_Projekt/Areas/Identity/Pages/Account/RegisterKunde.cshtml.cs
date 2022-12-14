@@ -155,7 +155,7 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
                     KundeAdresse = Input.Adresse,
                     KundePostNr = Input.Postnummer,
                     KundeCVR = Input.CVRNummer,
-                    KundeUserId = Input.Email
+                    KUserID = Input.Email
                 });
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -166,13 +166,13 @@ namespace Semester_Projekt.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
+                    var userID = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userID = userID, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
                     await _userManager.AddClaimAsync(user, new Claim(Input.RoleChoice, Input.Email));

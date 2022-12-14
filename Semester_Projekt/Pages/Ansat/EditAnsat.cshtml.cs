@@ -59,7 +59,7 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatID = AnsatModel.AnsatID,
                 AnsatName = AnsatModel.AnsatName,
                 AnsatTelefon = AnsatModel.AnsatTelefon,
-                UserId = User.Identity?.Name ?? string.Empty,
+                UserID = User.Identity?.Name ?? string.Empty,
                 KompetenceIds = Kompetence
             });
 

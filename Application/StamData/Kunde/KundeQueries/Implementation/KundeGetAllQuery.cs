@@ -11,9 +11,13 @@ namespace Application.StamData.Kunde.KundeQueries.Implementation
             _repository = repository;
         }
 
-        IEnumerable<KundeQueryResultDto> IKundeGetAllQuery.GetAllKunde(string kundeUserId)
+        IEnumerable<KundeQueryResultDto> IKundeGetAllQuery.GetAllKunde(string kUserID)
         {
-            return _repository.GetAllKunde(kundeUserId);
+            return _repository.GetAllKunde(kUserID);
+        }
+        IEnumerable<KundeQueryResultDto> IKundeGetAllQuery.GetAllKundeIndex()
+        {
+            return _repository.GetAllKundeIndex();
         }
     }
 }

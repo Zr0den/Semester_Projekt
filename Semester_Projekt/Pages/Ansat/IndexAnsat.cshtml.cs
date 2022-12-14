@@ -31,7 +31,7 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatTelefon = dto.AnsatTelefon,
                 AnsatID = dto.AnsatID,
                 AnsatType = dto.AnsatType,
-                UserId = dto.UserId,
+                UserID = dto.UserID,
             }));
 
 

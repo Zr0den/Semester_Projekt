@@ -11,9 +11,9 @@ namespace Application.StamData.Kunde.KundeQueries.Implementation
             _repository = repository;
         }
 
-        KundeQueryResultDto IKundeGetQuery.GetKunde(int kundeId, string kundeUserId)
+        KundeQueryResultDto IKundeGetQuery.GetKunde(int kundeId, string kUserID)
         {
-            return _repository.GetKunde(kundeId, kundeUserId);
+            return _repository.GetKunde(kundeId, kUserID);
         }
     }
 }

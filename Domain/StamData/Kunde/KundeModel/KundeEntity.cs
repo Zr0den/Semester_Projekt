@@ -1,22 +1,26 @@
-﻿namespace Domain.StamData.Kunde.KundeModel
+﻿using Domain.Projekt.ProjektModel;
+
+namespace Domain.StamData.Kunde.KundeModel
 {
     public class KundeEntity
     {
         public int KundeID { get; set; }
-        public string KundeUserId { get; set; }
+        public string KUserID { get; set; }
         public string KundeName { get; set; }
         public string KundeAdresse { get; set; }
         public int KundePostNr { get; set; }
         public int KundeCVR { get; set; }
+
+        public List<ProjektEntity> ProjektEntities { get; set; }
 
         internal KundeEntity()
         {
             
         }
 
-        public KundeEntity(string kundeUserId, string kundeName, string kundeAdresse, int kundePostNr, int kundeCvr)
+        public KundeEntity(string kUserID, string kundeName, string kundeAdresse, int kundePostNr, int kundeCvr)
         {
-            KundeUserId = kundeUserId;
+            KUserID = kUserID;
             KundeName = kundeName;
             KundeAdresse = kundeAdresse;
             KundeCVR = kundeCvr;

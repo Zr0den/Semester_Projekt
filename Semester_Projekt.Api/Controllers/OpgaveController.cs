@@ -35,8 +35,8 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<OpgaveQueryResultDto>> GetAll()
         {
             var result = _opgaveGetAllQuery.GetAllOpgave().ToList();
-            if (!result.Any())
-                return NotFound();
+            //if (!result.Any())
+            //    return NotFound();
             return result.ToList();
         }
 

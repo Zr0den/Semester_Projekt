@@ -23,8 +23,10 @@ using Application.StamData.Kunde.KundeCommands.Implementation;
 using Application.StamData.Kunde.KundeQueries;
 using Application.StamData.Kunde.KundeQueries.Implementation;
 using Application.StamData.Kunde.KundeRepositories;
+using Domain.Projekt.ProjektDomainServices;
 using Domain.StamData.Ansat.AnsatDomainServices;
 using Infrastructure.Opgave.OpgaveRepositories;
+using Infrastructure.Projekt.ProjektDomainServices;
 using Infrastructure.Projekt.ProjektRepositories;
 using Infrastructure.StamData.Ansat.AnsatDomainServices;
 using Infrastructure.StamData.Ansat.AnsatRepositories;
@@ -63,6 +65,8 @@ builder.Services.AddScoped<IProjektRepository, ProjektRepository>();
 builder.Services.AddScoped<IProjektGetAllQuery, ProjektGetAllQuery>();
 builder.Services.AddScoped<IEditProjektCommand, EditProjektCommand>();
 builder.Services.AddScoped<IProjektGetQuery, ProjektGetQuery>();
+builder.Services.AddScoped<IProjektDomainService, ProjektDomainService>();
+
 // Kunde
 builder.Services.AddScoped<ICreateKundeCommand, CreateKundeCommand>();
 builder.Services.AddScoped<IKundeRepository, KundeRepository>();

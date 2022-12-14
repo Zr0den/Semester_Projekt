@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SqlServerContext.Migrations.Migrations
 {
-    public partial class NameOfTheegege : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,9 @@ namespace SqlServerContext.Migrations.Migrations
                 name: "Kunde");
 
             migrationBuilder.EnsureSchema(
+                name: "Opgave");
+
+            migrationBuilder.EnsureSchema(
                 name: "Projekt");
 
             migrationBuilder.CreateTable(
@@ -28,7 +31,7 @@ namespace SqlServerContext.Migrations.Migrations
                 {
                     AnsatID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnsatName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnsatTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnsatType = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -59,7 +62,7 @@ namespace SqlServerContext.Migrations.Migrations
                 {
                     KundeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    KundeUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KUserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KundeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KundeAdresse = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KundePostNr = table.Column<int>(type: "int", nullable: false),
@@ -71,21 +74,19 @@ namespace SqlServerContext.Migrations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Projekt",
-                schema: "Projekt",
+                name: "Opgave",
+                schema: "Opgave",
                 columns: table => new
                 {
-                    ProjektID = table.Column<int>(type: "int", nullable: false)
+                    OpgaveID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjektName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SælgerID = table.Column<int>(type: "int", nullable: false),
-                    KundeID = table.Column<int>(type: "int", nullable: false),
-                    OprettelsesDato = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EstimeretSlutDato = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    OpgaveName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OpgaveType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KompetenceID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projekt", x => x.ProjektID);
+                    table.PrimaryKey("PK_Opgave", x => x.OpgaveID);
                 });
 
             migrationBuilder.CreateTable(
@@ -114,10 +115,54 @@ namespace SqlServerContext.Migrations.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Projekt",
+                schema: "Projekt",
+                columns: table => new
+                {
+                    ProjektID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjektName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OprettelsesDato = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstimeretSlutDato = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KundeID = table.Column<int>(type: "int", nullable: false),
+                    KIDKundeID = table.Column<int>(type: "int", nullable: true),
+                    AnsatEntityAnsatID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projekt", x => x.ProjektID);
+                    table.ForeignKey(
+                        name: "FK_Projekt_Ansat_AnsatEntityAnsatID",
+                        column: x => x.AnsatEntityAnsatID,
+                        principalSchema: "Ansat",
+                        principalTable: "Ansat",
+                        principalColumn: "AnsatID");
+                    table.ForeignKey(
+                        name: "FK_Projekt_Kunde_KIDKundeID",
+                        column: x => x.KIDKundeID,
+                        principalSchema: "Kunde",
+                        principalTable: "Kunde",
+                        principalColumn: "KundeID");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AnsatEntityKompetenceEntity_KompetenceEntitiesKompetenceID",
                 table: "AnsatEntityKompetenceEntity",
                 column: "KompetenceEntitiesKompetenceID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projekt_AnsatEntityAnsatID",
+                schema: "Projekt",
+                table: "Projekt",
+                column: "AnsatEntityAnsatID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projekt_KIDKundeID",
+                schema: "Projekt",
+                table: "Projekt",
+                column: "KIDKundeID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -126,20 +171,24 @@ namespace SqlServerContext.Migrations.Migrations
                 name: "AnsatEntityKompetenceEntity");
 
             migrationBuilder.DropTable(
-                name: "Kunde",
-                schema: "Kunde");
+                name: "Opgave",
+                schema: "Opgave");
 
             migrationBuilder.DropTable(
                 name: "Projekt",
                 schema: "Projekt");
 
             migrationBuilder.DropTable(
+                name: "Kompetance",
+                schema: "Kompetence");
+
+            migrationBuilder.DropTable(
                 name: "Ansat",
                 schema: "Ansat");
 
             migrationBuilder.DropTable(
-                name: "Kompetance",
-                schema: "Kompetence");
+                name: "Kunde",
+                schema: "Kunde");
         }
     }
 }

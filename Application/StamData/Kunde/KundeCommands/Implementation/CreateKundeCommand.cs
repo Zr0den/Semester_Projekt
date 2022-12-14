@@ -14,7 +14,7 @@ namespace Application.StamData.Kunde.KundeCommands.Implementation
 
         void ICreateKundeCommand.CreateKunde(KundeCreateRequestDto kundeCreateRequestDto)
         {
-            var kunde = new KundeEntity(kundeCreateRequestDto.KundeUserId, kundeCreateRequestDto.KundeName, kundeCreateRequestDto.KundeAdresse, kundeCreateRequestDto.KundePostNr, kundeCreateRequestDto.KundeCVR);
+            var kunde = new KundeEntity(kundeCreateRequestDto.KUserID, kundeCreateRequestDto.KundeName, kundeCreateRequestDto.KundeAdresse, kundeCreateRequestDto.KundePostNr, kundeCreateRequestDto.KundeCVR);
 
             _repository.AddKunde(kunde);
         }

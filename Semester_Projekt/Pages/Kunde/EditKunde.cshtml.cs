@@ -47,7 +47,7 @@ namespace Semester_Projekt.Pages.Kunde
                 KundeName = KundeModel.KundeName,
                 KundeCVR = KundeModel.KundeCVR,
                 KundePostNr = KundeModel.KundePostNr,
-                KundeUserId =  User.Identity?.Name ?? string.Empty,
+                KUserID =  User.Identity?.Name ?? string.Empty,
             });
 
             return RedirectToPage("./IndexKunde");

@@ -2,6 +2,6 @@
 {
     public interface IKundeGetQuery
     {
-        KundeQueryResultDto GetKunde(int kundeId, string kundeUserId);
+        KundeQueryResultDto GetKunde(int kundeId, string kUserID);
     }
 }

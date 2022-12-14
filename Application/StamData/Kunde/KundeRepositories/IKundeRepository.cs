@@ -8,7 +8,9 @@ namespace Application.StamData.Kunde.KundeRepositories
         void AddKunde(KundeEntity kunde);
         KundeEntity LoadKunde(int kundeId);
         void UpdateKunde(KundeEntity model);
-        IEnumerable<KundeQueryResultDto> GetAllKunde(string kundeUserId);
-        KundeQueryResultDto GetKunde(int kundeId, string kundeUserId);
+        IEnumerable<KundeQueryResultDto> GetAllKunde(string kUserID);
+        IEnumerable<KundeQueryResultDto> GetAllKundeIndex();
+
+        KundeQueryResultDto GetKunde(int kundeId, string kUserID);
     }
 }

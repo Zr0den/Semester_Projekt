@@ -26,7 +26,7 @@ namespace Semester_Projekt.Pages.Projekt
                 ProjektID = dto.ProjektID,
                 ProjektName = dto.ProjektName,
                 KundeID = dto.KundeID,
-                SælgerID = dto.SælgerID
+                UserID = dto.UserID,
             };
 
             return Page();
