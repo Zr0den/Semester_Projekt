@@ -1,37 +1,47 @@
+using Application.Booking.BookingCommands;
+using Application.Booking.BookingCommands.Implementations;
+using Application.Booking.BookingQueries;
+using Application.Booking.BookingQueries.Implementations;
+using Application.Booking.BookingRepositories;
+using Application.Opgave.OpgaveCommands;
+using Application.Opgave.OpgaveCommands.OpgaveImplementations;
+using Application.Opgave.OpgaveQueries;
+using Application.Opgave.OpgaveQueries.OpgaveImplementations;
+using Application.Opgave.OpgaveRepositories;
+using Application.Projekt.ProjektCommands;
+using Application.Projekt.ProjektCommands.ProjektImplementations;
+using Application.Projekt.ProjektQueries;
+using Application.Projekt.ProjektQueries.ProjektImplementations;
+using Application.Projekt.ProjektRepositories;
+using Application.StamData.Ansat.AnsatCommands;
+using Application.StamData.Ansat.AnsatCommands.AnsatImplementations;
+using Application.StamData.Ansat.AnsatQueries;
+using Application.StamData.Ansat.AnsatQueries.AnsatImplementations;
+using Application.StamData.Ansat.AnsatRepositories;
+using Application.StamData.Kompetencer.KompetenceCommands;
+using Application.StamData.Kompetencer.KompetenceCommands.KompetenceImplementations;
+using Application.StamData.Kompetencer.KompetenceQueries;
+using Application.StamData.Kompetencer.KompetenceQueries.KompetenceImplementations;
+using Application.StamData.Kompetencer.KompetenceRepositories;
+using Application.StamData.Kunde.KundeCommands;
+using Application.StamData.Kunde.KundeCommands.Implementation;
+using Application.StamData.Kunde.KundeQueries;
+using Application.StamData.Kunde.KundeQueries.Implementation;
+using Application.StamData.Kunde.KundeRepositories;
+using Domain.Booking.BookingDomainServices;
+using Domain.Projekt.ProjektDomainServices;
+using Domain.StamData.Ansat.AnsatDomainServices;
+using Infrastructure.Booking.BookingDomainServices;
+using Infrastructure.Booking.BookingRepositories;
+using Infrastructure.Opgave.OpgaveRepositories;
+using Infrastructure.Projekt.ProjektDomainServices;
+using Infrastructure.Projekt.ProjektRepositories;
+using Infrastructure.StamData.Ansat.AnsatDomainServices;
+using Infrastructure.StamData.Ansat.AnsatRepositories;
+using Infrastructure.StamData.Kompetencer.KompetenceRepositories;
+using Infrastructure.StamData.Kunde.KundeRepositories;
 using Microsoft.EntityFrameworkCore;
-using Opgave.Application.OpgaveCommands;
-using Opgave.Application.OpgaveCommands.OpgaveImplementations;
-using Opgave.Application.OpgaveQueries;
-using Opgave.Application.OpgaveQueries.OpgaveImplementations;
-using Opgave.Application.OpgaveRepositories;
-using Opgave.Infrastructure.OpgaveRepositories;
-using Projekt.Application.ProjektCommands;
-using Projekt.Application.ProjektCommands.ProjektImplementations;
-using Projekt.Application.ProjektQueries;
-using Projekt.Application.ProjektQueries.ProjektImplementations;
-using Projekt.Application.ProjektRepositories;
-using Projekt.Infrastructure.ProjektRepositories;
 using SqlServerContext;
-using StamData.Application.Ansat.AnsatCommands;
-using StamData.Application.Ansat.AnsatCommands.AnsatImplementations;
-using StamData.Application.Ansat.AnsatQueries;
-using StamData.Application.Ansat.AnsatQueries.AnsatImplementations;
-using StamData.Application.Ansat.AnsatRepositories;
-using StamData.Application.Kompetencer.KompetenceCommands;
-using StamData.Application.Kompetencer.KompetenceCommands.KompetenceImplementations;
-using StamData.Application.Kompetencer.KompetenceQueries;
-using StamData.Application.Kompetencer.KompetenceQueries.KompetenceImplementations;
-using StamData.Application.Kompetencer.KompetenceRepositories;
-using StamData.Application.Kunde.KundeCommands;
-using StamData.Application.Kunde.KundeCommands.Implementation;
-using StamData.Application.Kunde.KundeQueries;
-using StamData.Application.Kunde.KundeQueries.Implementation;
-using StamData.Application.Kunde.KundeRepositories;
-using StamData.Domain.Ansat.AnsatDomainServices;
-using StamData.Infrastructure.Ansat.AnsatDomainServices;
-using StamData.Infrastructure.Ansat.AnsatRepositories;
-using StamData.Infrastructure.Kompetencer.KompetenceRepositories;
-using StamData.Infrastructure.Kunde.KundeRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +73,8 @@ builder.Services.AddScoped<IProjektRepository, ProjektRepository>();
 builder.Services.AddScoped<IProjektGetAllQuery, ProjektGetAllQuery>();
 builder.Services.AddScoped<IEditProjektCommand, EditProjektCommand>();
 builder.Services.AddScoped<IProjektGetQuery, ProjektGetQuery>();
+builder.Services.AddScoped<IProjektDomainService, ProjektDomainService>();
+
 // Kunde
 builder.Services.AddScoped<ICreateKundeCommand, CreateKundeCommand>();
 builder.Services.AddScoped<IKundeRepository, KundeRepository>();
@@ -75,6 +87,15 @@ builder.Services.AddScoped<IOpgaveRepository, OpgaveRepository>();
 builder.Services.AddScoped<IOpgaveGetAllQuery, OpgaveGetAllQuery>();
 builder.Services.AddScoped<IEditOpgaveCommand, EditOpgaveCommand>();
 builder.Services.AddScoped<IOpgaveGetQuery, OpgaveGetQuery>();
+// Booking
+builder.Services.AddScoped<ICreateBookingCommand, CreateBookingCommand>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services.AddScoped<IBookingGetAllQuery, BookingGetAllQuery>();
+builder.Services.AddScoped<IEditBookingCommand, EditBookingCommand>();
+builder.Services.AddScoped<IBookingGetQuery, BookingGetQuery>();
+builder.Services.AddScoped<IBookingDomainService, BookingDomainService>();
+
+
 
 
 

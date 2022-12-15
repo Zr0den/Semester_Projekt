@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Opgave.Domain\Opgave.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="OpgaveCommands\OpgaveImplementations\" />
+    <Folder Include="OpgaveQueries\OpgaveImplementations\" />
+    <Folder Include="OpgaveRepositories\" />
+  </ItemGroup>
+
 </Project>

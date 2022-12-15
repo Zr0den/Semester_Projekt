@@ -1,11 +1,9 @@
 ﻿using System.Net.Mime;
+using Application.StamData.Ansat.AnsatCommands;
+using Application.StamData.Ansat.AnsatQueries;
+using Application.StamData.Ansat.AnsatRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StamData.Application.Ansat.AnsatCommands;
-using StamData.Application.Ansat.AnsatQueries;
-using StamData.Application.Ansat.AnsatRepositories;
-using StamData.Domain.Ansat.AnsatModel;
-using StamData.Domain.Kompetencer.KompetenceModel;
 
 namespace Semester_Projekt.Api.Controllers
 {
@@ -37,20 +35,21 @@ namespace Semester_Projekt.Api.Controllers
         {
             _createAnsatCommand.CreateAnsat(request);
         }
-        [HttpGet("{userId}")]
-        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll(string userId)
+        [HttpGet("{userID}")]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll(string userID)
         {
-            var result = _ansatGetAllQuery.GetAllAnsat(userId).ToList();
-            if (!result.Any())
-                return NotFound();
+            var result = _ansatGetAllQuery.GetAllAnsat(userID).ToList();
 
             return result.ToList();
         }
-        [HttpGet("{ansatId}/{userId}")]
-        public AnsatQueryResultDto GetAnsat(int ansatId, string userId)
+
+
+        [HttpGet("{ansatId}/{userID}")]
+        public AnsatQueryResultDto GetAnsat(int ansatId, string userID)
         {
-            return _ansatGetQuery.GetAnsat(ansatId, userId);
+            return _ansatGetQuery.GetAnsat(ansatId, userID);
         }
+
 
         [HttpPut]
         public void Put([FromBody] AnsatEditRequestDto request)
@@ -58,10 +57,22 @@ namespace Semester_Projekt.Api.Controllers
             _editAnsatCommand.EditAnsat(request);
         }
 
-        [HttpPost("{ansatId}")]
-        public void PostAnsatKompetence(int ansatId)
+        [HttpGet]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAllIndex()
         {
-            _ansatRepository.AddAnsatKompetence(ansatId);
+            var result = _ansatGetAllQuery.GetAllAnsatIndex().ToList();
+            //if (!result.Any())
+            //    return NotFound();
+
+            return result.ToList();
+        }
+
+        [HttpGet("Opgave/{opgaveId}")]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            var result = _ansatGetAllQuery.GetAllAnsatDerKanLaveOpgaven(opgaveId).ToList();
+            
+            return result.ToList();
         }
     }
 }

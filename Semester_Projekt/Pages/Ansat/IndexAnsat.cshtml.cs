@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NuGet.ProjectModel;
 using Semester_Projekt.Infrastructure.Contract;
+using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
 using Semester_Projekt.Pages.Kompetence;
 
 namespace Semester_Projekt.Pages.Ansat
@@ -16,6 +17,8 @@ namespace Semester_Projekt.Pages.Ansat
         }
 
         [BindProperty] public List<AnsatIndexViewModel> AnsatIndexViewModel { get; set; } = new();
+        //[BindProperty] public List<AnsatQueryResultDto> AnsatKompetencer { get; set; } = new();
+
         [BindProperty] public List<KompetenceIndexViewModel> KompetenceIndexViewModel { get; set; } = new();
 
 
@@ -31,11 +34,20 @@ namespace Semester_Projekt.Pages.Ansat
                 AnsatTelefon = dto.AnsatTelefon,
                 AnsatID = dto.AnsatID,
                 AnsatType = dto.AnsatType,
-                UserId = dto.UserId,
+                UserID = dto.UserID,
+                
             }));
 
+            //AnsatKompetencer = new List<AnsatQueryResultDto>();
 
-            
+            //businessModel?.ToList().ForEach(k => AnsatKompetencer.Add(new AnsatQueryResultDto
+            //{
+            //    KompetenceEntities = k.KompetenceEntities,
+            //}));
+
+
+
+
         }
     }
 }

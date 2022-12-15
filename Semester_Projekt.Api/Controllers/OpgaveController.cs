@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
+using Application.Opgave.OpgaveCommands;
+using Application.Opgave.OpgaveQueries;
 using Microsoft.AspNetCore.Mvc;
-using Opgave.Application.OpgaveCommands;
-using Opgave.Application.OpgaveQueries;
 
 
 namespace Semester_Projekt.Api.Controllers
@@ -35,8 +35,8 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<OpgaveQueryResultDto>> GetAll()
         {
             var result = _opgaveGetAllQuery.GetAllOpgave().ToList();
-            if (!result.Any())
-                return NotFound();
+            //if (!result.Any())
+            //    return NotFound();
             return result.ToList();
         }
 

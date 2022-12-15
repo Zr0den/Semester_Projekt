@@ -1,6 +1,4 @@
-﻿using StamData.Domain.Ansat.AnsatModel;
-
-namespace Semester_Projekt.Infrastructure.Contract.Dto.Kompetence
+﻿namespace Semester_Projekt.Infrastructure.Contract.Dto.Kompetence
 {
     public class KompetenceCreateRequestDto
     {

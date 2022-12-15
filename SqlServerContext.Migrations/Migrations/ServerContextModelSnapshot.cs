@@ -37,7 +37,63 @@ namespace SqlServerContext.Migrations.Migrations
                     b.ToTable("AnsatEntityKompetenceEntity");
                 });
 
-            modelBuilder.Entity("Projekt.Domain.ProjektModel.ProjektEntity", b =>
+            modelBuilder.Entity("Domain.Booking.BookingModel.BookingEntity", b =>
+                {
+                    b.Property<int>("BookingID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingID"), 1L, 1);
+
+                    b.Property<int>("AnsatID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BookingName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OpgaveID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjektID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SlutDato")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDato")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("BookingID");
+
+                    b.ToTable("Booking", "Booking");
+                });
+
+            modelBuilder.Entity("Domain.Opgave.OpgaveModel.OpgaveEntity", b =>
+                {
+                    b.Property<int>("OpgaveID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OpgaveID"), 1L, 1);
+
+                    b.Property<int>("KompetenceID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OpgaveName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpgaveType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OpgaveID");
+
+                    b.ToTable("Opgave", "Opgave");
+                });
+
+            modelBuilder.Entity("Domain.Projekt.ProjektModel.ProjektEntity", b =>
                 {
                     b.Property<int>("ProjektID")
                         .ValueGeneratedOnAdd()
@@ -47,6 +103,9 @@ namespace SqlServerContext.Migrations.Migrations
 
                     b.Property<DateTime>("EstimeretSlutDato")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("KIDKundeID")
+                        .HasColumnType("int");
 
                     b.Property<int>("KundeID")
                         .HasColumnType("int");
@@ -58,15 +117,18 @@ namespace SqlServerContext.Migrations.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SælgerID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProjektID");
+
+                    b.HasIndex("KIDKundeID");
 
                     b.ToTable("Projekt", "Projekt");
                 });
 
-            modelBuilder.Entity("StamData.Domain.Ansat.AnsatModel.AnsatEntity", b =>
+            modelBuilder.Entity("Domain.StamData.Ansat.AnsatModel.AnsatEntity", b =>
                 {
                     b.Property<int>("AnsatID")
                         .ValueGeneratedOnAdd()
@@ -86,7 +148,7 @@ namespace SqlServerContext.Migrations.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -95,7 +157,7 @@ namespace SqlServerContext.Migrations.Migrations
                     b.ToTable("Ansat", "Ansat");
                 });
 
-            modelBuilder.Entity("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", b =>
+            modelBuilder.Entity("Domain.StamData.Kompetencer.KompetenceModel.KompetenceEntity", b =>
                 {
                     b.Property<int>("KompetenceID")
                         .ValueGeneratedOnAdd()
@@ -107,18 +169,28 @@ namespace SqlServerContext.Migrations.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.HasKey("KompetenceID");
 
                     b.ToTable("Kompetance", "Kompetence");
                 });
 
-            modelBuilder.Entity("StamData.Domain.Kunde.KundeModel.KundeEntity", b =>
+            modelBuilder.Entity("Domain.StamData.Kunde.KundeModel.KundeEntity", b =>
                 {
                     b.Property<int>("KundeID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KundeID"), 1L, 1);
+
+                    b.Property<string>("KUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KundeAdresse")
                         .IsRequired()
@@ -134,10 +206,6 @@ namespace SqlServerContext.Migrations.Migrations
                     b.Property<int>("KundePostNr")
                         .HasColumnType("int");
 
-                    b.Property<string>("KundeUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("KundeID");
 
                     b.ToTable("Kunde", "Kunde");
@@ -145,17 +213,31 @@ namespace SqlServerContext.Migrations.Migrations
 
             modelBuilder.Entity("AnsatEntityKompetenceEntity", b =>
                 {
-                    b.HasOne("StamData.Domain.Ansat.AnsatModel.AnsatEntity", null)
+                    b.HasOne("Domain.StamData.Ansat.AnsatModel.AnsatEntity", null)
                         .WithMany()
                         .HasForeignKey("AnsatEntitiesAnsatID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StamData.Domain.Kompetencer.KompetenceModel.KompetenceEntity", null)
+                    b.HasOne("Domain.StamData.Kompetencer.KompetenceModel.KompetenceEntity", null)
                         .WithMany()
                         .HasForeignKey("KompetenceEntitiesKompetenceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Projekt.ProjektModel.ProjektEntity", b =>
+                {
+                    b.HasOne("Domain.StamData.Kunde.KundeModel.KundeEntity", "KID")
+                        .WithMany("ProjektEntities")
+                        .HasForeignKey("KIDKundeID");
+
+                    b.Navigation("KID");
+                });
+
+            modelBuilder.Entity("Domain.StamData.Kunde.KundeModel.KundeEntity", b =>
+                {
+                    b.Navigation("ProjektEntities");
                 });
 #pragma warning restore 612, 618
         }

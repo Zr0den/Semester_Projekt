@@ -1,0 +1,35 @@
+﻿@page
+@using Domain.StamData.Ansat.AnsatModel
+@model Semester_Projekt.Pages.Booking.EditBookingModel
+@{
+}
+<h2>Tilføj ansat til booking</h2>
+<article class="row">
+    <form method="post">
+        <section>
+            <table class="table"´>
+                <thead>
+                <tr>
+                    <th>Tilføj</th>
+                    <th>Ansat</th>
+                    <th>Kompetenceområde</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if (Model.AnsatIndexViewModel.Any())
+                {
+                    foreach (var ansat in Model.AnsatIndexViewModel)
+                    {
+                        <tr>
+                            <td><input type="radio" id="@ansat.AnsatID" name="BookingAnsatID" value="@ansat.AnsatID"></td>
+                            <td><label for="@ansat.AnsatID">@ansat.AnsatName</label><br></td>
+                            <td><label for="@ansat.AnsatID">@ansat.AnsatType</label><br></td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </section>
+        <button type="submit" class="btn btn-default">Opret Booking</button>
+    </form>
+</article>

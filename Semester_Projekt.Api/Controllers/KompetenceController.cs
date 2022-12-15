@@ -1,7 +1,7 @@
 ﻿using System.Net.Mime;
+using Application.StamData.Kompetencer.KompetenceCommands;
+using Application.StamData.Kompetencer.KompetenceQueries;
 using Microsoft.AspNetCore.Mvc;
-using StamData.Application.Kompetencer.KompetenceCommands;
-using StamData.Application.Kompetencer.KompetenceQueries;
 
 namespace Semester_Projekt.Api.Controllers
 {
@@ -34,8 +34,8 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<KompetenceQueryResultDto>> GetAll()
         {
             var result = _kompetenceGetAllQuery.GetAllKompetence().ToList();
-            if(!result.Any())
-                return NotFound();
+            //if(!result.Any())
+            //    return NotFound();
             return result.ToList();
         }
 

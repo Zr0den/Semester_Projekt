@@ -10,7 +10,7 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Projekt
     {
         public int ProjektID { get; set; }
         public string ProjektName { get; set; }
-        public int SælgerID { get; set; }
+        public string UserID { get; set; }
         public int KundeID { get; set; }
         public DateTime OprettelsesDato { get; set; }
         public DateTime EstimeretSlutDato { get; set; }

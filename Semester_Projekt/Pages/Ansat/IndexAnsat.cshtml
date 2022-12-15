@@ -25,17 +25,31 @@
                     <td>@ansat.AnsatName</td>
                     <td>@ansat.AnsatTelefon</td>
                     <td>@ansat.AnsatType</td>
-                    @*@foreach (var kompetence in @Model.KompetenceIndexViewModel)
-                    {
-                        <td>@kompetence.KompetenceName</td>
-                    }*@
+                    
                     <td>
                         <a asp-page="./EditAnsat" asp-route-ansatId="@ansat.AnsatID">Edit</a>
-                        <button type="button" asp-page-handler="delete" asp-route-ansatId="@ansat.AnsatID">Delete</button>
                     </td>
                 </tr>
             }
         }
+        
         </tbody>
+        @*<thead>
+        <tr>
+            <th>Kompetencer</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.AnsatKompetencer.Any())
+        {
+            @foreach (var k in Model.AnsatKompetencer)
+            {
+                <tr>
+                    <td>@k.KompetenceEntities</td>
+                </tr>
+            }
+        }
+        </tbody>*@
     </table>
 </form>

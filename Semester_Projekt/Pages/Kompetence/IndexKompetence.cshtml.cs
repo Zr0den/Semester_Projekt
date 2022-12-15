@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
 using Semester_Projekt.Pages.Ansat;
-using StamData.Domain.Ansat.AnsatModel;
 
 namespace Semester_Projekt.Pages.Kompetence
 {

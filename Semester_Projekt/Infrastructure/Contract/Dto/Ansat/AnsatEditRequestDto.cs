@@ -1,6 +1,4 @@
-﻿using StamData.Domain.Kompetencer.KompetenceModel;
-
-namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
+﻿namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
 {
     public class AnsatEditRequestDto
     {
@@ -8,8 +6,8 @@ namespace Semester_Projekt.Infrastructure.Contract.Dto.Ansat
         public string AnsatName { get; set; }
         public string AnsatType { get; set; }
         public string AnsatTelefon { get; set; }
-        public string UserId { get; set; }
-        public List<int> KompetenceIds { get; set; }
+        public string UserID { get; set; }
+        public List<int>? KompetenceIds { get; set; }
 
     }
 

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.StamData.Ansat.AnsatModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StamData.Domain.Ansat.AnsatModel;
 
 
 namespace SqlServerContext.TypeConfiguration

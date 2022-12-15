@@ -1,5 +1,6 @@
 ﻿using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Ansat;
+using Semester_Projekt.Infrastructure.Contract.Dto.Booking;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kompetence;
 using Semester_Projekt.Infrastructure.Contract.Dto.Kunde;
 using Semester_Projekt.Infrastructure.Contract.Dto.Opgave;
@@ -17,11 +18,11 @@ namespace Semester_Projekt.Infrastructure.Implementation
             _httpClient = httpClient;
         }
         // AnsatKompetence
-        async Task IService.AddAnsatKompetence(AnsatEditRequestDto ansatEditRequestDto)
-        {
-            await _httpClient.PutAsJsonAsync("api/ansat", ansatEditRequestDto);
+        //async Task IService.AddAnsatKompetence(AnsatEditRequestDto ansatEditRequestDto)
+        //{
+        //    await _httpClient.PutAsJsonAsync("api/ansat", ansatEditRequestDto);
 
-        }
+        //}
         //Ansat
         async Task IService.EditAnsat(AnsatEditRequestDto ansatEditRequestDto)
         {
@@ -32,14 +33,24 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             await _httpClient.PostAsJsonAsync("api/ansat", ansatCreateRequestDto);
         }
-        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId, string userId)
+        async Task<AnsatQueryResultDto?> IService.GetAnsat(int ansatId, string userID)
         {
-            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userId}");
+            return await _httpClient.GetFromJsonAsync<AnsatQueryResultDto>($"api/ansat/{ansatId}/{userID}");
         }
 
-        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat(string userId)
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsat(string userID)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userId}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/{userID}");
+        }
+
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsatIndex()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat");
+        }
+
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/Opgave/{opgaveId}");
         }
 
 
@@ -96,14 +107,18 @@ namespace Semester_Projekt.Infrastructure.Implementation
         {
             await _httpClient.PostAsJsonAsync("api/kunde", kundeCreateRequestDto);
         }
-        async Task<KundeQueryResultDto?> IService.GetKunde(int kundeId, string kundeUserId)
+        async Task<KundeQueryResultDto?> IService.GetKunde(int kundeId, string kUserID)
         {
-            return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/kunde/{kundeId}/{kundeUserId}");
+            return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/kunde/{kundeId}/{kUserID}");
         }
 
-        async Task<IEnumerable<KundeQueryResultDto>?> IService.GetAllKunde(string kundeUserId)
+        async Task<IEnumerable<KundeQueryResultDto>?> IService.GetAllKunde(string kUserID)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<KundeQueryResultDto>>($"api/kunde/{kundeUserId}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<KundeQueryResultDto>>($"api/kunde/{kUserID}");
+        }
+        async Task<IEnumerable<KundeQueryResultDto>?> IService.GetAllKundeIndex()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<KundeQueryResultDto>>($"api/kunde");
         }
 
         // Opgave
@@ -125,6 +140,27 @@ namespace Semester_Projekt.Infrastructure.Implementation
         async Task<IEnumerable<OpgaveQueryResultDto>?> IService.GetAllOpgave()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<OpgaveQueryResultDto>>($"api/opgave");
+        }
+
+        // Booking
+        async Task IService.EditBooking(BookingEditRequestDto bookingEditRequestDto)
+        {
+            await _httpClient.PutAsJsonAsync("api/Booking", bookingEditRequestDto);
+        }
+
+        async Task IService.CreateBooking(BookingCreateRequestDto bookingCreateRequestDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/Booking", bookingCreateRequestDto);
+        }
+
+        async Task<BookingQueryResultDto?> IService.GetBooking(int bookingId)
+        {
+            return await _httpClient.GetFromJsonAsync<BookingQueryResultDto>($"api/Booking/{bookingId}");
+        }
+
+        async Task<IEnumerable<BookingQueryResultDto>?> IService.GetAllBooking()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<BookingQueryResultDto>>($"api/Booking");
         }
 
     }

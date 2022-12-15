@@ -28,7 +28,7 @@ namespace Semester_Projekt.Pages.Kunde
                 KundeAdresse = dto.KundeAdresse,
                 KundeID = dto.KundeID,
                 KundeCVR = dto.KundeCVR,
-                KundeUserID = dto.KundeUserId,
+                KUserID = dto.KUserID,
                 KundePostNr = dto.KundePostNr
             }));
 

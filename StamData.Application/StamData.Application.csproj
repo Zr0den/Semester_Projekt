@@ -10,4 +10,16 @@
     <ProjectReference Include="..\StamData.Domain\StamData.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Ansat\AnsatCommands\AnsatImplementations\" />
+    <Folder Include="Ansat\AnsatQueries\AnsatImplementations\" />
+    <Folder Include="Ansat\AnsatRepositories\" />
+    <Folder Include="Kompetencer\KompetenceCommands\KompetenceImplementations\" />
+    <Folder Include="Kompetencer\KompetenceQueries\KompetenceImplementations\" />
+    <Folder Include="Kompetencer\KompetenceRepositories\" />
+    <Folder Include="Kunde\KundeCommands\Implementation\" />
+    <Folder Include="Kunde\KundeQueries\Implementation\" />
+    <Folder Include="Kunde\KundeRepositories\" />
+  </ItemGroup>
+
 </Project>

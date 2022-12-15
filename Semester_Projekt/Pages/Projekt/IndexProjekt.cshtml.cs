@@ -24,7 +24,7 @@ namespace Semester_Projekt.Pages.Projekt
             {
                 ProjektName = dto.ProjektName,
                 ProjektID = dto.ProjektID,
-                SælgerID = dto.SælgerID,
+                UserID = dto.UserID,
                 KundeID = dto.KundeID,
                 OprettelsesDato = dto.OprettelsesDato,
                 EstimeretSlutDato = dto.EstimeretSlutDato,
