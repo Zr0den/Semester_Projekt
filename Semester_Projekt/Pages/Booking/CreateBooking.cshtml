@@ -10,31 +10,46 @@
             <input asp-for="BookingProjektID" class="form-control"/>
             <span asp-validation-for="BookingProjektID" class="text-danger"></span>
         </section>
-        <section>
+        <section class="form-group">
+            <label asp-for="BookingModel.BookingName"></label>
+            <input asp-for="BookingModel.BookingName" class="form-control"/>
+            <span asp-validation-for="BookingModel.BookingName" class="text-danger"></span>
+        </section>
+        <section class="form-group">
+            <label asp-for="BookingModel.StartDato"></label>
+            <input asp-for="BookingModel.StartDato" class="form-control"/>
+            <span asp-validation-for="BookingModel.StartDato" class="text-danger"></span>
+        </section>
+        <section class="form-group">
+            <label asp-for="BookingModel.SlutDato"></label>
+            <input asp-for="BookingModel.SlutDato" class="form-control"/>
+            <span asp-validation-for="BookingModel.SlutDato" class="text-danger"></span>
+        </section>
+        
+            <section>
             <table class="table"´>
                 <thead>
                 <tr>
                     <th>Tilføj</th>
-                    <th>Opgave</th>
+                    <th>Ansat</th>
                     <th>Kompetenceområde</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if (Model.OpgaveModel.Any())
+                @if (Model.AnsatIndexViewModel.Any())
                 {
-                    foreach (var opgave in Model.OpgaveModel)
+                    foreach (var ansat in Model.AnsatIndexViewModel)
                     {
                         <tr>
-                            <td><input type="radio" id="@opgave.OpgaveID" name="BookingOpgaveID" value="@opgave.OpgaveID"></td>
-                            <td><input type="hidden" id="@opgave.OpgaveID" name="BookingOpgaveName" value="@opgave.OpgaveName"></td>
-                            <td><label for="@opgave.OpgaveID">@opgave.OpgaveName</label><br></td>
-                            <td><label for="@opgave.OpgaveID">@opgave.OpgaveType</label><br></td>
+                            <td><input type="radio" id="@ansat.AnsatID" name="BookingAnsatID" value="@ansat.AnsatID"></td>
+                            <td><label for="@ansat.AnsatID">@ansat.AnsatName</label><br></td>
+                            <td><label for="@ansat.AnsatID">@ansat.AnsatType</label><br></td>
                         </tr>
                     }
                 }
                 </tbody>
             </table>
         </section>
-        <button type="submit" class="btn btn-default">Tilføj Ansat til booking -></button>
+        <button type="submit" class="btn btn-default">Opret Booking</button>
     </form>
 </article>

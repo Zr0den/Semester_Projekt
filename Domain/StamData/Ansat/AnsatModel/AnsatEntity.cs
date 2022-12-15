@@ -1,4 +1,5 @@
-﻿using Domain.Projekt.ProjektModel;
+﻿using Domain.Booking.BookingDomainServices;
+using Domain.Projekt.ProjektModel;
 using Domain.StamData.Ansat.AnsatDomainServices;
 using Domain.StamData.Kompetencer.KompetenceModel;
 
@@ -6,11 +7,18 @@ namespace Domain.StamData.Ansat.AnsatModel
 {
     public class AnsatEntity
     {
+        private readonly IBookingDomainService _domainService;
+
+        public AnsatEntity(IBookingDomainService domainService)
+        {
+            _domainService = domainService;
+        }
         public int AnsatID { get; }
         public string UserID { get; private set; }
         public string AnsatName { get; private set; }
         public string AnsatTelefon { get; private set; }
         public string AnsatType { get; private set; }
+        
         public virtual ICollection<KompetenceEntity> KompetenceEntities { get; private set; }
         //public virtual ICollection<ProjektEntity> ProjektEntities { get; private set; }
 
@@ -46,10 +54,7 @@ namespace Domain.StamData.Ansat.AnsatModel
 
         }
 
-        //public void AddAnsatKompetence(ICollection<KompetenceEntity> kompetenceEntities)
-        //{
-        //    KompetenceEntities = kompetenceEntities;
-        //}
+        
 
     }
 

@@ -1,4 +1,5 @@
-﻿using Domain.StamData.Kompetencer.KompetenceModel;
+﻿using Domain.StamData.Ansat.AnsatModel;
+using Domain.StamData.Kompetencer.KompetenceModel;
 
 namespace Domain.StamData.Ansat.AnsatDomainServices
 {

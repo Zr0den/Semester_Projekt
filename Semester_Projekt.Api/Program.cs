@@ -28,8 +28,10 @@ using Application.StamData.Kunde.KundeCommands.Implementation;
 using Application.StamData.Kunde.KundeQueries;
 using Application.StamData.Kunde.KundeQueries.Implementation;
 using Application.StamData.Kunde.KundeRepositories;
+using Domain.Booking.BookingDomainServices;
 using Domain.Projekt.ProjektDomainServices;
 using Domain.StamData.Ansat.AnsatDomainServices;
+using Infrastructure.Booking.BookingDomainServices;
 using Infrastructure.Booking.BookingRepositories;
 using Infrastructure.Opgave.OpgaveRepositories;
 using Infrastructure.Projekt.ProjektDomainServices;
@@ -91,6 +93,9 @@ builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services.AddScoped<IBookingGetAllQuery, BookingGetAllQuery>();
 builder.Services.AddScoped<IEditBookingCommand, EditBookingCommand>();
 builder.Services.AddScoped<IBookingGetQuery, BookingGetQuery>();
+builder.Services.AddScoped<IBookingDomainService, BookingDomainService>();
+
+
 
 
 

@@ -39,16 +39,17 @@ namespace Semester_Projekt.Api.Controllers
         public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAll(string userID)
         {
             var result = _ansatGetAllQuery.GetAllAnsat(userID).ToList();
-            //if (!result.Any())
-            //    return NotFound();
 
             return result.ToList();
         }
+
+
         [HttpGet("{ansatId}/{userID}")]
         public AnsatQueryResultDto GetAnsat(int ansatId, string userID)
         {
             return _ansatGetQuery.GetAnsat(ansatId, userID);
         }
+
 
         [HttpPut]
         public void Put([FromBody] AnsatEditRequestDto request)
@@ -63,6 +64,14 @@ namespace Semester_Projekt.Api.Controllers
             //if (!result.Any())
             //    return NotFound();
 
+            return result.ToList();
+        }
+
+        [HttpGet("Opgave/{opgaveId}")]
+        public ActionResult<IEnumerable<AnsatQueryResultDto>> GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            var result = _ansatGetAllQuery.GetAllAnsatDerKanLaveOpgaven(opgaveId).ToList();
+            
             return result.ToList();
         }
     }

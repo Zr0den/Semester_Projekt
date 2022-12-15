@@ -48,6 +48,12 @@ namespace Semester_Projekt.Infrastructure.Implementation
             return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat");
         }
 
+        async Task<IEnumerable<AnsatQueryResultDto>?> IService.GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AnsatQueryResultDto>>($"api/ansat/Opgave/{opgaveId}");
+        }
+
+
         //Kompetence
         async Task IService.EditKompetence(KompetenceEditRequestDto kompetenceEditRequestDto)
         {

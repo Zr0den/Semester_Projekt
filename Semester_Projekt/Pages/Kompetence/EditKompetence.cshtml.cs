@@ -25,6 +25,7 @@ namespace Semester_Projekt.Pages.Kompetence
             {
                 KompetenceID = dto.KompetenceID,
                 KompetenceName = dto.KompetenceName,
+                RowVersion = dto.RowVersion,
             };
 
             return Page();
@@ -38,6 +39,7 @@ namespace Semester_Projekt.Pages.Kompetence
             {
                 KompetenceID = KompetenceModel.KompetenceID,
                 KompetenceName = KompetenceModel.KompetenceName,
+                RowVersion = KompetenceModel.RowVersion,
             });
 
             return RedirectToPage("./IndexKompetence");

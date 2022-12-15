@@ -40,6 +40,7 @@ namespace Infrastructure.StamData.Kompetencer.KompetenceRepositories
             {
                 KompetenceID = dbEntity.KompetenceID,
                 KompetenceName = dbEntity.KompetenceName,
+                RowVersion = dbEntity.RowVersion,
                 //AnsatEntities = anDtos,
             };
 
@@ -66,6 +67,7 @@ namespace Infrastructure.StamData.Kompetencer.KompetenceRepositories
                 {
                     KompetenceID = entity.KompetenceID,
                     KompetenceName = entity.KompetenceName,
+                    RowVersion = entity.RowVersion,
                     //AnsatEntities = anDtos,
                 };
             }
@@ -73,8 +75,15 @@ namespace Infrastructure.StamData.Kompetencer.KompetenceRepositories
 
         void IKompetenceRepository.UpdateKompetence(KompetenceEntity model)
         {
-            _db.Update(model);
-            _db.SaveChanges();
+            try
+            {
+                _db.Update(model);
+                _db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         KompetenceEntity IKompetenceRepository.LoadKompetence(int kompetenceId)

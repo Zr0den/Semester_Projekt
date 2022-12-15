@@ -13,5 +13,7 @@ namespace Application.Booking.BookingQueries
         public int OpgaveID { get; set; }
         public int AnsatID { get; set; }
         public int ProjektID { get; set; }
+        public DateTime StartDato { get; set; }
+        public DateTime SlutDato { get; set; }
     }
 }

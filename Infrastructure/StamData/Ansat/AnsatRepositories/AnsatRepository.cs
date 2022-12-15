@@ -128,6 +128,26 @@ namespace Infrastructure.StamData.Ansat.AnsatRepositories
                 KompetenceEntities = kdDtos,
             };
         }
+
+        IEnumerable<AnsatQueryResultDto> IAnsatRepository.GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            var opgave = _db.OpgaveEntities.FirstOrDefault(a => a.OpgaveID == opgaveId);
+            var kompetence = _db.KompetenceEntities.Include(a => a.AnsatEntities).FirstOrDefault(a => a.KompetenceID == opgave.KompetenceID);
+
+            var result = new List<AnsatQueryResultDto>();
+
+            foreach (var ansat in kompetence.AnsatEntities)
+            {
+                result.Add(new AnsatQueryResultDto
+                {
+                    AnsatID = ansat.AnsatID,
+                    AnsatName = ansat.AnsatName,
+                    AnsatType = ansat.AnsatType,
+                    AnsatTelefon = ansat.AnsatTelefon
+                });
+            }
+            return result;
+        }
     }
 }
 

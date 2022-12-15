@@ -7,7 +7,7 @@
         public string AnsatType { get; set; }
         public string UserID { get; set; }
         public string AnsatTelefon { get; set; }
-        public List<int> KompetenceIds { get; set; }
+        public List<int>? KompetenceIds { get; set; }
     }
 
 }

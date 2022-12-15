@@ -23,6 +23,7 @@ namespace Semester_Projekt.Infrastructure.Contract
         Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsat(string identityName);
         Task EditAnsat(AnsatEditRequestDto ansatEditRequestDto);
         Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsatIndex();
+        Task<IEnumerable<AnsatQueryResultDto>> GetAllAnsatDerKanLaveOpgaven(int opgaveId);
 
 
 

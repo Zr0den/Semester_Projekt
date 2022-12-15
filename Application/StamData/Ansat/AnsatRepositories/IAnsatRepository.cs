@@ -12,5 +12,8 @@ namespace Application.StamData.Ansat.AnsatRepositories
         void UpdateAnsat(AnsatEntity model);
         IEnumerable<AnsatQueryResultDto> GetAllAnsatIndex();
 
+        IEnumerable<AnsatQueryResultDto> GetAllAnsatDerKanLaveOpgaven(int opgaveId);
+
+
     }
 }

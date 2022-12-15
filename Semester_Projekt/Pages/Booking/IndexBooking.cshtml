@@ -2,3 +2,38 @@
 @model Semester_Projekt.Pages.Booking.IndexBookingModel
 @{
 }
+<h2>Booking</h2>
+<form method="post">
+    <table class="table"´>
+        <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Booking ID</th>
+            <th>Ansat ID</th>
+            <th>Opgave ID</th>
+            <th>Projekt ID</th>
+            <th>Start Dato</th>
+            <th>Slut Dato</th>
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.BookingModel.Any())
+        {
+            foreach (var booking in Model.BookingModel)
+            {
+                <tr>
+                    <td>@booking.BookingName</td>
+                    <td>@booking.BookingID</td>
+                    <td>@booking.AnsatID</td>
+                    <td>@booking.OpgaveID</td>
+                    <td>@booking.ProjektID</td>
+                    <td>@booking.StartDato</td>
+                    <td>@booking.SlutDato</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</form>

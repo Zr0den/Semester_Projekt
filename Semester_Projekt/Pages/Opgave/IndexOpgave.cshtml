@@ -24,6 +24,11 @@
                     <td>@opgave.OpgaveName</td>
                     <td>@opgave.OpgaveType</td>
                     <td>@opgave.KompetenceID</td>
+
+                    <td>
+                    <a asp-page="/Booking/CreateBooking" asp-route-opgaveId="@opgave.OpgaveID">Ny Booking</a>
+                    </td>
+                    
                 </tr>
             }
         }

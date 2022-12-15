@@ -13,6 +13,9 @@ namespace SqlServerContext.Migrations.Migrations
                 name: "Ansat");
 
             migrationBuilder.EnsureSchema(
+                name: "Booking");
+
+            migrationBuilder.EnsureSchema(
                 name: "Kompetence");
 
             migrationBuilder.EnsureSchema(
@@ -42,13 +45,33 @@ namespace SqlServerContext.Migrations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Booking",
+                schema: "Booking",
+                columns: table => new
+                {
+                    BookingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AnsatID = table.Column<int>(type: "int", nullable: false),
+                    OpgaveID = table.Column<int>(type: "int", nullable: false),
+                    ProjektID = table.Column<int>(type: "int", nullable: false),
+                    StartDato = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SlutDato = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Booking", x => x.BookingID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Kompetance",
                 schema: "Kompetence",
                 columns: table => new
                 {
                     KompetenceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    KompetenceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    KompetenceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,18 +150,11 @@ namespace SqlServerContext.Migrations.Migrations
                     EstimeretSlutDato = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KundeID = table.Column<int>(type: "int", nullable: false),
-                    KIDKundeID = table.Column<int>(type: "int", nullable: true),
-                    AnsatEntityAnsatID = table.Column<int>(type: "int", nullable: true)
+                    KIDKundeID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projekt", x => x.ProjektID);
-                    table.ForeignKey(
-                        name: "FK_Projekt_Ansat_AnsatEntityAnsatID",
-                        column: x => x.AnsatEntityAnsatID,
-                        principalSchema: "Ansat",
-                        principalTable: "Ansat",
-                        principalColumn: "AnsatID");
                     table.ForeignKey(
                         name: "FK_Projekt_Kunde_KIDKundeID",
                         column: x => x.KIDKundeID,
@@ -153,12 +169,6 @@ namespace SqlServerContext.Migrations.Migrations
                 column: "KompetenceEntitiesKompetenceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projekt_AnsatEntityAnsatID",
-                schema: "Projekt",
-                table: "Projekt",
-                column: "AnsatEntityAnsatID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Projekt_KIDKundeID",
                 schema: "Projekt",
                 table: "Projekt",
@@ -171,6 +181,10 @@ namespace SqlServerContext.Migrations.Migrations
                 name: "AnsatEntityKompetenceEntity");
 
             migrationBuilder.DropTable(
+                name: "Booking",
+                schema: "Booking");
+
+            migrationBuilder.DropTable(
                 name: "Opgave",
                 schema: "Opgave");
 
@@ -179,12 +193,12 @@ namespace SqlServerContext.Migrations.Migrations
                 schema: "Projekt");
 
             migrationBuilder.DropTable(
-                name: "Kompetance",
-                schema: "Kompetence");
-
-            migrationBuilder.DropTable(
                 name: "Ansat",
                 schema: "Ansat");
+
+            migrationBuilder.DropTable(
+                name: "Kompetance",
+                schema: "Kompetence");
 
             migrationBuilder.DropTable(
                 name: "Kunde",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Booking.BookingRepositories;
+using Domain.Booking.BookingDomainServices;
 using Domain.Booking.BookingModel;
 
 namespace Application.Booking.BookingCommands.Implementations
@@ -11,6 +12,7 @@ namespace Application.Booking.BookingCommands.Implementations
     public class CreateBookingCommand : ICreateBookingCommand
     {
         private readonly IBookingRepository _bookingRepository;
+        
 
         public CreateBookingCommand(IBookingRepository bookingRepository)
         {
@@ -19,7 +21,7 @@ namespace Application.Booking.BookingCommands.Implementations
 
         void ICreateBookingCommand.CreateBooking(BookingCreateRequestDto bookingCreateRequestDto)
         {
-            var booking = new BookingEntity(bookingCreateRequestDto.BookingName, bookingCreateRequestDto.OpgaveID, bookingCreateRequestDto.ProjektID);
+            var booking = new BookingEntity(bookingCreateRequestDto.BookingName, bookingCreateRequestDto.OpgaveID, bookingCreateRequestDto.ProjektID, bookingCreateRequestDto.AnsatID, bookingCreateRequestDto.StartDato, bookingCreateRequestDto.SlutDato);
 
             _bookingRepository.AddBooking(booking);
         }

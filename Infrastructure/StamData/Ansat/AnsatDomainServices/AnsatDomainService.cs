@@ -1,4 +1,5 @@
 ﻿using Domain.StamData.Ansat.AnsatDomainServices;
+using Domain.StamData.Ansat.AnsatModel;
 using Domain.StamData.Kompetencer.KompetenceModel;
 using SqlServerContext;
 
@@ -16,5 +17,6 @@ namespace Infrastructure.StamData.Ansat.AnsatDomainServices
         {
             return _server.KompetenceEntities.Where(a=> kompetenceIds.Contains(a.KompetenceID)).ToList();
         }
+
     }
 }

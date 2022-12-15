@@ -52,6 +52,8 @@ namespace Infrastructure.Booking.BookingRepositories
                     OpgaveID = entity.OpgaveID,
                     AnsatID = entity.AnsatID,
                     ProjektID = entity.ProjektID,
+                    StartDato = entity.StartDato,
+                    SlutDato = entity.SlutDato
                 };
             }
         }
@@ -68,6 +70,8 @@ namespace Infrastructure.Booking.BookingRepositories
                 OpgaveID = dbEntity.OpgaveID,
                 AnsatID = dbEntity.AnsatID,
                 ProjektID = dbEntity.ProjektID,
+                StartDato = dbEntity.StartDato,
+                SlutDato = dbEntity.SlutDato
             };
         }
     }

@@ -19,5 +19,9 @@ namespace Application.StamData.Ansat.AnsatQueries.AnsatImplementations
         {
             return _repository.GetAllAnsatIndex();
         }
+        IEnumerable<AnsatQueryResultDto> IAnsatGetAllQuery.GetAllAnsatDerKanLaveOpgaven(int opgaveId)
+        {
+            return _repository.GetAllAnsatDerKanLaveOpgaven(opgaveId);
+        }
     }
 }

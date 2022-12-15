@@ -4,6 +4,8 @@
     {
         IEnumerable<AnsatQueryResultDto> GetAllAnsat(string UserID);
         IEnumerable<AnsatQueryResultDto> GetAllAnsatIndex();
+        IEnumerable<AnsatQueryResultDto> GetAllAnsatDerKanLaveOpgaven(int opgaveId);
+
 
     }
 }

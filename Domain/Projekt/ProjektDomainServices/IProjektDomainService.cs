@@ -5,7 +5,6 @@ namespace Domain.Projekt.ProjektDomainServices
 {
     public interface IProjektDomainService
     {
-        //public AnsatEntity GetSaelger(string userID);
-        public KundeEntity GetKunde(int kundeId);
+        KundeEntity GetKunde(int kundeId);
     }
 }

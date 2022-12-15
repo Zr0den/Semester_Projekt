@@ -15,7 +15,7 @@ namespace Application.StamData.Kompetencer.KompetenceCommands.KompetenceImplemen
         {
             var model = _kompetenceRepository.LoadKompetence(requestDto.KompetenceID);
 
-            model.EditKompetence(requestDto.KompetenceName);
+            model.EditKompetence(requestDto.KompetenceName, requestDto.RowVersion);
 
             _kompetenceRepository.UpdateKompetence(model);
         }

@@ -21,13 +21,11 @@
                     <td>@kompetence.KompetenceName</td>
                     <td>
                         <a asp-page="./EditKompetence" asp-route-kompetenceId="@kompetence.KompetenceID">Edit</a>
-                        <button type="button" asp-page-handler="delete" asp-route-kompetenceId="@kompetence.KompetenceID">Delete</button>
                     </td>
                 </tr>
             }
         }
         </tbody>
     </table>
-    <input type="button" asp-area="" asp-page="./CreateKompetence"/>
-    <button type="submit" class="btn btn-default">Update Ansat</button>
+    <a asp-page="CreateKompetence">Create New</a>
 </form>

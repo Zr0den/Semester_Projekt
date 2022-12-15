@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Semester_Projekt.Infrastructure.Contract;
 using Semester_Projekt.Infrastructure.Contract.Dto.Booking;
+using Semester_Projekt.Pages.Ansat;
 using Semester_Projekt.Pages.Opgave;
 
 namespace Semester_Projekt.Pages.Booking
@@ -14,46 +15,55 @@ namespace Semester_Projekt.Pages.Booking
         {
             _service = service;
         }
-        public BookingCreateViewModel BookingCreate { get; set; }
-        [BindProperty] public List<BookingIndexViewModel> BookingModel { get; set; } = new();
-        [BindProperty] public List<OpgaveIndexViewModel> OpgaveModel { get; set; } = new();
-        [BindProperty] public string BookingOpgaveName { get; set; }
-        [BindProperty] public int BookingOpgaveID { get; set; }
+        [BindProperty]
+        public BookingCreateViewModel BookingModel { get; set; } = new();
+        //[BindProperty] public List<OpgaveIndexViewModel> OpgaveModel { get; set; }
+        //[BindProperty] public string BookingOpgaveName { get; set; }
+        [BindProperty] public int opgaveId { get; set; }
         [BindProperty] public int BookingProjektID { get; set; }
+        public List<AnsatIndexViewModel> AnsatIndexViewModel { get; set; }
+        [BindProperty] public int BookingAnsatID { get; set; }
+        [BindProperty] public List<int> Booking { get; set; }
 
 
 
-        public async Task OnGet()
+        public async Task OnGet(int opgaveId)
         {
-            var businessModel = await _service.GetAllOpgave();
 
-            OpgaveModel = new List<OpgaveIndexViewModel>();
 
-            businessModel?.ToList().ForEach(dto => OpgaveModel.Add(new OpgaveIndexViewModel
+            var businessModel2 = await _service.GetAllAnsatDerKanLaveOpgaven(opgaveId);
+
+            AnsatIndexViewModel = new List<AnsatIndexViewModel>();
+
+            businessModel2?.ToList().ForEach(dto => AnsatIndexViewModel.Add(new AnsatIndexViewModel
             {
-                OpgaveID = dto.OpgaveID,
-                OpgaveName = dto.OpgaveName,
-                OpgaveType = dto.OpgaveType,
-                KompetenceID = dto.KompetenceID,
-
+                AnsatName = dto.AnsatName,
+                AnsatTelefon = dto.AnsatTelefon,
+                AnsatID = dto.AnsatID,
+                AnsatType = dto.AnsatType,
+                UserID = dto.UserID,
             }));
         }
         public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid) return Page();
+            
 
             var dto = new BookingCreateRequestDto
             {
-                BookingName = BookingOpgaveName,
-                OpgaveID = BookingOpgaveID,
+                BookingName = BookingModel.BookingName,
+                OpgaveID = opgaveId,
                 ProjektID = BookingProjektID,
+                AnsatID = BookingAnsatID,
+                SlutDato = BookingModel.SlutDato,
+                StartDato = BookingModel.StartDato,
             };
 
             await _service.CreateBooking(dto);
 
 
 
-            return new RedirectToPageResult("/Booking/EditBooking");
+            return new RedirectToPageResult("/Projekt/IndexProjekt");
         }
     }
 }
